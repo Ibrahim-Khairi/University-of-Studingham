@@ -1,8 +1,9 @@
 import React from "react";
 import Courses from "./pages/Courses";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Dashboard from "./pages/Dashboard";
+import Timetablestaff from "./pages/Timetablestaff";
+
 const App = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const App = () => {
         <Routes>
           <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
           <Route path="/courses" element={<Courses></Courses>}></Route>
+          <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
