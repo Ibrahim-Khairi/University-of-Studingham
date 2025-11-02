@@ -3,7 +3,7 @@ import Courses from "./pages/Courses";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Timetablestaff from "./pages/Timetablestaff";
-
+import LibraryPortal from "./pages/Libraryportal";
 const App = () => {
   return (
     <div>
@@ -12,6 +12,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
           <Route path="/courses" element={<Courses></Courses>}></Route>
           <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
+          <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
