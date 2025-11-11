@@ -2,7 +2,7 @@ import React from "react";
 
 const SideDashboard = () => {
   return (
-    <div className="h-full">
+    <div className="h-full 2xl:h-[95vh] ">
       <div className="bg-[#72333B] max-w-[380px]  h-full flex flex-col p-[60px] lg:p-[30px] justify-between ">
         <div>
           <div className="mb-5">

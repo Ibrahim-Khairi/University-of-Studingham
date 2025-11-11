@@ -1,5 +1,5 @@
 .courses_main {
-  background-image: url("./Images/businesscourse.jpg");
+  background-image: url("./Images/buisnesscourse.jpg");
   width: 100%;
   height: 100vh;
   background-position: center;
@@ -14,6 +14,8 @@
 }
 .courses_main h1 {
   color: white;
+
+  font-family: "Playfair Display", sans-serif;
 }
 .courses_main p {
   color: white;
