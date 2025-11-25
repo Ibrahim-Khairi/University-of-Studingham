@@ -8,6 +8,7 @@ import Digitalregisterstaff from "./pages/Digitalregisterstaff";
 import Librarycollection from "./pages/Librarycollection";
 import Bookdetail from "./pages/Bookdetail";
 import Libraryhistory from "./pages/Libraryhistory";
+import Mentorship from "./pages/Mentorship";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           ></Route>
           <Route path="/bookdetail" element={<Bookdetail />}></Route>
           <Route path="/libraryhistory" element={<Libraryhistory />}></Route>
+          <Route path="/mentorship" element={<Mentorship />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
