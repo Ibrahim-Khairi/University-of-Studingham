@@ -1,183 +1,172 @@
 .App {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f6f6f6 0%, #e9ecef 100%);
   min-height: 100vh;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
-.attendance-details {
-  max-width: 900px;
+.resource-management {
+  max-width: 100%;
   margin: 0 auto;
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.attendance-details h2 {
+.resource-management h2 {
   color: #2c3e50;
-  margin-bottom: 20px;
-  text-align: center;
+  margin-bottom: 8px;
+  font-size: 28px;
+  font-weight: 700;
 }
 
-.attendance-layout {
-  display: flex;
-  gap: 10px;
-  align-items: stretch;
-  min-height: 200px;
+.resource-management .sub-header {
+  color: #6c757d;
+  margin-bottom: 25px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.table-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.programme-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-.column-table {
-  border-radius: 8px;
-  overflow: hidden;
-  flex: 1;
+.label-cell {
+  padding: 16px 20px;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 1px solid #e9ecef;
+  background-color: #f8f9fa;
+  width: 45%;
 }
 
-.column-row {
-  display: flex;
-  border-bottom: 1px solid #dee2e6;
-  flex: 1;
+.value-cell {
+  padding: 16px 20px;
+  color: #212529;
+  border-bottom: 1px solid #e9ecef;
+  background-color: white;
+  font-weight: 500;
 }
 
-.column-row:last-child {
+
+.programme-table tr:last-child .value-cell {
   border-bottom: none;
 }
 
-.column-label {
-  width: 40%;
-  padding: 20px;
+.programme-table tr:hover .value-cell {
   background-color: #f8f9fa;
-  font-weight: bold;
-  color: #2c3e50;
-  border-right: 1px solid #dee2e6;
-  display: flex;
-  align-items: center;
 }
 
-.column-value {
-  width: 60%;
-  padding: 20px;
-  color: #495057;
-  display: flex;
-  align-items: center;
+.results-section {
+  max-width: 600px;
+  margin: 20px auto 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.chart-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.chart-section h3 {
+.results-header {
   color: #2c3e50;
   margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-.pie-chart {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.chart-slice {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  position: relative;
-}
-
-.chart-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
+.year-item {
+  padding: 15px 20px;
+  margin-bottom: 12px;
   background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-weight: 500;
+  color: #495057;
 }
 
-.chart-percentage {
-  font-size: 18px;
-  font-weight: bold;
+.year-item:last-child {
+  margin-bottom: 0;
+}
+ 
+.academic-tools-section {
+  max-width: 600px;
+  margin: 20px auto 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tools-header {
   color: #2c3e50;
+  margin-bottom: 8px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-.chart-legend {
+.tools-subheader {
+  color: #6c757d;
+  margin-bottom: 25px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.tool-item {
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  background: white;
+  font-weight: 500;
+  color: #495057;
+}
+
+.tool-item:last-child {
+  margin-bottom: 0;
+}
+
+.main-layout {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
 }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.left-column {
+  flex: 1;
 }
 
-.legend-color {
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
+.right-column {
+  flex: 1;
+  margin-top: 700px; /* Pushes the right section lower down */
 }
 
-.attendance-color {
-  background-color: #28a745;
+.programme-table-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.absence-color {
-  background-color: #dc3545;
+.programme-header {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-.lecture-missed {
-  max-width: 900px;
-  margin: 20px auto;
+.image-placeholder {
   background: white;
   border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.lecture-missed h2 {
-  color: #2c3e50;
-  margin-bottom: 20px;
+  padding: 60px 20px;
   text-align: center;
-}
-
-.lecture-missed table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.lecture-missed th {
-  background-color: #f8f9fa;
-  padding: 12px;
-  text-align: left;
-  font-weight: bold;
-  color: #2c3e50;
-  border-bottom: 2px solid #dee2e6;
-}
-
-.lecture-missed td {
-  padding: 12px;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.lecture-missed tr:hover {
-  background-color: #f8f9fa;
+  color: #6c757d;
+  font-weight: 500;
 }
