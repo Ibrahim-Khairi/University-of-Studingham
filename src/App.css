@@ -1,0 +1,183 @@
+.App {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.attendance-details {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-details h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.attendance-layout {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  min-height: 200px;
+}
+
+.table-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.column-table {
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.column-row {
+  display: flex;
+  border-bottom: 1px solid #dee2e6;
+  flex: 1;
+}
+
+.column-row:last-child {
+  border-bottom: none;
+}
+
+.column-label {
+  width: 40%;
+  padding: 20px;
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #2c3e50;
+  border-right: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+}
+
+.column-value {
+  width: 60%;
+  padding: 20px;
+  color: #495057;
+  display: flex;
+  align-items: center;
+}
+
+.chart-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-section h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.pie-chart {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.chart-slice {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+}
+
+.chart-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-percentage {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.chart-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.attendance-color {
+  background-color: #28a745;
+}
+
+.absence-color {
+  background-color: #dc3545;
+}
+
+.lecture-missed {
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lecture-missed h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.lecture-missed table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lecture-missed th {
+  background-color: #f8f9fa;
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  color: #2c3e50;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.lecture-missed td {
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.lecture-missed tr:hover {
+  background-color: #f8f9fa;
+}
