@@ -19,14 +19,8 @@ const App = () => {
           <Route path="/courses" element={<Courses></Courses>}></Route>
           <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
           <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>
-          <Route
-            path="/digitalregisterstaff"
-            element={<Digitalregisterstaff />}
-          ></Route>
-          <Route
-            path="/librarycollection"
-            element={<Librarycollection />}
-          ></Route>
+          <Route path="/digitalregisterstaff" element={<Digitalregisterstaff />}></Route>
+          <Route path="/librarycollection" element={<Librarycollection />}></Route>
           <Route path="/bookdetail" element={<Bookdetail />}></Route>
           <Route path="/libraryhistory" element={<Libraryhistory />}></Route>
           <Route path="/mentorship" element={<Mentorship />}></Route>

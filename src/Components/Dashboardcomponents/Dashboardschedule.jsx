@@ -9,12 +9,12 @@ const Dashboardschedule = () => {
          <div className='bg-[#1761EB] rounded-2xl h-[55px] w-[20px]'> </div>
        <div>
          <h2 className='text-[22px] font-bold'>Daily Schedule</h2>
-        <p className='text-[#626262] font-bold'>Wednesday, 14th spetember</p>
+        <p className='text-[#626262] font-bold'>Wednesday, 14th September</p>
        </div>
        </div>
       <div className='flex gap-[14px] '>
-          <div className='bg-[#D9D9D9] text-[18px] rounded-full w-[30px] flex justify-center items-center h-[30px]' >&gt;</div>
         <div className='bg-[#D9D9D9] text-[18px] rounded-full w-[30px] flex justify-center items-center h-[30px]'>&lt;</div>
+          <div className='bg-[#D9D9D9] text-[18px] rounded-full w-[30px] flex justify-center items-center h-[30px]' >&gt;</div>
       </div>
 
 
