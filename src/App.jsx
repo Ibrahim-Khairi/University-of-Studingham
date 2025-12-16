@@ -9,12 +9,28 @@ import Librarycollection from "./pages/Librarycollection";
 import Bookdetail from "./pages/Bookdetail";
 import Libraryhistory from "./pages/Libraryhistory";
 import Mentorship from "./pages/Mentorship";
+import Home from "./pages/Home";
+import Community from "./pages/Community";
+import Privacypolicy from "./pages/Privacypolicy";
+import Termsconditions from "./pages/Termsconditions";
+import Accessibility from "./pages/Accessibility";
+import ScrollToTop from "./ScrollToTop";
+import Gateway from "./pages/Gateway";
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
+        <ScrollToTop></ScrollToTop>
+
         <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/gateway" element={<Gateway />}></Route>
+          <Route path="/accessibility" element={<Accessibility />}></Route>
+          <Route path="/terms&conditions" element={<Termsconditions />}></Route>
+          <Route path="/privacypolicy" element={<Privacypolicy />}></Route>
+          <Route path="/community" element={<Community />}></Route>
+
           <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
           <Route path="/courses" element={<Courses></Courses>}></Route>
           <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
