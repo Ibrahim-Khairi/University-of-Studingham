@@ -18,15 +18,23 @@ const Dashboard = () => {
               <div className="bg-[#4C86A8] p-6 rounded-3xl mt-5">
                 <Link
                   to="/"
-                  className="text-white border-b-2 text-[18px] inline-block  mb-2"
+                  className="text-white border-b-3 text-[18px] inline-block  mb-2"
                 >
                   {" "}
                   Lecturer Overview
                 </Link>
                 <p className="text-white text-[18px] font-medium">
-                  Website Development - 45 students C++ Programming - 38
-                  students Next Class: 10 am, FML-014 Dr. Michael Owens
+                  Website Development - 45 students
                 </p>
+                  <p className="text-white text-[18px] font-medium">
+                      C++ Programming - 38 students
+                  </p>
+                  <p className="text-white text-[18px] font-medium">
+                      Next Class: 10 am, FML-014
+                  </p>
+                  <p className="text-white text-[18px] font-medium">
+                      Dr. Michael Owens
+                  </p>
               </div>
               <div className="bg-white rounded-xl p-5 mt-5">
                 <div className="flex items-center">
