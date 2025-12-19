@@ -1,0 +1,141 @@
+#GET http://localhost:3000/users
+#
+####
+#
+#POST http://localhost:3000/users
+#Content-Type: application/json
+#
+#{
+#  "name": "Kyle",
+#  "password": "PasswordforKyle"
+#}
+#
+####
+#
+#POST http://localhost:3000/users/login
+#Content-Type: application/json
+#
+#{
+#  "name": "Kyle",
+#  "password": "PasswordforKyle123123"
+#}
+
+#GET http://localhost:3000/posts
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS3lsZSIsImlhdCI6MTc2NTk0MjIzMn0.sQ-7myaZ8byzL9oEbUVd-fp12MVlgG8lyDo0sfJarlw
+#
+####
+#
+#GET http://localhost:3000/posts
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmV0aCIsImlhdCI6MTc2NTk0MjU3Mn0.k3pO0uC9B1jn76RxLLoI4Q4sMWNWJN4qnLsaJG44XWA
+#
+####
+#
+#POST http://localhost:3000/token
+#Content-Type: application/json
+#
+#{
+#  "token": ""
+#}
+#
+####
+#
+#POST http://localhost:3000/login
+#Content-Type: application/json
+#
+#{
+#  "username": "Beth"
+#}
+#
+####
+#
+#DELETE http://localhost:3000/delete
+
+GET http://localhost:5000/
+
+###
+
+# Create Course
+POST http://localhost:5000/api/setup/course
+Content-Type: application/json
+
+{
+  "name": "BSC Computer Science",
+  "code": "CS301",
+  "aboutTheCourse": "Computer Science is about fresh thinking, new opportunities, and innovative ideas that impact every aspect of society. This dynamic Computer Science degree reflects the subject’s versatility by covering a wide range of topics, including networks, robotics, the Internet, mobile and embedded computing, and cutting-edge technologies such as Artificial Intelligence, Virtual Reality, and Augmented Reality. Through this Computer Science course, you will gain practical skills highly valued by industry, such as programming in C, C++, Java, Lua, Python, JavaScript, and C#. You will also explore the social and ethical questions raised by computer science, alongside its versatility, demand, and earning potential in the modern workplace. The Computer Science degree is intellectually challenging yet highly creative. You will be supported by research-active staff with diverse expertise, ensuring a rich curriculum that offers multiple approaches and areas of study. With close academic and practical support, you will develop the knowledge and skills needed to shape the future of technology. If you are inventive, enthusiastic, and eager to make a difference, this Computer Science degree will prepare you for a rewarding career in one of the most influential and in-demand fields today.",
+  "courseStructure": "Teaching on this degree is structured into lectures, where all students are taught together, seminars which are smaller groups of around 15-20 students, and tutorials which typically have no more than 10 students. You will also have the opportunity to have a one-to-one meeting with your tutor each week. If you are studying Computer Science as a single honours degree, in your first year of study you will have approximately 12 teaching hours per week, which reduces to approximately 11 hours in your second and third years. On top of teaching hours, you are also expected to spend a number of hours studying independently each week, as well as working in groups to prepare for any group assessments you may have.",
+  "assessments": "During your degree, there are a variety of assessment types to ensure you are given a range of opportunities to demonstrate your knowledge, skills and understanding of the academic and professional components of the degree. These include written exams, portfolios of tasks and activities, and practical coursework. In your final year, there is also a dissertation or extended research project to complete."
+}
+
+###
+
+# Module 1 - Year 1
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+
+{
+  "name": "Introduction to Programming",
+  "description": "This module explores the foundational concepts of programming and data structures, focusing on Java and Python, and examines how skills in structured coding, object-oriented programming, and core algorithms support the design of efficient, maintainable solutions to computational problems.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+###
+
+# Module 2 - Year 1
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+
+{
+  "name": "Introduction to Artificial Intelligence",
+  "description": "In this course, we will explore the field of Artificial Intelligence (AI), starting with foundational concepts and progressing through its diverse applications and implications. We begin by understanding what AI is, its history, and core principles such as machine learning, neural networks, and natural language processing. The course also covers key AI techniques such as supervised and unsupervised learning, data analysis, and algorithm development. We will look at the applications of these techniques in engineering and real-world scenarios. In addition, we will examine the ethical and societal impacts of AI technologies, particularly in fields such as automation and data privacy. Throughout, we will link AI concepts with engineering mathematics and applications and differential equations to enhance problem-solving approaches.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+###
+
+# Register Student
+POST http://localhost:5000/api/auth/register/student
+Content-Type: application/json
+
+{
+  "email": "student1@test.com",
+  "password": "Password123forstudent1",
+  "firstName": "Kyle",
+  "middleName": "",
+  "lastName": "Charles",
+  "dateOfBirth": "1998-05-10",
+  "gender": "male",
+  "phoneNumber": "123456789",
+  "courseId": "6943c7ca9a4f32dd7ce69ef1",
+  "levelOfStudy": "B",
+  "modeOfStudy": "Full-time"
+}
+
+###
+
+# Login student1@test.com
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "student1@test.com",
+  "password": "Password123forstudent1"
+}
+
+###
+
+POST http://localhost:5000/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTQzY2JhNjRhOGE3YjY3ZmY1YzFmN2UiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NjA3MDM3Mn0.x290DQfSIEEZKyaLaphjOqPda339PZl1OiFqBu1H8xc"
+}
+
+
+###
+
+# Student Dashboard
+GET http://localhost:5000/api/auth/student/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTQzY2JhNjRhOGE3YjY3ZmY1YzFmN2UiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NjA4Mzg4NiwiZXhwIjoxNzY2MDgzOTA2fQ.Ybov2GXeWUJ8D7BTq1xJr8g586cf0l_h58Knmf_LAg8
+
