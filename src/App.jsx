@@ -16,7 +16,9 @@ import Termsconditions from "./pages/Termsconditions";
 import Accessibility from "./pages/Accessibility";
 import ScrollToTop from "./ScrollToTop";
 import Gateway from "./pages/Gateway";
-
+import Login from "./Components/gatewaycomponents/Login";
+import StudentRegistration from "./Components/gatewaycomponents/StudentRegistration";
+import TutorRegistration from "./Components/gatewaycomponents/TutorRegistration";
 const App = () => {
   return (
     <div>
@@ -25,6 +27,15 @@ const App = () => {
 
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route
+            path="/StudentRegistration"
+            element={<StudentRegistration />}
+          ></Route>
+          <Route
+            path="/TutorRegistration"
+            element={<TutorRegistration />}
+          ></Route>
           <Route path="/gateway" element={<Gateway />}></Route>
           <Route path="/accessibility" element={<Accessibility />}></Route>
           <Route path="/terms&conditions" element={<Termsconditions />}></Route>
@@ -35,8 +46,14 @@ const App = () => {
           <Route path="/courses" element={<Courses></Courses>}></Route>
           <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
           <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>
-          <Route path="/digitalregisterstaff" element={<Digitalregisterstaff />}></Route>
-          <Route path="/librarycollection" element={<Librarycollection />}></Route>
+          <Route
+            path="/digitalregisterstaff"
+            element={<Digitalregisterstaff />}
+          ></Route>
+          <Route
+            path="/librarycollection"
+            element={<Librarycollection />}
+          ></Route>
           <Route path="/bookdetail" element={<Bookdetail />}></Route>
           <Route path="/libraryhistory" element={<Libraryhistory />}></Route>
           <Route path="/mentorship" element={<Mentorship />}></Route>

@@ -11,8 +11,13 @@ const Footer = () => {
       <div className="bg-[#72333B] py-5">
         <div className="container grid grid-cols-[1.5fr_1fr_3fr_1fr] gap-10">
           <div className="flex items-center text-white">
-            <img src="./websitelogo.png" alt="" />
-            <h3 className="font-bold text-[20px]">University Of Studingham</h3>
+            <Link to="/">
+              <img src="./websitelogo.png" alt="" />
+
+              <h3 className="font-bold text-[20px]">
+                University Of Studingham
+              </h3>
+            </Link>
           </div>
           <div>
             <h3 className="text-[18px] border-b  border-b-gray-300 font-bold text-white">

@@ -1,8 +1,9 @@
 import React from "react";
 import { IoLibraryOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 const Gateway = () => {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full ">
       {/* Background Image */}
       <div
         className="absolute top-0 left-0 w-full h-full"
@@ -11,18 +12,20 @@ const Gateway = () => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           filter: "blur(8px)",
-          transform: "scale(1.1)",
+          transform: "scale(1)",
         }}
       ></div>
 
       <div className="relative z-10 container">
         <div className="flex items-center gap-5 mt-5">
-          <div className="bg-white w-auto rounded-full">
-            <img src="/websitelogo.png" alt="/websitelogo" />
-          </div>
-          <h2 className="text-4xl max-w-[400px] font-bold text-[#190C4A]">
-            University of Studingham
-          </h2>
+          <Link className=" flex gap-5" to="/">
+            <div className="bg-white w-[120px] rounded-full">
+              <img src="/websitelogo.png" alt="/websitelogo" />
+            </div>
+            <h2 className="text-4xl max-w-[400px] font-bold text-[#190C4A]">
+              University of Studingham
+            </h2>
+          </Link>
         </div>
         <div
           className="rounded-4xl p-12 mt-16"
@@ -36,29 +39,32 @@ const Gateway = () => {
             className=" text-white  flex gap-8
           "
           >
-            <div className="cursor-pointer">
+            <Link to="/login" className="cursor-pointer">
               <img src="/gatewaystudent.png" className="h-[60px]" alt="" />
               <h3 className="text-3xl mt-4 uppercase">Student Login</h3>
               <p className="mt-2">Access your Student Dashboard</p>
-            </div>
-            <div className="cursor-pointer">
+            </Link>
+            <Link to="/login" className="cursor-pointer">
               <img src="/gatewaystaff.png" className="h-[60px]" alt="" />
               <h3 className="text-3xl mt-4 uppercase">Staff Login</h3>
               <p className="mt-2">Access your Teaching Dashboard</p>
-            </div>
-            <div className="cursor-pointer">
+            </Link>
+            <Link to="/login" className="cursor-pointer">
               <img src="/gatewayadmin.png" className="h-[60px]" alt="" />
               <h3 className="text-3xl mt-4 uppercase">Admin Login</h3>
               <p className="mt-2">Access your Administrative Controls</p>
-            </div>
+            </Link>
             <div className="ml-18">
               <img src="gatewayloginlogo.png" alt="" />
             </div>
           </div>
           <div>
-            <button className="bg-[#AD2F39] mt-10 uppercase text-white rounded-4xl py-4 px-8">
+            <Link
+              to="/login"
+              className="bg-[#AD2F39] inline-block mt-10 uppercase text-white rounded-4xl py-4 px-8"
+            >
               Go To Login
-            </button>
+            </Link>
           </div>
         </div>
         <div
@@ -80,9 +86,12 @@ const Gateway = () => {
               interactive tools that support knowledge development, critical
               thinking, and overall academic success in every field of study.
             </p>
-            <button className="bg-[#2F5028] mt-4 uppercase text-white rounded-4xl py-4 px-8">
+            <Link
+              to="/LibraryPortal"
+              className="bg-[#2F5028] inline-block mt-4 uppercase text-white rounded-4xl py-4 px-8"
+            >
               Explore
-            </button>
+            </Link>
           </div>
         </div>
       </div>
