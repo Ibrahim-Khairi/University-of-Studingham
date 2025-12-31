@@ -1,0 +1,11 @@
+{
+  "name": "Web Development",
+  "courseId": "6943c7ca9a4f32dd7ce69ef1",
+  "tutorId": null,
+  "year": 2,
+  "description": "Building on your software engineering foundation, this topic looks into client- to server-side coding. You'll learn to integrate databases with websites, creating robust registration, login, and logout systems. Dynamic server interactions using AJAX and enhancing user experiences will also be key components.",
+  "_id": "69545ae59676a8959d94e473",
+  "createdAt": "2025-12-30T23:06:13.012Z",
+  "updatedAt": "2025-12-30T23:06:13.012Z",
+  "__v": 0
+}

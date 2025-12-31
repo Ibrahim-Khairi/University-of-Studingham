@@ -1,0 +1,216 @@
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 469
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Cybersecurity",
+  "description": "You will study topics such as network security, cryptography, and threat detection. Students loan to identify vulnerabilities, implement security protocols and learn how machine learning techniques can be used to predict and mitigate cyber threats. Practical sessions often involve hands-on labs and projects to apply theoretical knowledge in real-world scenarios.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T231010.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 338
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Mobile Development",
+  "description": "Here, you'll focus on mobile application development using tools like Android Studio and the Java programming language, you'll create and refine mobile applications adhering to industry standards for quality and user experience.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230937.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 291
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Machine Learning",
+  "description": "You will learn the principles of intelligent systems and their application to computer science and the types of algorithms and programming languages used to solve real-world problems.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230904.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Spatial Computing",
+  "description": " You will develop an understanding of the theory and practical skills to develop virtual or augmented worlds using software or other frameworks to create 3D digital assets, and explore new technologies as the field develops.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230833.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 345
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Algorithm Design and Analysis",
+  "description": "Understand the heart of computational problem-solving. This course will introduce you to the design, analysis, and implementation of algorithms, ensuring you can develop efficient and effective solutions to complex problems.",
+  "year": 2,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230642.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 416
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Web Development",
+  "description": "Building on your software engineering foundation, this topic looks into client- to server-side coding. You'll learn to integrate databases with websites, creating robust registration, login, and logout systems. Dynamic server interactions using AJAX and enhancing user experiences will also be key components.",
+  "year": 2,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230613.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 365
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Introduction to Software Engineering",
+  "description": "Master the principles of software development, from requirement analysis to deployment. This topic covers best practices, design patterns, and methodologies that ensure the creation of robust, scalable, and maintainable software systems.",
+  "year": 2,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230520.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 318
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Object-oriented Programming with C++",
+  "description": "This topic provides a comprehensive understanding of classes, objects, inheritance, polymorphism, and other core OOP concepts, ensuring a strong foundation for advanced software development.",
+  "year": 2,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230516.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 1120
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Fundamentals of Computational Science",
+  "description": "This module introduces the foundations of computer science by weaving together mathematics, C programming, cryptography and scientific computing. Students begin with sets, logic, and proofs to build the habits of abstract reasoning and formal problem-solving. These mathematical tools naturally flow into programming, where they gain practical competence in C, learning to manage variables, control flow, memory and debugging while building an appreciation for efficient and reliable code. The curriculum expands into applied domains, showing how mathematics and programming underpin security and scientific analysis. Students implement and break classical ciphers, apply public-key principles and tackle numerical methods such as matrix operations, integration and error analysis. Integration is central, in that through collaborative projects and simulations, students see how these themes combine to support secure, optimised and interdisciplinary problem-solving across computer science.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230122.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 352
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Data Fundamentals",
+  "description": "The Data Fundamentals module introduces the concept of data and its collection, processing, analysis, and interpretation, while exploring storage systems such as relational databases and the end-to-end lifecycle of data in real-world contexts.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T225935.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 969
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Introduction to Artificial Intelligence",
+  "description": "In this course, we will explore the field of Artificial Intelligence (AI), starting with foundational concepts and progressing through its diverse applications and implications. We begin by understanding what AI is, its history, and core principles such as machine learning, neural networks, and natural language processing. The course also covers key AI techniques such as supervised and unsupervised learning, data analysis, and algorithm development. We will look at the applications of these techniques in engineering and real-world scenarios. In addition, we will examine the ethical and societal impacts of AI technologies, particularly in fields such as automation and data privacy. Throughout, we will link AI concepts with engineering mathematics and applications and differential equations to enhance problem-solving approaches.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T225836.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 408
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Introduction to Programming",
+  "description": "This module explores the foundational concepts of programming and data structures, focusing on Java and Python, and examines how skills in structured coding, object-oriented programming, and core algorithms support the design of efficient, maintainable solutions to computational problems.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T225828.201.json
+
+###
+

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T225828.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T225836.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T225935.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T230122.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T230516.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T230520.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T230613.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T230642.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T230833.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T230904.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T230937.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/2025-12-30T231010.201.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middleware/uploadStudentImage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/middleware/uploadTutorImage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/uploads/students/1767076841416.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/Ellipse 49.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/adminsRegistered.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/bulletLists.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/coursesAvailable.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/numberedLists.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/studentsRegistered.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/tutorsRegistered.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/updatespointer.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Components/PolicyModification/PolicyModificationForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Components/PolicyModification/RichTextEditor.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CourseAddedSuccess.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/StudentRegistration.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/TutorRegistration.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Pages/AdminDashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Pages/CoursesModification.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/Pages/PolicyModification.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/authService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/setupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/setupController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/middleware/authMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middleware/authMiddleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Student.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Student.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Tutor.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Tutor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/request.rest" beforeDir="false" afterPath="$PROJECT_DIR$/backend/request.rest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/authRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/setupRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/setupRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/eslint.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/folder_structure.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Class Presentation.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Class Presentation.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Exploreinbusiness.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Exploreinbusiness.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Home/homebg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Home/homebg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Home/our community.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Home/our community.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Home/ourfacilities.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Home/ourfacilities.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Home/ranked3.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Home/ranked3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Home/rankedcup1.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Home/rankedcup1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Home/rankedcup2.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Home/rankedcup2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Home/upcommingevents.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Home/upcommingevents.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/dashboard.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/dashboard.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/digital.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/digital.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/eatingout.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/eatingout.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/finance-tracker-balance.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/finance-tracker-balance.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/finance-tracker-budget.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/finance-tracker-budget.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/finance-tracker-savings.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/finance-tracker-savings.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/finance-tracker-spending.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/finance-tracker-spending.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/groceries.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/groceries.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/libraryicon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/libraryicon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/moodle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/moodle.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/other.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/other.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/rent.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/rent.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/subscription.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/subscription.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/timetable.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/timetable.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/Icons/utilities.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/utilities.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/buisnesscourse.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/buisnesscourse.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/subject2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/subject2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/subject3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/subject3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/subject4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/subject4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Images/unilogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/unilogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Robotic.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Robotic.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Studying.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Studying.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Tennis Player.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Tennis Player.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/buisness.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/buisness.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/community1.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/community1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/community2.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/community2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/community3.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/community3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/comunity4.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/comunity4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/gatewayadmin.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/gatewayadmin.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/gatewaybg.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/gatewaybg.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/gatewaybgimg.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/gatewaybgimg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/gatewayloginlogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/gatewayloginlogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/gatewaystaff.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/gatewaystaff.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/gatewaystudent.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/gatewaystudent.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/homelogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/homelogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/librarybgimg.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/librarybgimg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/librarycollection.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/librarycollection.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/libraryimg.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/libraryimg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/librarylogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/librarylogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vite.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/vite.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/websitelogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/websitelogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Dashboardcomponents/DashboardSearch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardSearch.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Dashboardcomponents/Dashboardschedule.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/Dashboardschedule.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Dashboardcomponents/SideDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/SideDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Timetablecomponents/LecturesCalendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Timetablecomponents/LecturesCalendar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/coursecomponents/Courseslist.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/coursecomponents/Courseslist.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/digitalregistercomponents/Moduleattendance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/digitalregistercomponents/Moduleattendance.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/financeTrackerComponents/MonthlyBudgetSetup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/financeTrackerComponents/MonthlyBudgetSetup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/gatewaycomponents/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/gatewaycomponents/StudentRegistration.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/gatewaycomponents/TutorRegistration.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/homecomponents/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/homecomponents/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/homecomponents/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/homecomponents/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/librarycomponents/Bookschart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/librarycomponents/Bookschart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/librarycomponents/Librarynav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/librarycomponents/Librarynav.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/librarycomponents/Schedule.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/librarycomponents/Schedule.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/librarycomponents/Scheduleheader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/librarycomponents/Scheduleheader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Data.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Data/Data.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Accessibility.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Accessibility.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Bookdetail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Bookdetail.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Community.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Community.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Courses.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Courses.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/TutorDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Digitalregisterstaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Digitalregisterstaff.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Financetracker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Financetracker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Gateway.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Gateway.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Librarycollection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Librarycollection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Libraryhistory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Libraryhistory.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Libraryportal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Libraryportal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Mentorship.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Mentorship.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Privacypolicy.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Privacypolicy.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Termsconditions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Termsconditions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/Timetablestaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Timetablestaff.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScrollToTop.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/ScrollToTop.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/Courses.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Styles/Courses.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/Century Gothic.zip" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/Century Gothic.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/fonts/COPYRIGHT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/fonts/COPYRIGHT.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/fonts/centurygothic.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/fonts/centurygothic.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/fonts/centurygothic_bold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/fonts/centurygothic_bold.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/fonts/fonts.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/fonts/fonts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/react.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/react.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Programme.JPG.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/image/Programme.JPG.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vite.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSX File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="362s59Wv1IarPHhnVmjyoL0ShP0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "HTTP Request.All in request.executor": "Run",
+    "HTTP Request.request | #1.executor": "Run",
+    "HTTP Request.request | #10.executor": "Run",
+    "HTTP Request.request | #11.executor": "Run",
+    "HTTP Request.request | #12.executor": "Run",
+    "HTTP Request.request | #13.executor": "Run",
+    "HTTP Request.request | #14.executor": "Run",
+    "HTTP Request.request | #2.executor": "Run",
+    "HTTP Request.request | #3.executor": "Run",
+    "HTTP Request.request | #4.executor": "Run",
+    "HTTP Request.request | #5.executor": "Run",
+    "HTTP Request.request | #6.executor": "Run",
+    "HTTP Request.request | #7.executor": "Run",
+    "HTTP Request.request | #8.executor": "Run",
+    "HTTP Request.request | #9.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main-v2",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/ibrah/WebstormProjects/2-year-project/public/Images/Icons",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "C:/Program Files/nodejs/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\public\Images\Icons" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\frontend" />
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\backend" />
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\src\Components\PolicyModification" />
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project" />
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\public\Images\Icons" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="request | #10" value="STOPPED" />
+              <entry key="request | #11" value="STOPPED" />
+              <entry key="request | #12" value="STOPPED" />
+              <entry key="request | #13" value="STOPPED" />
+              <entry key="request | #14" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="HTTP Request.request | #14">
+    <configuration name="request | #10" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#10" index="10" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="request | #11" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#11" index="11" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="request | #12" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#12" index="12" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="request | #13" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#13" index="13" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="request | #14" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#14" index="14" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.request | #14" />
+        <item itemvalue="HTTP Request.request | #13" />
+        <item itemvalue="HTTP Request.request | #12" />
+        <item itemvalue="HTTP Request.request | #11" />
+        <item itemvalue="HTTP Request.request | #10" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-WS-252.28238.10" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="" />
+      <created>1764215815140</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1764215815140</updated>
+      <workItem from="1764215817000" duration="594000" />
+      <workItem from="1764217460543" duration="2701000" />
+      <workItem from="1764232402996" duration="5412000" />
+      <workItem from="1764327288219" duration="2140000" />
+      <workItem from="1764701678675" duration="1922000" />
+      <workItem from="1764834107494" duration="10314000" />
+      <workItem from="1765754177459" duration="2281000" />
+      <workItem from="1765756979873" duration="89000" />
+      <workItem from="1765757080823" duration="159000" />
+      <workItem from="1765757252514" duration="4048000" />
+      <workItem from="1765939911837" duration="48021000" />
+      <workItem from="1766114564635" duration="3202000" />
+      <workItem from="1766323065169" duration="783000" />
+      <workItem from="1766499669263" duration="106961000" />
+      <workItem from="1767130842361" duration="6593000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/backend-v2/server.js</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

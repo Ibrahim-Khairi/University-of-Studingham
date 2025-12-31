@@ -8,9 +8,12 @@ const studentSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     dateOfBirth : { type: Date, required: true },
     gender: { type: String, enum: ["male", "female", "other"], required: true },
+    phoneNumber: { type: String, required: true },
+    picture: { type: String },
+    password: { type: String, required: true },
 
     courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course", required: true },
-    levelOfStudy: { type: String, enum: ["B", "I", "A"], required: true },
+    levelOfStudy: { type: Number, enum: [1, 2, 3], required: true },
     modeOfStudy: { type: String, enum: ["Full-time", "Part-time"], required: true }
 });
 

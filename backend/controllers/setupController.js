@@ -25,13 +25,28 @@ export const createModule = async (req, res) => {
 };
 
 export const getCourses = async (req, res) => {
-    const courses = await Course.find();
-    res.json(courses);
+    try {
+        const courses = await Course.find();
+        res.status(200).json(courses);
+    } catch (error) {
+        res.status(500).json({ message: "Failed to fetch courses" });
+    }
 };
 
 export const getModulesByCourse= async (req, res) => {
     const { courseId } = req.params;
 
     const modules = await Module.find({ courseId });
+    res.json(modules);
+};
+
+export const getModulesByCourseByYear = async (req, res) => {
+    const { courseId, year } = req.params;
+
+    const modules = await Module.find({
+        courseId, year,
+        tutorId: null
+    });
+
     res.json(modules);
 };
