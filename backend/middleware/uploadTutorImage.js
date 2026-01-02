@@ -20,7 +20,10 @@ const fileFilter = (req, file, cb) => {
 
 const uploadTutor = multer({
     storage,
-    fileFilter
+    fileFilter,
+    limits: {
+        fileSize: 300 * 1024
+    }
 });
 
 export default uploadTutor;

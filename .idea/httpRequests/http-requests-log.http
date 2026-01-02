@@ -1,3 +1,323 @@
+GET http://localhost:5000/api/auth/student/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTI1MCwiZXhwIjoxNzY3MzE1MzcwfQ.uN88QduZs_c8g-mokCB_xPUKuvlDVtwcneo2KO68C_Y
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 276
+
+POST http://localhost:5000/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTQzY2JhNjRhOGE3YjY3ZmY1YzFmN2UiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NjA3MDM3Mn0.x290DQfSIEEZKyaLaphjOqPda339PZl1OiFqBu1H8xc"
+}
+
+<> 2026-01-02T005444.401.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTI1MCwiZXhwIjoxNzY3MzE1MzcwfQ.uN88QduZs_c8g-mokCB_xPUKuvlDVtwcneo2KO68C_Y
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-02T005442.200.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-02T005410.403.json
+
+###
+
+GET http://localhost:5000/api/auth/student/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTEyNywiZXhwIjoxNzY3MzE1MTg3fQ.jFmjQdLnUUkeQNCc-TAHJ0_bAlITGLW95483QWNe8p8
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 276
+
+POST http://localhost:5000/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTQzY2JhNjRhOGE3YjY3ZmY1YzFmN2UiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NjA3MDM3Mn0.x290DQfSIEEZKyaLaphjOqPda339PZl1OiFqBu1H8xc"
+}
+
+<> 2026-01-02T005310.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTEyNywiZXhwIjoxNzY3MzE1MTg3fQ.jFmjQdLnUUkeQNCc-TAHJ0_bAlITGLW95483QWNe8p8
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-02T005234.200.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-02T005207.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI3MTY3MCwiZXhwIjoxNzY3MjcxNzMwfQ.5WdO72KsRl5eCC7lXLNrs6bC-Tz7K_m0BwfjosALKm4
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T124806.200.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T124750.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI3MTM5MSwiZXhwIjoxNzY3MjcxNDUxfQ.3KoGafhNPVXhqcr3Xg3ZGd2pQGopnBeLobTn9w2m-c8
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T124332.500.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T124311.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI3MTMwNSwiZXhwIjoxNzY3MjcxMzI1fQ.3X5qRuNOWswmAnPaQnkh3C6D1
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T124216.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI3MTMwNSwiZXhwIjoxNzY3MjcxMzI1fQ.3X5qRuNOWswmAnPaQnkh3C6D1
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T124210.401.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T124145.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI2OTIyOCwiZXhwIjoxNzY3MjY5MjQ4fQ.-ybwA8y977rPhsBeg-FhmBBi1QKarF4W7d9fc0s9CVo
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T120726.500.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T120708.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI2OTE0NiwiZXhwIjoxNzY3MjY5MTY2fQ.o6USYVzN1wBcV-fWFxnRV3jCm0UDs5suiLQ1WYqC4sc
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T120609.403.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T120546.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI2OTAxMywiZXhwIjoxNzY3MjY5MDMzfQ.hwUwRjiVw4cfKpCY7nvRCtCIABwSYzqyhbdVgBMixsI
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T120523.403.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T120333.403.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T115419.403.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 469
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Cybersecurity",
+  "description": "You will study topics such as network security, cryptography, and threat detection. Students loan to identify vulnerabilities, implement security protocols and learn how machine learning techniques can be used to predict and mitigate cyber threats. Practical sessions often involve hands-on labs and projects to apply theoretical knowledge in real-world scenarios.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2026-01-01T115417.201.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T115401.403.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 92
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "ibrahimkhairiuk@gmail.com",
+  "password": "Ibrahimjustwantsthistobeover12!!"
+}
+
+<> 2026-01-01T114526.401.json
+
+###
+
 POST http://localhost:5000/api/setup/module
 Content-Type: application/json
 Content-Length: 469

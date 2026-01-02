@@ -10,7 +10,7 @@ const studentSchema = new mongoose.Schema({
     gender: { type: String, enum: ["male", "female", "other"], required: true },
     phoneNumber: { type: String, required: true },
     picture: { type: String },
-    password: { type: String, required: true },
+    password: { type: String },
 
     courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course", required: true },
     levelOfStudy: { type: Number, enum: [1, 2, 3], required: true },

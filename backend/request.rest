@@ -249,11 +249,20 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "ibrahimkhairi@gmail.com",
-  "password": "ibrahimwantsthistoworkreallybadbtw"
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
 }
 
 ###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTI1MCwiZXhwIjoxNzY3MzE1MzcwfQ.uN88QduZs_c8g-mokCB_xPUKuvlDVtwcneo2KO68C_Y
+###
+
+GET http://localhost:5000/api/auth/student/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTI1MCwiZXhwIjoxNzY3MzE1MzcwfQ.uN88QduZs_c8g-mokCB_xPUKuvlDVtwcneo2KO68C_Y
+
+
 
 POST http://localhost:5000/api/auth/refresh
 Content-Type: application/json
@@ -268,4 +277,3 @@ Content-Type: application/json
 # Student TutorDashboard
 GET http://localhost:5000/api/auth/student/dashboard
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTQzY2JhNjRhOGE3YjY3ZmY1YzFmN2UiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NjA4Mzg4NiwiZXhwIjoxNzY2MDgzOTA2fQ.Ybov2GXeWUJ8D7BTq1xJr8g586cf0l_h58Knmf_LAg8
-

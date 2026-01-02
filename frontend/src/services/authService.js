@@ -18,8 +18,7 @@ export const registerAdmin = async (formData) => {
 export const loginUser = async (formData) => {
     const res = await api.post("/auth/login", formData);
 
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("role", res.data.role);
+    if (res.data.accessToken) localStorage.setItem("accessToken", res.data.accessToken);
 
     return res.data;
 };

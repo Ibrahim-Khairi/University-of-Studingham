@@ -1,4 +1,5 @@
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs';
+import validator from "validator";
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import Student from '../models/Student.js';
@@ -16,16 +17,34 @@ export const registerStudent = async (req, res) => {
     // Account Creation -> Create password
     // Awaiting Approval
 
-    console.log("📥 Incoming student registration");
-    console.log("BODY:", req.body);
-    console.log("FILE:", req.file); // if using multer
-
     // Step 1: Field extraction
     try {
         const { email, password, firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, courseId, levelOfStudy, modeOfStudy } = req.body || {};
 
         // Step 2: Validation
         if (!email || !password || !firstName || !lastName || !dateOfBirth || !gender || !phoneNumber || !courseId || !levelOfStudy || !modeOfStudy) return res.status(400).json({ message: "Missing required fields." });
+
+        // Name validation
+        const nameRegex = /^[A-Za-z]+([ '-][A-Za-z]+)*$/;
+        if (!nameRegex.test(firstName)) return res.status(400).json({ message: "Invalid first name." });
+        if (middleName && !nameRegex.test(middleName)) return res.status(400).json({ message: "Invalid middle name." });
+        if (!nameRegex.test(lastName)) return res.status(400).json({ message: "Invalid last name." });
+
+        // Email validation
+        if (!validator.isEmail(email)) return res.status(400).json({ message: "Invalid email address." });
+
+        // Phone Number validation
+        const phoneRegex = /^\+?[0-9\s]{10,15}$/
+        if (!phoneRegex.test(phoneNumber)) return res.status(400).json({ message: "Invalid phone number" });
+
+        // Date Of Birth validation
+        const dob = new Date(dateOfBirth);
+        const age = (Date.now() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+        if (isNaN(dob.getTime()) || age < 16) return res.status(400).json({ message: "Invalid date of birth" });
+
+        // Password validation
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/
+        if (!passwordRegex.test(password)) return res.status(400).json({ message: "Password must be 8 characters long and it must contain uppercase, lowercase, number, and symbol"});
 
         // Step 3: User exists?
         const existingUser = await User.findOne({ email });
@@ -42,7 +61,6 @@ export const registerStudent = async (req, res) => {
             email,
             password: hashedPassword,
             role: "student",
-            status: "approved"
         });
 
         // Step 6 (New) : Create image
@@ -79,26 +97,34 @@ export const registerTutor = async(req, res) => {
         // Step 2: Validation
         if (!email || !password || !firstName || !lastName || !dateOfBirth || !gender || !phoneNumber || !courseId || !Array.isArray(modules) || modules.length !==2 ) return res.status(400).json({ message: "Missing required fields and exactly 2 modules must be selected." });
 
+        // Name validation
+        const nameRegex = /^[A-Za-z]+([ '-][A-Za-z]+)*$/;
+        if (!nameRegex.test(firstName)) return res.status(400).json({ message: "Invalid first name." });
+        if (middleName && !nameRegex.test(middleName)) return res.status(400).json({ message: "Invalid middle name." });
+        if (!nameRegex.test(lastName)) return res.status(400).json({ message: "Invalid last name." });
+
+        // Email validation
+        if (!validator.isEmail(email)) return res.status(400).json({ message: "Invalid email address." });
+
+        // Phone Number validation
+        const phoneRegex = /^\+?[0-9\s]{10,15}$/
+        if (!phoneRegex.test(phoneNumber)) return res.status(400).json({ message: "Invalid phone number" });
+
+        // Date Of Birth validation
+        const dob = new Date(dateOfBirth);
+        const age = (Date.now() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+        if (isNaN(dob.getTime()) || age < 16) return res.status(400).json({ message: "Invalid date of birth" });
+
+        // Password validation
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/
+        if (!passwordRegex.test(password)) return res.status(400).json({ message: "Password must be 8 characters long and it must contain uppercase, lowercase, number, and symbol"});
+
         // Step 3: User exists?
         const existingUser = await User.findOne({ email });
         if (existingUser) return res.status(409).json({ message: "Email already registered" });
 
         const course = await Course.findById(courseId);
         if (!course) return res.status(400).json({ message: "Invalid course selected" });
-
-        // const moduleOne = await Module.findById(moduleId1);
-        // if (!moduleOne) return res.status(400).json({ message: "Invalid module selected" });
-        // const moduleTwo = await Module.findById(moduleId2);
-        // if (!moduleTwo) return res.status(400).json({ message: "Invalid module selected" });
-        //
-        // if (!moduleOne.courseId.equals(course._id)) return res.status(400).json({ message: "Module not part of course" });
-        // if (!moduleTwo.courseId.equals(course._id)) return res.status(400).json({ message: "Module not part of course" });
-        //
-        // if (moduleOne._id.equals(moduleTwo._id)) return res.status(400).json({ message: "Select a different module" });
-        // if (moduleOne.year !== moduleTwo.year) return res.status(400).json({ message: "Modules from the same year are to be selected" });
-        //
-        // if (moduleOne.tutorId) return res.status(400).json({ message: "Module already taken" });
-        // if (moduleTwo.tutorId) return res.status(400).json({ message: "Module already taken" });
 
         const selectedModules = await Module.find({
             _id : { $in: modules }
@@ -113,6 +139,10 @@ export const registerTutor = async(req, res) => {
         ) return res.status(400).json({ message: "Selected modules do not belong to the chosen course" });
 
         if (moduleA.tutorId || moduleB.tutorId) return res.status(409).json({ message: "One or more selected modules are already assigned" });
+
+        // 2 Modules validation
+        const moduleIds = [moduleA._id, moduleB._id]
+        if (moduleIds.length !== 2) return res.status(400).json({ message: "Select exactly 2 modules" });
 
         // Step 4: Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -141,7 +171,7 @@ export const registerTutor = async(req, res) => {
         // Implies the concept of atomic cleanup. If 2 tutors click submit at the same time, one wins & the other loses. Validation passes but database state changed before update
         // This causes a tutor account with no modules, a user who can login but is broken and then will have to be manually cleaned up later
         // Therefore, this is rolling back tutor + user if the race condition did happen
-        const updateResult = await Module.updateMany(
+        const updatedResult = await Module.updateMany(
             {
                 _i: { $in: modules },
                 tutorId: null
@@ -216,8 +246,6 @@ export const login = async (req, res) => {
     const isMatching = await bcrypt.compare(password, user.password);
     if (!isMatching) return res.status(401).json({ message: "Invalid password" });
 
-    if (user.status !== "approved") return res.status(403).json({ message: `Account ${user.status}` });
-
     const payload = {
         userId: user._id,
         role: user.role
@@ -228,7 +256,7 @@ export const login = async (req, res) => {
 
     await RefreshToken.create({ token: refreshToken, userId: user._id });
 
-    res.json({ accessToken: accessToken, refreshToken: refreshToken });
+    res.json({ accessToken: accessToken, refreshToken: refreshToken, status: user.status, role: user.role });
 };
 
 export const logout = async (req, res) => {
@@ -252,7 +280,7 @@ export const refresh = async (req, res) => {
             const accessToken = jwt.sign({
                 userId: payload.userId,
                 role: payload.role
-            }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "20s" });
+            }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
 
             res.json({ accessToken });
         });

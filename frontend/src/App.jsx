@@ -23,6 +23,9 @@ import Financetracker from "./pages/Financetracker.jsx";
 import AdminDashboard from "./Pages/AdminDashboard.jsx";
 import CoursesModification from "./Pages/CoursesModification.jsx";
 import PolicyModification from "./Pages/PolicyModification.jsx";
+import PendingApprovals from "./Pages/PendingApprovals.jsx";
+import AuthGate from "./Pages/AuthGate.jsx";
+import StudentDashboard from "./Pages/StudentDashboard.jsx";
 const App = () => {
   return (
     <div>
@@ -30,18 +33,32 @@ const App = () => {
         <ScrollToTop></ScrollToTop>
 
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/StudentRegistration" element={<StudentRegistration />}></Route>
-          <Route path="/TutorRegistration" element={<TutorRegistration />}></Route>
-          <Route path="/gateway" element={<Gateway />}></Route>
+            {/* Public Routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/studentregistration" element={<StudentRegistration />} />
+            <Route path="/tutorregistration" element={<TutorRegistration />} />
+            <Route path="/gateway" element={<Gateway />} />
+
+            {/* Student Routes */}
+            <Route path="/student/dashboard" element={<AuthGate allowedRoles={["student"]}><StudentDashboard /></AuthGate>} />
+
+            {/* Tutor Routes */}
+            <Route path="/tutor/dashboard" element={<AuthGate allowedRoles={["tutor"]}><TutorDashboard /></AuthGate>} />
+
+            {/* Admin Routes */}
+            <Route path="/admin/dashboard" element={<AuthGate allowedRoles={["admin"]}><AdminDashboard /></AuthGate>} />
+
+            {/* Approval Routes */}
+            <Route path="/pendingapprovals" element={<AuthGate allowedRoles={["tutor", "admin"]}><PendingApprovals /></AuthGate>} />
+
+
+
           <Route path="/accessibility" element={<Accessibility />}></Route>
           <Route path="/terms&conditions" element={<Termsconditions />}></Route>
           <Route path="/privacypolicy" element={<Privacypolicy />}></Route>
           <Route path="/community" element={<Community />}></Route>
 
-          <Route path="/admin/dashboard" element={<AdminDashboard />}></Route>
-          <Route path="/tutor/dashboard" element={<TutorDashboard />}></Route>
           <Route path="/courses" element={<Courses />}></Route>
           <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
           <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>

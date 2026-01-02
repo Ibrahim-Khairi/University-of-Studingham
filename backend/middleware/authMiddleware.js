@@ -13,8 +13,8 @@ export const authMiddleware = (req, res, next) => {
             return res.status(403).json({ msg: "Invalid or expire token" });
         }
 
-        console.log("Auth User:", req.user);
         req.user = payload;
+        console.log("Auth User:", req.user);
         next();
     });
 };
