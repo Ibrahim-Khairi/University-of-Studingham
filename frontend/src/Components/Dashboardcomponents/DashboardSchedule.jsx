@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Dashboardschedule = () => {
+const DashboardSchedule = () => {
   return (
     <div className='grid grid-cols-2 mt-6 gap-8'>
     <div>
@@ -223,4 +223,4 @@ const Dashboardschedule = () => {
   )
 }
 
-export default Dashboardschedule
+export default DashboardSchedule

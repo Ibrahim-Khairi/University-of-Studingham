@@ -52,7 +52,7 @@ const App = () => {
             {/* Approval Routes */}
             <Route path="/pendingapprovals" element={<AuthGate allowedRoles={["tutor", "admin"]}><PendingApprovals /></AuthGate>} />
 
-
+            <Route path="/testingtutor" element={<TutorDashboard />} />
 
           <Route path="/accessibility" element={<Accessibility />}></Route>
           <Route path="/terms&conditions" element={<Termsconditions />}></Route>
