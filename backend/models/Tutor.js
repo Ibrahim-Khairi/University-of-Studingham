@@ -10,9 +10,10 @@ const tutorSchema = new mongoose.Schema({
     gender: { type: String, enum: ["male", "female", "other"], required: true },
     phoneNumber: { type: String, required: true },
     picture: { type: String },
-    password: { type: String, required: true },
+    password: { type: String },
 
     courseId: { type: String, required: true },
+    year: { type: Number, required: true },
     modules: [{ type: mongoose.Schema.Types.ObjectId, ref: "Module", required: true }],
 });
 

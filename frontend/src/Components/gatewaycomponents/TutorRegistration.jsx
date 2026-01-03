@@ -12,12 +12,11 @@ const TutorRegistration = () => {
         email: "",
         phoneNumber: "",
         courseId: "",
-        modules: "",
+        year: 0,
         password: ""
     });
     const [image, setImage] = useState(null);
     const [courses, setCourses] = useState([]);
-    const [year, setYear] = useState("");
     const [modules, setModules] = useState([]);
     const [selectedModules, setSelectedModules] = useState([]);
 
@@ -34,10 +33,10 @@ const TutorRegistration = () => {
     }, []);
 
     useEffect(() => {
-        if (!formData.courseId || !year) return;
+        if (!formData.courseId || !formData.year) return;
         void (async () => {
             try {
-                const res = await fetch (`http://localhost:5000/api/setup/modules/${formData.courseId}/${year}`);
+                const res = await fetch (`http://localhost:5000/api/setup/modules/${formData.courseId}/${formData.year}`);
                 const data = await res.json();
                 setModules(data);
                 setSelectedModules([]);
@@ -45,7 +44,7 @@ const TutorRegistration = () => {
                 console.log("Error fetching modules:", error);
             }
         })();
-    }, [formData.courseId, year])
+    }, [formData.courseId, formData.year])
 
     const toggleModule = (moduleId) => {
         setSelectedModules((prev) => {
@@ -209,9 +208,10 @@ const TutorRegistration = () => {
 
               <select
                   className="input mb-4"
-                  value={year}
-                  onChange={(e) =>
-                      setYear(Number(e.target.value))}>
+                  value={formData.year}
+                  onChange={(e) => {
+                      setFormData({ ...formData, year: Number(e.target.value) })
+                  }}>
                   <option value="" disabled>Select Year</option>
                   <option value={1}>Year 1</option>
                   <option value={2}>Year 2</option>

@@ -16,11 +16,16 @@ const Login = () => {
 
         try {
             const res = await loginUser({ email, password });
+            console.log("LOGIN response:", res);
 
             localStorage.setItem("accessToken", res.accessToken);
             localStorage.setItem("refreshToken", res.refreshToken);
 
-            navigate("/student/dashboard");
+            const { role } = res;
+            if (role === "student") navigate("/student/dashboard");
+            else if (role === "tutor") navigate("/tutor/dashboard");
+            else if (role === "admin") navigate("/admin/dashboard");
+            else navigate("/gateway");
         } catch (error) {
             const data = error.response?.data;
             setError(data?.message || "Login failed");

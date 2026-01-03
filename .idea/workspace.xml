@@ -5,24 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/approvalController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/approvalController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middleware/authMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middleware/authMiddleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middleware/uploadStudentImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middleware/uploadStudentImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middleware/uploadTutorImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middleware/uploadTutorImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Student.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Student.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/request.rest" beforeDir="false" afterPath="$PROJECT_DIR$/backend/request.rest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/authRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/utils/generateAccessToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/utils/generateAccessToken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Tutor.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Tutor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/authService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/TutorRegistration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/TutorRegistration.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/AuthGate.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/AuthGate.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/PendingApprovals.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/PendingApprovals.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +166,7 @@
       <workItem from="1766114564635" duration="3202000" />
       <workItem from="1766323065169" duration="783000" />
       <workItem from="1766499669263" duration="106961000" />
-      <workItem from="1767130842361" duration="56426000" />
+      <workItem from="1767130842361" duration="73487000" />
     </task>
     <servers />
   </component>

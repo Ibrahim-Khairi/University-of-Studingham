@@ -92,6 +92,37 @@ const AuthGate = ({ children, allowedRoles }) => {
         );
     }
 
+    if (role === "tutor" && status === "pending") {
+        return (
+            <div
+                className="min-h-screen flex items-center justify-center bg-cover bg-center relative"
+                style={{ backgroundImage: `url(/comunity4.png)` }}
+            >
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
+
+                <div className="relative z-10 bg-white rounded-2xl shadow-xl w-full max-w-md px-8 py-10 flex flex-col items-center justify-center">
+                    <Spinner
+                        size="lg"
+                        color="blue"
+                        text="Awaiting approval. Please wait..."
+                    />
+                </div>
+            </div>
+        );
+    }
+
+    if (role === "tutor" && status === "rejected") {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center text-center">
+                <div className="text-red-600 text-6xl mb-4">✖</div>
+                <h1 className="text-2xl font-bold">Registration Rejected</h1>
+                <p className="text-gray-500 mt-2">
+                    Your application has been rejected.
+                </p>
+            </div>
+        );
+    }
+
     return children;
 };
 

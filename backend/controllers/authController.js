@@ -89,13 +89,25 @@ export const registerTutor = async(req, res) => {
     // Academic Detail -> Course, modules
     // Account Creation -> Create password
     // Awaiting Approval
-
+    console.log("RAW req.body:", req.body);
+    console.log("TYPE CHECK:", {
+        year: typeof req.body.year,
+        modules: req.body.modules,
+        modulesType: typeof req.body.modules,
+        isArray: Array.isArray(req.body.modules)
+    });
     // Step 1: Field extraction
     try {
-        const { email, password, firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, courseId, modules} = req.body || {};
+        let { email, password, firstName, middleName, lastName, dateOfBirth, gender, phoneNumber, courseId, year, modules} = req.body || {};
+
+        // Normalization
+        year = Number(year);
+        if (modules && !Array.isArray(modules)) {
+            modules = [modules];
+        }
 
         // Step 2: Validation
-        if (!email || !password || !firstName || !lastName || !dateOfBirth || !gender || !phoneNumber || !courseId || !Array.isArray(modules) || modules.length !==2 ) return res.status(400).json({ message: "Missing required fields and exactly 2 modules must be selected." });
+        if (!email || !password || !firstName || !lastName || !dateOfBirth || !gender || !phoneNumber || !courseId || Number.isNaN(Number(year)) || !modules || modules.length !== 2 ) return res.status(400).json({ message: "Missing required fields and exactly 2 modules must be selected." });
 
         // Name validation
         const nameRegex = /^[A-Za-z]+([ '-][A-Za-z]+)*$/;
@@ -119,6 +131,9 @@ export const registerTutor = async(req, res) => {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/
         if (!passwordRegex.test(password)) return res.status(400).json({ message: "Password must be 8 characters long and it must contain uppercase, lowercase, number, and symbol"});
 
+        // Year validation
+        if (!Number(year) || ![1, 2, 3].includes(Number(year))) return res.status(400).json({ message: "Invalid year" });
+
         // Step 3: User exists?
         const existingUser = await User.findOne({ email });
         if (existingUser) return res.status(409).json({ message: "Email already registered" });
@@ -135,7 +150,7 @@ export const registerTutor = async(req, res) => {
 
         if (
             !moduleA.courseId.equals(course._id) ||
-            !mdouleB.courseId.equals(course._id)
+            !moduleB.courseId.equals(course._id)
         ) return res.status(400).json({ message: "Selected modules do not belong to the chosen course" });
 
         if (moduleA.tutorId || moduleB.tutorId) return res.status(409).json({ message: "One or more selected modules are already assigned" });
@@ -164,6 +179,7 @@ export const registerTutor = async(req, res) => {
             firstName, middleName, lastName, dateOfBirth, gender, phoneNumber,
             picture: imagePath,
             courseId: course._id,
+            year: Number(year),
             modules: [moduleA._id, moduleB._id]
         });
 
@@ -173,7 +189,7 @@ export const registerTutor = async(req, res) => {
         // Therefore, this is rolling back tutor + user if the race condition did happen
         const updatedResult = await Module.updateMany(
             {
-                _i: { $in: modules },
+                _id: { $in: modules },
                 tutorId: null
             },
             { tutorId: tutor._id }

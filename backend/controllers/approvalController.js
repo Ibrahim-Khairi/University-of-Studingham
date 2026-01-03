@@ -8,18 +8,29 @@ export const getPendingStudentsForTutor = async (req, res) => {
     try {
         if (req.user.role !== "tutor") return res.status(403).json({ message: "Access denied" });
 
-        const tutor = await Tutor.findOne({ userId: req.user.id });
-        if (!tutor) return res.status(403).json({ message: "Not authorized" });
+        const tutor = await Tutor.findOne({ userId: req.user.userId });
+        if (!tutor) return res.status(403).json({ message: "Tutor profile not found" });
 
         const students = await Student.find({
             courseId: tutor.courseId,
-            year: tutor.year
-        }).populate("userId", "email status").where("userId.status").equals("pending");
+            levelOfStudy: tutor.year,
+            status: "pending"
+        }).populate({path: "userId", select: "email status"});
 
-        res.json(students);
-        } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Failed to fetch pending students" });
+        const pendingStudents = students.filter((student) => student.userId?.status === "pending");
+
+        res.json(
+            pendingStudents.map((student) => ({
+                id: student._id,
+                name: `${student.firstName} ${student.lastName}`,
+                email: student.userId.email,
+                courseId: student.courseId,
+                levelOfStudy: student.levelOfStudy
+            }))
+        );
+    } catch (error) {
+        console.error("getPendingStudentsForTutor error:", error);
+        res.status(500).json({ message: "Server error" });
     }
 };
 
@@ -27,16 +38,18 @@ export const approveStudent = async (req, res) => {
     try {
         if (req.user.role !== "tutor") return res.status(403).json({ message: "Access denied" });
 
-        const student = await Student.findById(req.params.studentId);
+        const { studentId } = req.params;
+
+        const student = await Student.findById(studentId);
         if (!student) return res.status(404).json({ message: "Student not found" });
 
-        const user = await User.findById(student.userId);
-        user.status = "approved";
-        await user.save();
+        await User.findByIdAndUpdate(student.userId, {
+            status: "approved"
+        });
 
-        res.json({ message: "Student approved" });
+        res.json({ message: "Student approved successfully" });
     } catch (error) {
-        console.error(error);
+        console.error("approveStudent error:", error);
         res.status(500).json({ message: "Approval failed" });
     }
 };
@@ -45,10 +58,14 @@ export const rejectStudent = async (req, res) => {
     try {
         if (req.user.role !== "tutor") return res.status(403).json({ message: "Access denied" });
 
-        const student = await Student.findById(req.params.studentId);
+        const { studentId } = req.params;
+
+        const student = await Student.findById(studentId);
         if (!student) return res.status(404).json({ message: "Student not found" });
 
-        const user = await User.findById(student.userId);
+        await User.findByIdAndUpdate(student.userId, {
+            status: "rejected"
+        });
 
         if (student.picture) {
             const imagePath = path.join(process.cwd(), student.picture);
@@ -56,11 +73,10 @@ export const rejectStudent = async (req, res) => {
         }
 
         await student.deleteOne();
-        await user.deleteOne();
 
         res.json({ message: "Student rejected and deleted successfully" });
     } catch (error) {
-        console.error(error);
+        console.error("rejectStudent error:", error);
         res.status(500).json({ message: "Rejection failed" });
     }
 }
