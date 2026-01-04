@@ -12,7 +12,7 @@ const tutorSchema = new mongoose.Schema({
     picture: { type: String },
     password: { type: String },
 
-    courseId: { type: String, required: true },
+    courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course", required: true},
     year: { type: Number, required: true },
     modules: [{ type: mongoose.Schema.Types.ObjectId, ref: "Module", required: true }],
 });

@@ -1,7 +1,22 @@
 import React from "react";
-import {LibraryIcon, UserIcon} from "lucide-react";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 const DashboardPanel = () => {
+    const { user, loading } = useAuth();
+
+    // 🔒 HARD BLOCK: do NOT render until auth is hydrated
+    if (loading) {
+        return (
+            <div className="min-w-[330px] min-h-[840px]" />
+        );
+    }
+
+    // 🔒 Still no user? Don't render sidebar
+    if (!user || !user.role) {
+        console.warn("DashboardPanel: user not ready", user);
+        return null;
+    }
+
     const MENU = {
         student: [
             { label: "Dashboard", icon: "/Images/Icons/DashboardIcon.svg", path: "/student/dashboard" },
@@ -24,47 +39,62 @@ const DashboardPanel = () => {
         admin: [
             { label: "Dashboard", icon: "/Images/Icons/DashboardIcon.svg", path: "/admin/dashboard" },
             { label: "Moodle", icon: "/Images/Icons/MoodleIcon.svg", path: "/admin/moodle" },
-            { label: "Course Modification", icon: "/Images/Icons/TimetableIcon.svg", path: "/admin/course-modification" }, // ⬅ removed extra spaces
+            { label: "Course Modification", icon: "/Images/Icons/TimetableIcon.svg", path: "/admin/course-modification" },
             { label: "Policy Modification", icon: "/Images/Icons/DigitalRegisterIcon.svg", path: "/admin/policy-modification" },
             { label: "Pending Approvals", icon: "/Images/Icons/PendingApprovalsIcon.svg", path: "/admin/pending-approvals" }
         ]
     };
-    const role = "student";
+
+    const role = user.role;
     const menuItems = MENU[role];
-  return (
-    <div className="">
-        <div className="bg-[#72333B] w-[330px] min-h-[840px] rounded-3xl flex flex-col p-[60px] lg:p-[30px]">
+
+    // 🚨 Catch misconfigured roles instantly
+    if (!menuItems) {
+        console.error("DashboardPanel: invalid role", role);
+        return null;
+    }
+
+    console.log("DashboardPanel render OK", { role, user });
+
+    return (
         <div>
-          <div className="mb-5">
-            <div className="rounded-4xl bg-[#D9D9D9] w-full h-[219px] bg-[url('./Images/unilogo.png')] bg-cover bg-center " />
-          </div>
-          <ul className="mt-2 mb-1 space-y-1">
-              {menuItems.map((item) => (
-                  <li key={item.path}>
-                      <a
-                          href={item.path}
-                          className="flex items-center gap-4 text-white font-[Century Gothic] font-bold text-[18px] py-3 px-2 rounded-xl hover:bg-white/10 transition"
-                      >
-                          <img
-                              src={item.icon}
-                              alt={item.label}
-                              className="w-8 h-8"
-                          />
-                          <span>{item.label}</span>
-                      </a>
-                  </li>
-              ))}
-          </ul>
+            <div className="bg-[#72333B] min-w-[330px] min-h-[840px] rounded-3xl flex flex-col p-[60px] lg:p-[30px]">
+                <div>
+                    <div className="mb-5">
+                        <div className="rounded-4xl bg-[#D9D9D9] w-full h-[219px] bg-[url('./Images/unilogo.png')] bg-cover bg-center" />
+                    </div>
+
+                    <ul className="mt-2 mb-1 space-y-1">
+                        {menuItems.map((item) => (
+                            <li key={item.path}>
+                                <a
+                                    href={item.path}
+                                    className="flex items-center gap-4 text-white font-[Century Gothic] font-bold text-[18px] py-3 px-2 rounded-xl hover:bg-white/10 transition"
+                                >
+                                    <img
+                                        src={item.icon}
+                                        alt={item.label}
+                                        className="w-8 h-8"
+                                    />
+                                    <span>{item.label}</span>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div className="mt-auto flex pl-14">
+                    <button
+                        type="button"
+                        className="text-white font-[Century Gothic] font-bold text-[18px] flex gap-2 rounded-2xl items-center py-3 px-6 hover:bg-white/10 transition"
+                    >
+                        <img src="/Images/Icons/LogoutIcon.svg" alt="Logout" width="30" height="30" />
+                        Logout
+                    </button>
+                </div>
+            </div>
         </div>
-        <div className="mt-auto flex pl-14">
-            <a className="text-white font-[Century Gothic] font-bold text-[18px] flex gap-2 rounded-2xl items-center py-3 px-6 hover:bg-white/10 transition cursor-pointer">
-                <img src="/Images/Icons/LogoutIcon.svg" alt="Logout" width="30px" height="30px" />
-                Logout
-            </a>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default DashboardPanel;

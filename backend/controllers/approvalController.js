@@ -8,26 +8,29 @@ export const getPendingStudentsForTutor = async (req, res) => {
     try {
         if (req.user.role !== "tutor") return res.status(403).json({ message: "Access denied" });
 
-        const tutor = await Tutor.findOne({ userId: req.user.userId });
+        const tutor = await Tutor.findOne({ userId: req.user.userId })
+            .populate({ path: "courseId", select: "name code"});
         if (!tutor) return res.status(403).json({ message: "Tutor profile not found" });
 
         const students = await Student.find({
-            courseId: tutor.courseId,
+            courseId: tutor.courseId._id,
             levelOfStudy: tutor.year,
-            status: "pending"
         }).populate({path: "userId", select: "email status"});
-
         const pendingStudents = students.filter((student) => student.userId?.status === "pending");
 
-        res.json(
-            pendingStudents.map((student) => ({
-                id: student._id,
-                name: `${student.firstName} ${student.lastName}`,
-                email: student.userId.email,
-                courseId: student.courseId,
-                levelOfStudy: student.levelOfStudy
-            }))
-        );
+        res.json({
+            courseName: tutor.courseId.name,
+            courseCode: tutor.courseId.code,
+            students: pendingStudents.map((student) => ({
+                    id: student._id,
+                    name: `${student.firstName} ${student.lastName}`,
+                    email: student.userId.email,
+                    phoneNumber: student.phoneNumber,
+                    courseId: student.courseId,
+                    levelOfStudy: student.levelOfStudy
+                }
+            ))
+        });
     } catch (error) {
         console.error("getPendingStudentsForTutor error:", error);
         res.status(500).json({ message: "Server error" });

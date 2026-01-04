@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/SidePanel.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/approvalController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/approvalController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Tutor.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Tutor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/SideDashboard.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/AdminDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/AdminDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/CoursesModification.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/CoursesModification.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Digitalregisterstaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Digitalregisterstaff.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Financetracker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Financetracker.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/pendingApprovalsComponents/ApprovalCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/pendingApprovalsComponents/ApprovalCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/Pages/PendingApprovals.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/PendingApprovals.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/PolicyModification.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/PolicyModification.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/StudentDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/StudentDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Timetablestaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Timetablestaff.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/Pages/TutorDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/TutorDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +168,7 @@
       <workItem from="1766114564635" duration="3202000" />
       <workItem from="1766323065169" duration="783000" />
       <workItem from="1766499669263" duration="106961000" />
-      <workItem from="1767130842361" duration="81659000" />
+      <workItem from="1767130842361" duration="101401000" />
     </task>
     <servers />
   </component>

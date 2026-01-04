@@ -1,28 +1,21 @@
 import React from "react";
 
-const ApprovalCard = ({
-                          name = "Michael Brown",
-                          role = "Student",
-                          course = "Information Technology",
-                          email = "michaelbrown@gmail.com",
-                          onApprove,
-                          onReject
-                      }) => {
+const ApprovalCard = ({ className, name, role, email, phoneNumber, onApprove, onReject }) => {
     return (
-        <div className="w-full bg-white rounded-3xl shadow-[0_24px_40px_rgba(0,0,0,0.1)] p-6 flex items-center justify-between">
+        <div className={`w-full bg-white rounded-3xl shadow-[0_24px_40px_rgba(0,0,0,0.1)] p-6 flex items-center justify-between 
+        ${className || ""}`}>
 
             <div className="flex items-center gap-6">
                 <div className="w-[90px] h-[90px] rounded-full bg-gray-300" />
-
                 <div>
                     <p className="text-[26px] font-bold text-black">
                         {name}
                     </p>
-                    <p className="text-sm text-gray-500 font-bold">
-                        {role}, {course}
+                    <p className="text-gray-500 font-bold">
+                        {role}, {email}
                     </p>
-                    <p className="text-sm text-gray-500 font-bold">
-                        {email}
+                    <p className="text-gray-500 font-bold">
+                        {phoneNumber}
                     </p>
                 </div>
             </div>

@@ -35,10 +35,10 @@ const App = () => {
         <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/studentregistration" element={<StudentRegistration />} />
-            <Route path="/tutorregistration" element={<TutorRegistration />} />
             <Route path="/gateway" element={<Gateway />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/student-registration" element={<StudentRegistration />} />
+            <Route path="/tutor-registration" element={<TutorRegistration />} />
 
             {/* Student Routes */}
             <Route path="/student/dashboard" element={<AuthGate allowedRoles={["student"]}><StudentDashboard /></AuthGate>} />
@@ -50,9 +50,7 @@ const App = () => {
             <Route path="/admin/dashboard" element={<AuthGate allowedRoles={["admin"]}><AdminDashboard /></AuthGate>} />
 
             {/* Approval Routes */}
-            <Route path="/pendingapprovals" element={<AuthGate allowedRoles={["tutor", "admin"]}><PendingApprovals /></AuthGate>} />
-
-            <Route path="/testingtutor" element={<TutorDashboard />} />
+            <Route path="/tutor/pending-approvals" element={<AuthGate allowedRoles={["tutor", "admin"]}><PendingApprovals /></AuthGate>} />
 
           <Route path="/accessibility" element={<Accessibility />}></Route>
           <Route path="/terms&conditions" element={<Termsconditions />}></Route>

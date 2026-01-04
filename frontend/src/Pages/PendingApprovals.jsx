@@ -1,14 +1,21 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext.jsx";
 import DashboardPanel from "../components/Dashboardcomponents/DashboardPanel";
 import DashboardSearch from "../components/Dashboardcomponents/DashboardSearch";
 import ApprovalCard from "../components/pendingApprovalsComponents/ApprovalCard";
 import axios from "axios";
 
 const PendingApprovals = () => {
+    const { user, loading: authLoading } = useAuth();
+
     const [students, setStudents] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [course, setCourse] = useState("");
+    const [code, setCode] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (authLoading || !user) return;
+
         const fetchPendingStudents = async () => {
             try {
                 const token = localStorage.getItem("accessToken");
@@ -17,7 +24,11 @@ const PendingApprovals = () => {
                     headers: {Authorization: `Bearer ${token}`},
                 });
 
-                setStudents(res.data);
+                console.log("Pending students:", res.data.students);
+                setStudents(res.data.students);
+                setCourse(res.data.courseName);
+                setCode(res.data.courseCode);
+
             } catch (error) {
                 console.error("Error fetching pending students:", error);
             } finally {
@@ -26,15 +37,26 @@ const PendingApprovals = () => {
         };
 
         fetchPendingStudents();
-    }, []);
+    }, [authLoading, user]);
 
     const handleApprove = async (id) => {
+        console.log("APPROVING STUDENT:");
         try {
             const token = localStorage.getItem("accessToken");
-            await axios.patch(`/api/approval/students/${studentId}/approve`, {}, {
-                headers: {Authorization: `Bearer ${token}`}
-            });
-            setStudents(prev => prev.filter((student) => student.id !== id));
+
+            await axios.patch(
+                `/api/approval/students/${id}/approve`,{},{
+                    headers: { Authorization: `Bearer ${token}` }
+                }
+            );
+
+            setStudents(prev => prev.map(student => student.id === id ? {
+                ...student, removing: true } : student)
+            );
+
+            setTimeout(() => {
+                setStudents(prev => prev.filter(student => student.id !== id));
+            }, 300);
         } catch (error) {
             console.error("Approval failed", error);
         }
@@ -43,39 +65,59 @@ const PendingApprovals = () => {
     const handleReject = async (id) => {
         try {
             const token = localStorage.getItem("accessToken");
-            await axios.get(`/api/approval/students/${studentId}/reject`, {}, {
-                headers: {Authorization: `Bearer ${token}`}
-            });
+
+            await axios.patch(
+                `/api/approval/students/${id}/reject`,{},{
+                    headers: { Authorization: `Bearer ${token}` }
+                }
+            );
+
             setStudents(prev => prev.filter(student => student.id !== id));
         } catch (error) {
             console.error("Reject failed", error);
         }
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (!students.length) return <p>No pending approvals</p>;
     return (
         <div className="bg-[#EFEFEF]   ">
-            <div className=" grid grid-cols-1 lg:grid-cols-[0.4fr_1.7fr] gap-4 p-5 ">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.4fr_1.7fr] gap-4 p-5">
                 <div>
                     <DashboardPanel></DashboardPanel>
                 </div>
                 <div>
                     <DashboardSearch />
 
-                    <h3 className="text-[26px] font-bold mb-4 mt-8">Authorise Students</h3>
-                    <div className="bg-white rounded-3xl p-6 flex flex-col gap-6">
-                        {students.map(student => (
-                            <ApprovalCard
-                                key={student.id}
-                                name={student.name}
-                                role="Student"
-                                course={student.course}
-                                email={student.email}
-                                onApprove={() => handleApprove(student._id)}
-                                onReject={() => handleReject(student._id)}
-                            />
-                        ))}
+                    <h3 className="text-[26px] font-bold mb-4 mt-8">Authorise Students - {course} ({code})</h3>
+                    <div className="bg-white rounded-3xl p-6 flex flex-col gap-6 flex-1 min-h-[710px]">
+                        { authLoading || loading ? (
+                            <div className="flex flex-1 items-center justify-center">
+                                <p className="text-[20px] font-bold text-black-400">
+                                    Loading Approvals...
+                                </p>
+                            </div>
+                        ) : students.length === 0 ? (
+                            <div className="flex flex-1 items-center justify-center">
+                                <p className="text-[20px] font-bold text-black-400">
+                                    No Pending Approvals
+                                </p>
+                            </div>
+                        ) : (
+                            students.map(student => (
+                                <ApprovalCard
+                                    key={student.id}
+                                    name={student.name}
+                                    role="Student"
+                                    phoneNumber={student.phoneNumber}
+                                    course={student.course}
+                                    email={student.email}
+                                    onApprove={() => handleApprove(student.id)}
+                                    onReject={() => handleReject(student.id)}
+                                    className={`transition-opacity duration-300 
+                                    ${student.removing ? "opacity-0" : "opacity-100"
+                                    }`}
+                                />
+                            ))
+                        )}
                     </div>
                 </div>
             </div>

@@ -1,12 +1,26 @@
 import React from "react";
 import DashboardPanel from "../components/Dashboardcomponents/DashboardPanel";
 import DashboardSearch from "../components/Dashboardcomponents/DashboardSearch";
-import { Link } from "react-router-dom";
 import DashboardSchedule from "../Components/Dashboardcomponents/DashboardSchedule.jsx";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext.jsx";
+
 const TutorDashboard = () => {
+    const { loading } = useAuth();
+    // 🔒 PAGE-LEVEL AUTH GATE (THIS IS THE KEY)
+    if (loading) {
+        return (
+            <div className="bg-[#EFEFEF] p-5">
+                <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4">
+                    <div className="min-w-[330px] min-h-[840px] bg-[#72333B] rounded-3xl" />
+                    <div className="bg-white rounded-3xl min-h-[840px]" />
+                </div>
+            </div>
+        );
+    }
   return (
     <div className="bg-[#EFEFEF]   ">
-      <div className=" grid grid-cols-1 lg:grid-cols-[0.4fr_1.7fr] gap-4 p-5 ">
+      <div className=" grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 p-5 ">
         <div>
           <DashboardPanel></DashboardPanel>
         </div>
