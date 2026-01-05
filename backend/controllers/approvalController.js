@@ -1,6 +1,7 @@
 import User from "../models/User.js";
-import Tutor from "../models/Tutor.js";
 import Student from "../models/Student.js";
+import Tutor from "../models/Tutor.js";
+import Admin from "../models/Admin.js";
 import fs from "fs";
 import path from "path";
 
@@ -23,7 +24,7 @@ export const getPendingStudentsForTutor = async (req, res) => {
             courseCode: tutor.courseId.code,
             students: pendingStudents.map((student) => ({
                     id: student._id,
-                    name: `${student.firstName} ${student.lastName}`,
+                    name: `${student.firstName} ${student.middleName} ${student.lastName}`,
                     email: student.userId.email,
                     phoneNumber: student.phoneNumber,
                     courseId: student.courseId,
@@ -83,3 +84,113 @@ export const rejectStudent = async (req, res) => {
         res.status(500).json({ message: "Rejection failed" });
     }
 }
+
+export const getPendingUsersForAdmin = async (req, res) => {
+    try {
+        if (req.user.role !== "admin") return res.status(403).json({ message: "Access denied" });
+
+        const pendingUsers = await User.find({ status: "pending" });
+
+        const results = [];
+
+        for (const user of pendingUsers) {
+            if (user.role === "student"){
+                const student = await Student.findOne({ userId: user._id });
+                if (!student) continue;
+
+                results.push({
+                    id: student._id,
+                    name: `${student.firstName} ${student.middleName} ${student.lastName}`,
+                    role: "Student",
+                    email: user.email,
+                    phoneNumber: student.phoneNumber
+                });
+            }
+
+            if (user.role === "tutor") {
+                const tutor = await Tutor.findOne({ userId: user._id });
+                if (!tutor) continue;
+
+                results.push({
+                    id: tutor._id,
+                    name: `${tutor.firstName} ${tutor.middleName} ${tutor.lastName}`,
+                    role: "Tutor",
+                    email: user.email,
+                    phoneNumber: tutor.phoneNumber
+                });
+            }
+
+            if (user.role === "admin") {
+                const admin = await Admin.findOne({ userId: user._id });
+                if (!admin) continue;
+
+                results.push({
+                    id: admin._id,
+                    name: `${admin.firstName} ${admin.middleName} ${admin.lastName}`,
+                    role: "Admin",
+                    email: user.email,
+                    phoneNumber: admin.phoneNumber
+                });
+            }
+        }
+
+        res.json({ users: results })
+    } catch (error) {
+        console.error ("getPendingUsersForAdmin error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
+export const approveUser = async (req, res) => {
+    try {
+        if (req.user.role !== "admin") return res.status(403).json({ message: "Access denied" });
+
+        const { userId } = req.params;
+
+        const user = await User.findByIdAndUpdate(
+            userId, {
+                status: "approved"
+            }
+        );
+
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        res.json({ message: "User approved successfully" });
+    } catch (error) {
+        console.error("approveUser error:", error);
+        res.status(500).json({ message: "Approval failed" });
+    }
+};
+
+export const rejectUser = async (req, res) => {
+    try {
+        if (req.user.role !== "admin") return res.status(403).json({ message: "Access denied" });
+
+        const { userId } = req.params;
+
+        const user = await User.findById(userId);
+
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        let profile = null;
+        if (user.role === "student") profile = await Student.findOne({ userId });
+        else if (user.role === "tutor") profile = await Tutor.findOne({ userId });
+        else if (user.role === "admin") profile = await Admin.findOne({ userId });
+
+        if (profile?.picture) {
+            const imagePath = path.join(process.cwd(), profile.picture);
+            if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
+        }
+
+        if (profile) await profile.deleteOne();
+
+        await User.findByIdAndUpdate(userId, {
+            status: "rejected"
+        });
+
+        res.json({ message: "User rejected and profile deleted successfully" });
+    } catch (error) {
+        console.error("rejectUser error:", error);
+        res.status(500).json({ message: "Rejection failed" });
+    }
+};

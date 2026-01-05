@@ -218,6 +218,27 @@ export const registerAdmin = async (req, res) => {
         // Step 2: Validation
         if (!email || !password || !firstName || !lastName || !dateOfBirth || !gender || !phoneNumber || !adminCode ) return res.status(400).json({ message: "Missing required fields." });
 
+        const nameRegex = /^[A-Za-z]+([ '-][A-Za-z]+)*$/;
+        if (!nameRegex.test(firstName)) return res.status(400).json({ message: "Invalid first name." });
+        if (middleName && !nameRegex.test(middleName)) return res.status(400).json({ message: "Invalid middle name." });
+        if (!nameRegex.test(lastName)) return res.status(400).json({ message: "Invalid last name." });
+
+        // Email validation
+        if (!validator.isEmail(email)) return res.status(400).json({ message: "Invalid email address." });
+
+        // Phone Number validation
+        const phoneRegex = /^\+?[0-9\s]{10,15}$/
+        if (!phoneRegex.test(phoneNumber)) return res.status(400).json({ message: "Invalid phone number" });
+
+        // Date Of Birth validation
+        const dob = new Date(dateOfBirth);
+        const age = (Date.now() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+        if (isNaN(dob.getTime()) || age < 16) return res.status(400).json({ message: "Invalid date of birth" });
+
+        // Password validation
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/
+        if (!passwordRegex.test(password)) return res.status(400).json({ message: "Password must be 8 characters long and it must contain uppercase, lowercase, number, and symbol"});
+
         // Step 3: User exists?
         const existingUser = await User.findOne({ email });
         if (existingUser) return res.status(409).json({ message: "Email already registered" });
@@ -236,7 +257,7 @@ export const registerAdmin = async (req, res) => {
         });
 
         // Step 6: Create image
-        const imagePath = req.file ? `/uploads/admins${req.file.filename}` : null;
+        const imagePath = req.file ? `/uploads/admins/${req.file.filename}` : null;
 
         // Step 7: Create profile
         await Admin.create({

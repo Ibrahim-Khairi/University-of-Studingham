@@ -8,7 +8,9 @@ const adminSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     dateOfBirth : { type: Date, required: true },
     gender: { type: String, enum: ["male", "female", "other"], required: true },
-    picture: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
+    picture: { type: String },
+    password: { type: String }
 });
 
 export default mongoose.model("Admin", adminSchema);

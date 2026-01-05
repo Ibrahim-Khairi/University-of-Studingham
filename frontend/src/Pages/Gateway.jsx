@@ -39,21 +39,21 @@ const Gateway = () => {
             className=" text-white  flex gap-8
           "
           >
-            <Link to="/login" className="cursor-pointer">
+            <div>
               <img src="/gatewaystudent.png" className="h-[60px]" alt="" />
               <h3 className="text-3xl mt-4 uppercase">Student Login</h3>
               <p className="mt-2">Access your Student Dashboard</p>
-            </Link>
-            <Link to="/login" className="cursor-pointer">
+            </div>
+            <div>
               <img src="/gatewaystaff.png" className="h-[60px]" alt="" />
               <h3 className="text-3xl mt-4 uppercase">Staff Login</h3>
               <p className="mt-2">Access your Teaching Dashboard</p>
-            </Link>
-            <Link to="/login" className="cursor-pointer">
+            </div>
+            <div>
               <img src="/gatewayadmin.png" className="h-[60px]" alt="" />
               <h3 className="text-3xl mt-4 uppercase">Admin Login</h3>
               <p className="mt-2">Access your Administrative Controls</p>
-            </Link>
+            </div>
             <div className="ml-18">
               <img src="gatewayloginlogo.png" alt="" />
             </div>
