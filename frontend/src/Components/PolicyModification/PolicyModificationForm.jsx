@@ -1,34 +1,60 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import RichTextEditor from "./RichTextEditor.jsx";
 
 const PolicyModificationForm = () => {
     const [activeTab, setActiveTab] = useState("terms");
 
     const [policies, setPolicies] = useState({
-        terms: `
-            <h2>Terms & Conditions</h2>
-            <p>These terms govern the use of the platform.</p>
-        `,
-        privacy: `
-            <h2>Privacy Policy</h2>
-            <p>Your privacy is important to us.</p>
-        `,
-        accessibility: `
-            <h2>Accessibility Statement</h2>
-            <p>We are committed to accessibility.</p>
-        `,
+        terms: "",
+        privacy: "",
+        accessibility: ""
     });
 
+    useEffect(() => {
+        const fetchPolicies = async () => {
+            try {
+                const keys = ["terms", "privacy", "accessibility"];
+                const result = {};
+
+                for (const key of keys) {
+                    const res = await fetch(`http://localhost:5000/api/policies/${key}`);
+                    const data = await res.json();
+
+                    result[key] = data.content || "";
+                }
+                setPolicies(result);
+            } catch (error) {
+                console.error("Failed to fetch policies", error);
+            }
+        };
+        fetchPolicies();
+    }, []);
+
     const handleChange = (value) => {
-        setPolicies((prev) => ({
-            ...prev,
-            [activeTab]: value,
-        }));
+        setPolicies((prev) => ({ ...prev, [activeTab]: value }));
     };
 
-    const handleSave = () => {
-        console.log(`UPDATED ${activeTab.toUpperCase()} POLICY:`, policies[activeTab]);
-        alert("Policy updated successfully (check console)");
+    const handleSave = async () => {
+        try {
+            const res = await fetch(`http://localhost:5000/api/policies/${activeTab}`,{
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ content: policies[activeTab] })
+            });
+
+            if (!res.ok) {
+                const errorData = await res.json();
+                alert("There was an error updating the policy");
+            }
+
+            const updatedPolicy = await res.json();
+            console.log(`${activeTab.toUpperCase()} policy updated successfully!`);
+            alert("Policy updated!");
+        } catch (error) {
+            console.error("Failed to update policy", error);
+        }
     };
 
     return (

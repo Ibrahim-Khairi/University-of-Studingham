@@ -8,6 +8,7 @@ import setupRoutes from "./routes/setupRoutes.js";
 import approvalRoutes from "./routes/approvalRoutes.js"
 import courseRoutes from "./routes/courseRoutes.js"
 import moduleRoutes from "./routes/moduleRoutes.js"
+import policyRoutes from "./routes/policyRoutes.js";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use("/api/setup", setupRoutes);
 app.use("/api/approval", approvalRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/modules", moduleRoutes);
+app.use("/api/policies", policyRoutes);
 
 app.get("/", (req, res) => {
     res.send("API running successfully.");
