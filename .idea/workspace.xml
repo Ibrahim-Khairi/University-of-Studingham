@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/request.rest" beforeDir="false" afterPath="$PROJECT_DIR$/backend/request.rest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/PolicyModification/PolicyModificationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/PolicyModification/PolicyModificationForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/PolicyModification/RichTextEditor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/PolicyModification/RichTextEditor.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Accessibility.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Accessibility.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Privacypolicy.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/PrivacyPolicy.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Termsconditions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Terms&amp;Conditions.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +170,7 @@
       <workItem from="1766114564635" duration="3202000" />
       <workItem from="1766323065169" duration="783000" />
       <workItem from="1766499669263" duration="106961000" />
-      <workItem from="1767130842361" duration="141732000" />
+      <workItem from="1767130842361" duration="145725000" />
     </task>
     <servers />
   </component>

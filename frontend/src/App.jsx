@@ -1,4 +1,6 @@
 import React from "react";
+import "./App.css";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Timetablestaff from "./pages/Timetablestaff";
 import LibraryPortal from "./pages/Libraryportal";
@@ -25,8 +27,8 @@ import StudentDashboard from "./Pages/StudentDashboard.jsx";
 import TutorDashboard from "./Pages/TutorDashboard.jsx";
 import AdminDashboard from "./Pages/AdminDashboard.jsx";
 
-import Privacypolicy from "./pages/Privacypolicy";
-import Termsconditions from "./pages/Termsconditions";
+import PrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
+import TermsConditions from "./Pages/Terms&Conditions.jsx";
 import Accessibility from "./pages/Accessibility";
 
 import Financetracker from "./pages/Financetracker.jsx";
@@ -42,6 +44,11 @@ const App = () => {
         <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
+            <Route path="/community" element={<Community />}></Route>
+            <Route path="/accessibility" element={<Accessibility />}></Route>
+            <Route path="/terms&conditions" element={<TermsConditions />}></Route>
+            <Route path="/privacy-policy" element={<PrivacyPolicy />}></Route>
+
             <Route path="/gateway" element={<Gateway />} />
             <Route path="/login" element={<Login />} />
             <Route path="/student-registration" element={<StudentRegistration />} />
@@ -53,18 +60,13 @@ const App = () => {
 
             {/* Tutor Routes */}
             <Route path="/tutor/dashboard" element={<AuthGate allowedRoles={["tutor"]}><TutorDashboard /></AuthGate>} />
+            <Route path="/tutor/pending-approvals" element={<AuthGate allowedRoles={["tutor"]}><PendingApprovals /></AuthGate>} />
 
             {/* Admin Routes */}
             <Route path="/admin/dashboard" element={<AuthGate allowedRoles={["admin"]}><AdminDashboard /></AuthGate>} />
-
-            {/* Approval Routes */}
-            <Route path="/tutor/pending-approvals" element={<AuthGate allowedRoles={["tutor"]}><PendingApprovals /></AuthGate>} />
             <Route path="/admin/pending-approvals" element={<AuthGate allowedRoles={["admin"]}><PendingApprovals /></AuthGate>} />
-
-          <Route path="/accessibility" element={<Accessibility />}></Route>
-          <Route path="/terms&conditions" element={<Termsconditions />}></Route>
-          <Route path="/privacypolicy" element={<Privacypolicy />}></Route>
-          <Route path="/community" element={<Community />}></Route>
+            <Route path="/admin/courses-modification" element={<CoursesModification />}></Route>
+            <Route path="/admin/policy-modification" element={<PolicyModification />}></Route>
 
           <Route path="/courses" element={<Courses />}></Route>
           <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
@@ -75,9 +77,6 @@ const App = () => {
           <Route path="/libraryhistory" element={<Libraryhistory />}></Route>
           <Route path="/mentorship" element={<Mentorship />}></Route>
           <Route path="/financetracker" element={<Financetracker />}></Route>
-
-          <Route path="/admin/courses-modification" element={<CoursesModification />}></Route>
-          <Route path="/admin/policy-modification" element={<PolicyModification />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
