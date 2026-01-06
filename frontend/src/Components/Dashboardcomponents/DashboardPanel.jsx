@@ -39,7 +39,7 @@ const DashboardPanel = () => {
         admin: [
             { label: "Dashboard", icon: "/Images/Icons/DashboardIcon.svg", path: "/admin/dashboard" },
             { label: "Moodle", icon: "/Images/Icons/MoodleIcon.svg", path: "/admin/moodle" },
-            { label: "Course Modification", icon: "/Images/Icons/TimetableIcon.svg", path: "/admin/course-modification" },
+            { label: "Course Modification", icon: "/Images/Icons/TimetableIcon.svg", path: "/admin/courses-modification" },
             { label: "Policy Modification", icon: "/Images/Icons/DigitalRegisterIcon.svg", path: "/admin/policy-modification" },
             { label: "Pending Approvals", icon: "/Images/Icons/PendingApprovalsIcon.svg", path: "/admin/pending-approvals" }
         ]

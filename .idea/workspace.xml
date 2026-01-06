@@ -6,14 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/approvalController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/approvalController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/approvalRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/approvalRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/authRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/setupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/setupController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/setupRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/setupRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Gateway.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Gateway.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/PendingApprovals.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/PendingApprovals.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +166,7 @@
       <workItem from="1766114564635" duration="3202000" />
       <workItem from="1766323065169" duration="783000" />
       <workItem from="1766499669263" duration="106961000" />
-      <workItem from="1767130842361" duration="116002000" />
+      <workItem from="1767130842361" duration="135319000" />
     </task>
     <servers />
   </component>

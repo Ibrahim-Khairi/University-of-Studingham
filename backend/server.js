@@ -6,6 +6,8 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import setupRoutes from "./routes/setupRoutes.js";
 import approvalRoutes from "./routes/approvalRoutes.js"
+import courseRoutes from "./routes/courseRoutes.js"
+import moduleRoutes from "./routes/moduleRoutes.js"
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ connectDB();
 app.use("/api/auth", authRoutes);
 app.use("/api/setup", setupRoutes);
 app.use("/api/approval", approvalRoutes);
+app.use("/api/courses", courseRoutes);
+app.use("/api/modules", moduleRoutes);
 
 app.get("/", (req, res) => {
     res.send("API running successfully.");

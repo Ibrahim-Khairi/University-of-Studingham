@@ -33,13 +33,6 @@ export const getCourses = async (req, res) => {
     }
 };
 
-export const getModulesByCourse= async (req, res) => {
-    const { courseId } = req.params;
-
-    const modules = await Module.find({ courseId });
-    res.json(modules);
-};
-
 export const getModulesByCourseByYear = async (req, res) => {
     const { courseId, year } = req.params;
 

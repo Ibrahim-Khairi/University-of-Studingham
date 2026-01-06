@@ -76,8 +76,8 @@ const App = () => {
           <Route path="/mentorship" element={<Mentorship />}></Route>
           <Route path="/financetracker" element={<Financetracker />}></Route>
 
-          <Route path="/coursesmodification" element={<CoursesModification />}></Route>
-          <Route path="/policymodification" element={<PolicyModification />}></Route>
+          <Route path="/admin/courses-modification" element={<CoursesModification />}></Route>
+          <Route path="/admin/policy-modification" element={<PolicyModification />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

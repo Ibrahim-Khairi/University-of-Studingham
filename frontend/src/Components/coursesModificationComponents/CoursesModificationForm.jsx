@@ -1,22 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CourseAddedSuccess from "./CourseAddedSuccess.jsx";
 
 export const CoursesModificationForm = () => {
     const [activeTab, setActiveTab] = useState("add");
+    const [courses, setCourses] = useState([]);
     const [selectedCourse, setSelectedCourse] = useState(null);
     const [courseAdded, setCourseAdded] = useState(false);
+    const [step, setStep] = useState(1);
 
-    const [courses, setCourses] = useState([
-        {
-            id: 1,
-            name: "Computer Science",
-            code: "CS301",
-            about: "Introduction to computer science concepts",
-            assessments: "Midterm, Final, Assignments",
-            structure: "Lectures and Labs",
-        },
-    ]);
-    console.log("COURSES STATE:", courses);
+    const emptyModule = { name: "", description: "" };
+
+    const [modules, setModules] = useState({
+        year1: Array(4).fill(null).map(() => ({ ...emptyModule })),
+        year2: Array(4).fill(null).map(() => ({ ...emptyModule })),
+        year3: Array(4).fill(null).map(() => ({ ...emptyModule }))
+    });
 
     const [formData, setFormData] = useState({
         name: "",
@@ -26,45 +24,197 @@ export const CoursesModificationForm = () => {
         structure: "",
     });
 
+    const isStepOneValid = formData.name.trim() && formData.code.trim() && formData.about.trim() && formData.assessments.trim() && formData.structure.trim();
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = () => {
-        if (selectedCourse) {
-            setCourses(
-                courses.map((c) =>
-                    c.id === selectedCourse.id ? { ...c, ...formData } : c
-                )
-            );
-        } else {
-            setCourses([
-                ...courses,
-                { id: Date.now(), ...formData },
-            ]);
+    const fetchCourses = async () => {
+        try {
+            const res = await fetch("http://localhost:5000/api/setup/courses");
+            if (!res.ok) console.log("Failed to fetch courses");
+
+            const data = await res.json();
+            setCourses(data);
+        } catch (error) {
+            console.error(error);
         }
-
-        setFormData({
-            name: "",
-            code: "",
-            about: "",
-            assessments: "",
-            structure: "",
-        });
-        setSelectedCourse(null);
-        setActiveTab("add");
     };
 
-    const handleEditSelect = (course) => {
-        setSelectedCourse(course);
-        setFormData({
-            name: course.name,
-            code: course.code,
-            about: course.about,
-            assessments: course.assessments,
-            structure: course.structure,
-        });
+    useEffect(() => {
+        if (activeTab === "edit") fetchCourses();
+    }, [activeTab]);
+
+    const handleSubmit = async () => {
+        try {
+            if (!formData.name.trim() || !formData.code.trim() || !formData.about.trim() || !formData.structure.trim() || !formData.assessments.trim()) {
+                alert("Please complete all course details first.");
+                return;
+            }
+
+            const courseRes = await fetch("http://localhost:5000/api/courses", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    code: formData.code,
+                    about: formData.about,
+                    structure: formData.structure,
+                    assessments: formData.assessments
+                })
+            });
+
+            if (!courseRes.ok) console.log("Failed to create course");
+
+            const course = await courseRes.json();
+
+            const moduleRes = await fetch("http://localhost:5000/api/modules", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    courseId: course._id,
+                    modules
+                })
+            });
+
+            if (!moduleRes.ok) console.log("Failed to create modules");
+
+            setFormData({
+                name: "",
+                code: "",
+                about: "",
+                structure: "",
+                assessments: ""
+            });
+
+            setModules({
+                year1: Array(4).fill(null).map(() => ({ ...emptyModule })),
+                year2: Array(4).fill(null).map(() => ({ ...emptyModule })),
+                year3: Array(4).fill(null).map(() => ({ ...emptyModule }))
+            });
+
+            setSelectedCourse(null);
+            setStep(1);
+            setActiveTab("add");
+        } catch (error) {
+            console.error(error);
+        }
     };
+
+    const handleEditSelect = async (course) => {
+        try {
+            setSelectedCourse(course);
+
+            setFormData({
+                name: course.name,
+                code: course.code,
+                about: course.aboutTheCourse,
+                structure: course.courseStructure,
+                assessments: course.assessments
+            });
+
+            const res = await fetch(`http://localhost:5000/api/modules/course/${course._id}`);
+            if (!res.ok) console.log("Failed to fetch modules for editing");
+
+            const moduleData = await res.json();
+
+            const grouped = {
+                year1: Array(4).fill(null).map(() => ({ ...emptyModule })),
+                year2: Array(4).fill(null).map(() => ({ ...emptyModule })),
+                year3: Array(4).fill(null).map(() => ({ ...emptyModule }))
+            };
+
+            moduleData.forEach((module) => {
+                const yearKey = `year${module.year}`;
+
+                const emptyIndex = grouped[yearKey].findIndex(
+                    (module) => !module.name && !module.description
+                );
+
+                if (emptyIndex !== -1) {
+                    grouped[yearKey][emptyIndex] = {
+                        name: module.name,
+                        description: module.description
+                    };
+                }
+            });
+
+            Object.keys(grouped).forEach((year) => {
+                while (grouped[year].length < 4) {
+                    grouped[year].push({ name: "", description: "" });
+                }
+            });
+
+            setModules(grouped);
+            setActiveTab("edit");
+            setStep(1);
+        } catch (error) {
+            console.error(error);
+            console.log("Failed to load course modules");
+        }
+    };
+
+    const handleEditSave = async () => {
+        try {
+            if (!selectedCourse?._id) {
+                alert("No course selected for editing");
+                return;
+            }
+
+            const courseRes = await fetch (`http://localhost:5000/api/courses/${selectedCourse._id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: formData.name,
+                        code: formData.code,
+                        about: formData.about,
+                        structure: formData.structure,
+                        assessments: formData.assessments
+                    })
+                }
+            );
+
+            if (!courseRes.ok) console.log("Failed to update course");
+
+            const deleteRes = await fetch(`http://localhost:5000/api/modules/courses/${selectedCourse._id}`,
+                {
+                    method: "DELETE",
+                }
+            );
+
+            if (!deleteRes.ok) console.log("Failed to delete old modules");
+
+            const moduleRes = await fetch("http://localhost:5000/api/modules", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    courseId: selectedCourse._id,
+                    modules
+                })
+            });
+
+            if (!moduleRes.ok) console.log("Failed to recreate modules");
+
+            setSelectedCourse(null);
+            setStep(1);
+            setActiveTab("edit");
+
+            console.log("Course updated successfully");
+        } catch (error) {
+            console.error(error);
+            console.log("Something went wrong while saving edits");
+        }
+    }
 
     return (
         <div className="bg-white rounded-3xl px-20 py-6 mt-4">
@@ -73,6 +223,7 @@ export const CoursesModificationForm = () => {
                     onClick={() => {
                         setActiveTab("add");
                         setSelectedCourse(null);
+                        setStep(1);
                     }}
                     className={`h-[52px] px-8 font-semibold flex items-center justify-center ${
                         activeTab === "add"
@@ -99,7 +250,7 @@ export const CoursesModificationForm = () => {
                 <div className="space-y-4">
                     {courses.map((course) => (
                         <div
-                            key={course.id}
+                            key={course._id}
                             onClick={() => handleEditSelect(course)}
                             className="cursor-pointer p-5 bg-[#F3F6FB] rounded-xl hover:bg-[#E8EEFA]"
                         >
@@ -110,25 +261,16 @@ export const CoursesModificationForm = () => {
                 </div>
             )}
 
-            {(activeTab === "add") && (
-                courseAdded ? (
-                     <CourseAddedSuccess
-                        onAddAnother={() => {
-                            setCourseAdded(false);
-                            setActiveTab("add");
+            {courseAdded && (
+                <CourseAddedSuccess
+                    onAddAnother={() => {
+                        setCourseAdded(false);
+                        setActiveTab("add");
+                    }}
+                />
+            )}
 
-                            setFormData({
-                                name: "",
-                                code: "",
-                                about: "",
-                                assessments: "",
-                                structure: ""
-                            });
-
-                            setSelectedCourse(null);
-                        }}
-                     />
-                    ) : (
+            {(activeTab === "add" || selectedCourse) && !courseAdded && step === 1 && (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
                     <div className="space-y-6">
                         <div>
@@ -214,17 +356,100 @@ export const CoursesModificationForm = () => {
                         <div className="mt-[150px] flex justify-center">
                             <button
                                 onClick={() => {
-                                    handleSubmit();
-                                    setCourseAdded(true);
+                                    if (isStepOneValid) setStep(2);
                                 }}
-                                className="mt-6 w-[200px] bg-[#4877DF] text-white py-2 rounded-full font-semibold"
+                                disabled={!isStepOneValid}
+                                className={`mt-6 w-[200px] bg-[#4877DF] text-white py-2 rounded-full font-semibold transition
+                                    ${isStepOneValid
+                                        ? "bg-[#4877DF] text-white"
+                                        : "bg-gray-300 text-gray-500 cursor-not-allowed"}
+                                `}
                             >
-                                {selectedCourse ? "UPDATE COURSE" : "ADD COURSE"}
+                                NEXT
                             </button>
                         </div>
                     </div>
                 </div>
-                )
+            )}
+
+            {(activeTab === "add" || selectedCourse) && step === 2 && (
+                <div className="space-y-14">
+                    {[
+                        { key: "year1", title: "Year One" },
+                        { key: "year2", title: "Year Two" },
+                        { key: "year3", title: "Year Three" }
+                    ].map((year) => (
+                        <div key={year.key} className="space-y-6">
+                            <h2 className="text-2xl font-bold">{year.title}</h2>
+
+                            {modules[year.key].map((module, index) => (
+                                <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-8 rounded-xl">
+                                    <div>
+                                        <label className="text-[20px] block mb-2 font-bold">
+                                            Module Name
+                                        </label>
+                                        <input
+                                            value={module.name}
+                                            onChange={(e) => {
+                                                const copy = { ...modules };
+                                                copy[year.key][index] = {
+                                                    ...copy[year.key][index],
+                                                    name: e.target.value
+                                                };
+                                                setModules(copy);
+                                            }}
+                                            placeholder="Enter module name"
+                                            className="w-full px-4 pt-3 pb-4 rounded-xl text-[16px]
+                                            placeholder:text-[16px] placeholder:text-gray-500
+                                            shadow-[0px_0px_10px_rgba(0,0,0,0.25)] outline-none"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="text-[20px] block mb-2 font-bold">
+                                            Module Description
+                                        </label>
+                                        <textarea
+                                            value={module.description}
+                                            onChange={(e) => {
+                                                const copy = { ...modules };
+                                                copy[year.key][index].description = e.target.value;
+                                                setModules(copy);
+                                            }}
+                                            rows={3}
+                                            placeholder="Enter module description"
+                                            className="w-full px-4 pt-3 pb-4 rounded-xl max-h-[54px] text-[16px]
+                                            placeholder:text-[16px] placeholder:text-gray-500 resize-none
+                                            shadow-[0px_0px_10px_rgba(0,0,0,0.25)] outline-none"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+
+                    <div className="flex justify-between items-center">
+                        <button
+                            onClick={() => setStep(1)}
+                            className="px-6 py-2 rounded-full font-semibold bg-[#EBF0F3] text-[#333]"
+                        >
+                            ← Back
+                        </button>
+
+                        <button
+                            onClick={() => {
+                                if (selectedCourse) handleEditSave();
+                                else {
+                                    handleSubmit();
+                                    setCourseAdded(true);
+                                }
+                            }}
+                            className="w-[220px] bg-[#4877DF] text-white py-3 rounded-full font-semibold"
+                        >
+                            SAVE COURSE
+                        </button>
+                    </div>
+                </div>
             )}
         </div>
     );
