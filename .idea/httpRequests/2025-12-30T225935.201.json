@@ -1,0 +1,11 @@
+{
+  "name": "Data Fundamentals",
+  "courseId": "6943c7ca9a4f32dd7ce69ef1",
+  "tutorId": null,
+  "year": 1,
+  "description": "The Data Fundamentals module introduces the concept of data and its collection, processing, analysis, and interpretation, while exploring storage systems such as relational databases and the end-to-end lifecycle of data in real-world contexts.",
+  "_id": "695459579676a8959d94e467",
+  "createdAt": "2025-12-30T22:59:35.292Z",
+  "updatedAt": "2025-12-30T22:59:35.292Z",
+  "__v": 0
+}

@@ -1,0 +1,655 @@
+POST http://localhost:5000/api/policies
+Content-Type: application/json
+Content-Length: 6462
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "key": "privacy",
+  "title": "Privacy Policy",
+  "content": "<h2>1. Introduction</h2> <p> The University of Studingham (&#x22;the University&#x22;, &#x22;we&#x22;, &#x22;us&#x22;) is committed to protecting the privacy and security of all users who access the University Portal (&#x22;the Portal&#x22;). </p> <p> This Privacy Policy explains how personal data is collected, used, stored, and safeguarded. By accessing or using the Portal, users agree to the practices described in this policy. </p> <h2>2. Data Controller</h2> <p> The University of Studingham acts as the Data Controller, responsible for determining the purposes and methods of processing personal data through the Portal. </p> <p> Users may contact the University regarding privacy concerns through the official University email and communication channels provided in the Portal. </p> <h2>3. Purpose of the Portal</h2> <p>The Portal is designed to provide secure, reliable access to:</p> <ul> <li>Academic resources</li> <li>Learning materials</li> <li>Library facilities</li> <li>Timetables and course details</li> <li>File submissions and downloads</li> <li>University announcements and communication tools</li> <li>Administrative and academic management services</li> </ul> <h2>4. Types of Users</h2> <p>The Portal is used by:</p> <ul> <li>Students</li> <li>Tutors</li> <li>Administrative staff</li> </ul> <h2>5. Information We Collect</h2> <h3>5.1 Personal Identification Information</h3> <ul> <li>Full name</li> <li>University email address</li> <li>Student or Staff ID number</li> <li>Login credentials (encrypted passwords)</li> </ul> <h3>5.2 Academic and Activity Information</h3> <ul> <li>Course enrolments and lecture details</li> <li>Grades, transcripts, and assessment results</li> <li>Attendance records</li> <li>Timetables and meeting schedules</li> <li>Student finance details</li> <li>Library bookings</li> <li>File submissions, downloads, and course progress indicators</li> <li>Other educational interactions within the Portal</li> </ul> <h3>5.3 How Data Is Collected</h3> <p>Data is collected through:</p> <ul> <li>Registration forms completed during student enrolment or staff onboarding</li> <li>Automatic logging and system updates as users interact with Portal services</li> </ul> <h2>6. Purpose of Data Processing</h2> <p>We process personal data to:</p> <ul> <li>Authenticate and verify users</li> <li>Provide access to course materials and university services</li> <li>Ensure platform security and prevent unauthorised access</li> <li>Support teaching, learning, and academic administration</li> <li>Maintain accurate institutional and academic records</li> </ul> <h2>7. Legal Basis for Processing</h2> <h3>7.1 Contractual / Service Requirement</h3> <p>Processing is required to:</p> <ul> <li>Provide access to academic resources</li> <li>Display grades, progress indicators, and assignment submissions</li> <li>Facilitate communication between students, tutors, and staff</li> </ul> <h3>7.2 Legal Obligations</h3> <p> The University must maintain certain academic and administrative records in compliance with educational laws and regulatory requirements. </p> <h3>7.3 Public Task / Educational Mission</h3> <p> As part of its educational role, the University processes personal data to manage teaching, academic administration, and student services. </p> <h2>8. Data Sharing</h2> <p> The Portal does not share personal data with any external third parties. </p> <p> If future systems or integrations require data sharing, this section will be updated accordingly. </p> <h2>9. Security Measures</h2> <p>To protect all user data, the Portal uses:</p> <ul> <li>Encrypted passwords</li> <li>Secure authentication, including email-based verification during login</li> <li>Role-based access controls</li> <li>Encrypted data transfers</li> <li>Regular system monitoring and internal security audits</li> <li>Protection against unauthorised access, misuse, or modification</li> </ul> <p> The University prioritises technical and organisational security measures to safeguard all stored information. </p> <h2>10. Automated Decision-Making</h2> <p> The Portal does not use automated decision-making or profiling that impacts users. </p> <p>The only automated processing performed includes:</p> <ul> <li>Basic course progress calculations</li> <li>Completion percentages</li> <li>Class schedule organisation</li> </ul> <p> These functions do not produce decisions affecting user rights or access. </p> <h2>11. Children / Under-16 Use</h2> <p> The Portal is not intended for users under the age of 16. Only enrolled students, tutors, and administrative staff are permitted access. </p> <h2>12. Data Storage and Retention</h2> <h3>12.1 Storage</h3> <p> All personal data is stored securely within the University’s protected database systems. No data is transferred outside the University. </p> <h3>12.2 Retention</h3> <ul> <li>Students: Data is retained for the duration of their studies</li> <li>Staff: Data is retained for the duration of their employment or involvement</li> </ul> <p> After these periods, data is securely deleted or anonymised unless legal obligations require longer retention. </p> <h2>13. Data Breach Protocol</h2> <p>In the event of a data breach:</p> <ul> <li>The University will investigate immediately</li> <li>Affected users will be notified</li> <li>Authorities will be informed where legally required</li> </ul> <p> The University complies with applicable data protection regulations regarding breach response. </p> <h2>14. User Rights</h2> <p>All Portal users have the right to:</p> <ul> <li>Request access to their personal data</li> <li>Request correction of inaccurate or outdated information</li> <li>Request deletion of their data where legally permissible</li> <li>Object to improper handling of their information</li> <li>File a complaint with the University’s Data Protection contact</li> </ul> <h2>15. Cookies and Tracking</h2> <p> The Portal does not use cookies or tracking technologies. </p> <h2>16. Policy Updates</h2> <p> This Privacy Policy may be updated periodically. Users will be notified of any significant changes, and continued use of the Portal constitutes acceptance of the updated terms. </p> <h2>17. Contact Information</h2> <p> For privacy-related questions, data requests, or concerns, users may contact the University of Studingham through the official communication channels provided within the Portal. </p>"
+}
+
+<> 2026-01-06T125759.201.json
+
+###
+
+POST http://localhost:5000/api/policies
+Content-Type: application/json
+Content-Length: 3641
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "key": "accessibility",
+  "title": "Accessibility Statement",
+  "content": "<p> The University of Studingham is committed to ensuring that all users — including students, tutors, and administrative staff — can access and use the Portal with ease, regardless of disability or individual needs. </p> <p> We aim to provide an inclusive, barrier-free digital environment that supports accessibility, usability, and equal participation. </p> <h2>Our Accessibility Commitments</h2> <h3>1. Keyboard Navigation</h3> <p> The Portal is fully operable using a keyboard alone. </p> <p> Users can navigate through all pages and interactive elements using: </p> <ul> <li><strong>Tab</strong> – move forward through elements</li> <li><strong>Shift + Tab</strong> – move backward</li> <li><strong>Enter / Space</strong> – select or activate items</li> <li><strong>Arrow keys</strong> – navigate menus, dropdowns, and other components where applicable</li> </ul> <p> This ensures that users with mobility impairments or those who cannot operate a mouse can still use the platform smoothly. </p> <h3>2. Visual Accessibility & Colour Contrast</h3> <p> We strive to make all visual content accessible to individuals with visual impairments, including colour blindness. </p> <ul> <li>All colours used in the Portal meet or exceed WCAG 2.1 AA contrast guidelines.</li> <li> Designs are regularly tested using colour-blindness simulators (such as Sim Daltonism, Coblis, and browser-based tools). </li> <li> The interface avoids relying solely on colour to convey meaning; status indicators also include text labels or icons. </li> </ul> <h3>3. Screen Reader & Assistive Technology Compatibility</h3> <p> The Portal is structured to work with major assistive technologies used by individuals who are blind or have low vision, including: </p> <ul> <li>Speech output tools (e.g., NVDA, JAWS, VoiceOver)</li> <li>Text-to-speech readers</li> <li>Browser-based accessibility plugins</li> </ul> <p>Technical support includes:</p> <ul> <li>Semantic HTML structure</li> <li>ARIA labels where appropriate</li> <li>Proper heading hierarchy</li> <li>Alternative text for meaningful images</li> </ul> <p> This ensures content is understandable and navigable when read aloud. </p> <h3>4. Cognitive Accessibility</h3> <p> The Portal is designed with simple, clear, and consistent layouts to support users with cognitive or learning disabilities. </p> <p>Key features include:</p> <ul> <li>Predictable navigation patterns</li> <li>Easy-to-understand menus</li> <li>Straightforward language throughout the interface</li> <li>Clear labels, instructions, and error messages</li> <li>Avoidance of overly complex interactions</li> </ul> <p> Consistency helps reduce cognitive load and makes tasks easier to complete. </p> <h3>5. Regular Testing & Continuous Improvement</h3> <p> Accessibility is reviewed on an ongoing basis using: </p> <ul> <li>Internal audits</li> <li>Industry-standard tools (contrast checkers, simulators, keyboard testing)</li> <li>User feedback</li> </ul> <p> Improvements and updates are implemented regularly to ensure compliance with accessibility best practices and WCAG guidelines. </p> <h3>6. Feedback & Support</h3> <p> We welcome feedback on the accessibility of the University of Studingham Portal. </p> <p> If you experience difficulty accessing content, have trouble using a feature, or wish to request an alternative format, you may contact the University’s accessibility support team through the official support channels provided within the Portal. </p> <p> We aim to respond promptly to all accessibility-related concerns.</p>"
+}
+
+<> 2026-01-06T125756.201.json
+
+###
+
+POST http://localhost:5000/api/policies
+Content-Type: application/json
+Content-Length: 7395
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "key": "terms",
+  "title": "Terms & Conditions",
+  "content": "<h2>1. Introduction</h2> <p> These Terms & Conditions (“Terms”) govern access to and use of the University of Studingham Portal (“the Portal”). </p> <p> By using the Portal, users acknowledge that they have read, understood, and agree to be bound by these Terms. If you do not agree, you must discontinue use immediately. </p> <p> These Terms operate alongside the University of Studingham Privacy Policy, which explains how personal data is collected and processed. </p> <h2>2. Definitions</h2> <ul> <li><strong>University</strong> means the University of Studingham.</li> <li><strong>Portal</strong> refers to the official online platform used for academic, administrative, and communication purposes.</li> <li><strong>User</strong> refers to any student, tutor, or member of administrative staff with authorised access.</li> <li><strong>University Account</strong> means the login credentials issued by the University to access the Portal and related services.</li> </ul> <h2>3. Eligibility</h2> <p>Access to the Portal is restricted to:</p> <ul> <li>Enrolled students</li> <li>Approved tutors</li> <li>Administrative staff with authorised roles</li> </ul> <p> Users must maintain an active and valid University Account to use the Portal. </p> <p> The Portal is not intended for individuals under the age of 16. </p> <h2>4. User Responsibilities</h2> <p>Users agree to:</p> <ul> <li>Provide accurate and up-to-date information</li> <li>Keep login credentials confidential</li> <li>Use the Portal solely for academic and university-related purposes</li> <li>Ensure that uploaded files are safe, appropriate, and virus-free</li> <li>Regularly check university communications for updates or instructions</li> <li>Immediately report suspicious activity, security concerns, or account compromise</li> </ul> <h2>5. Acceptable Use & Code of Conduct</h2> <p> Users must behave respectfully and professionally while using the Portal and must not: </p> <ul> <li>Share or allow others to use their login details</li> <li>Attempt to access another user’s account, dashboard, or data</li> <li>Interfere with, disrupt, or reverse-engineer any part of the Portal</li> <li>Upload malicious software, harmful files, or unauthorised content</li> <li>Share copyrighted course materials without permission</li> <li>Engage in harassment, impersonation, discrimination, or abusive behaviour</li> <li>Post inappropriate, offensive, or unlawful content in any communication areas</li> </ul> <p> Violations may result in immediate account suspension or disciplinary action. </p> <h2>6. Academic Integrity</h2> <p> Users must comply with the University’s academic integrity regulations. </p> <p> All coursework, files, and submissions made through the Portal must be the user’s own work unless group work is explicitly permitted. Plagiarism, cheating, or unauthorised collaboration is strictly prohibited. </p> <h2>7. Intellectual Property</h2> <p> All materials accessible through the Portal — including lecture notes, documents, videos, assessments, and digital resources — are the intellectual property of the University of Studingham or its licensors. </p> <p>Users may:</p> <ul> <li>View materials</li> <li>Download materials</li> <li>Use materials solely for personal academic purposes</li> </ul> <p>Users may not:</p> <ul> <li>Copy, redistribute, or publish materials</li> <li>Share materials outside the Portal</li> <li>Use materials for commercial or non-academic purposes</li> </ul> <h2>8. Portal Availability</h2> <p> The University aims to provide reliable access to the Portal but cannot guarantee uninterrupted service. </p> <p>Temporary downtime may occur due to:</p> <ul> <li>Scheduled maintenance</li> <li>System updates</li> <li>Network failures</li> <li>Technical issues or security incidents</li> </ul> <p>The University is not responsible for:</p> <ul> <li>Data loss caused by user negligence</li> <li>Missed deadlines resulting from personal device or internet issues</li> <li>Incompatibility with user devices or software</li> </ul> <p> In the event of a system-wide outage, the University will communicate instructions or deadline adjustments if appropriate. </p> <h2>9. Security Measures</h2> <p> The University uses a secure authentication system, encrypted password storage, and protected databases to safeguard user data. </p> <p>Users must follow all security requirements, including:</p> <ul> <li>Maintaining strong passwords</li> <li>Updating credentials when prompted</li> <li>Avoiding login from insecure or public devices</li> </ul> <p> Suspicious activity must be reported immediately. </p> <h2>10. Monitoring and Logging</h2> <p> To maintain system security, academic integrity, and compliance: </p> <ul> <li>User activity may be monitored</li> <li>Interactions may be logged</li> <li>File submissions, access history, and system usage may be recorded</li> </ul> <p> Monitoring is performed in accordance with University policy and applicable laws. </p> <h2>11. User-Submitted Content</h2> <p> Users are responsible for the accuracy, legality, and safety of any content they upload. </p> <p>The University is not liable for:</p> <ul> <li>Copyright violations caused by user uploads</li> <li>Harmful or inaccurate information uploaded by users</li> <li>User-generated content on discussion boards, submissions, or messaging areas</li> </ul> <p> The University may remove inappropriate or harmful content at its discretion. </p> <h2>12. Termination of Access</h2> <p> The University may suspend or terminate access to the Portal if: </p> <ul> <li>A user violates these Terms</li> <li>A user engages in harmful, disruptive, or unauthorised activities</li> <li>A user’s enrollment, employment, or affiliation with the University ends</li> </ul> <p> Termination may occur immediately if required for security purposes. </p> <h2>13. Limitation of Liability</h2> <p>The University of Studingham is not liable for:</p> <ul> <li>Technical issues beyond its control</li> <li>Loss of files, progress, or data due to user error</li> <li>Device malfunction or internet failure affecting Portal use</li> <li>Damages resulting from misuse of Portal content or functionality</li> </ul> <p> Use of the Portal is at the user’s own risk. </p> <h2>14. Third-Party Links or Tools</h2> <p> If the Portal links to external websites or resources: </p> <ul> <li>The University is not responsible for their content, security, or privacy practices</li> <li>Users access third-party links at their own discretion</li> </ul> <p> This clause ensures future compatibility even if no third-party links are currently present. </p> <h2>15. Governing Law</h2> <p> These Terms are governed by applicable University regulations and relevant regional laws. </p> <p> Any disputes shall be handled according to the University’s official procedures. </p> <h2>16. Changes to Terms</h2> <p> The University reserves the right to update or amend these Terms at any time. </p> <p> Users will be notified of significant changes. Continued use of the Portal after updates constitutes acceptance of the revised Terms. </p> <h2>17. Contact Information</h2> <p> For questions, concerns, or support regarding these Terms, users may contact the University of Studingham through the official communication channels provided on the Portal.</p>"
+}
+
+<> 2026-01-06T125647.201.json
+
+###
+
+POST http://localhost:5000/api/policies
+Content-Type: application/json
+Content-Length: 7395
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "key": "terms",
+  "title": "Terms & Conditions",
+  "content": "<h2>1. Introduction</h2> <p> These Terms & Conditions (“Terms”) govern access to and use of the University of Studingham Portal (“the Portal”). </p> <p> By using the Portal, users acknowledge that they have read, understood, and agree to be bound by these Terms. If you do not agree, you must discontinue use immediately. </p> <p> These Terms operate alongside the University of Studingham Privacy Policy, which explains how personal data is collected and processed. </p> <h2>2. Definitions</h2> <ul> <li><strong>University</strong> means the University of Studingham.</li> <li><strong>Portal</strong> refers to the official online platform used for academic, administrative, and communication purposes.</li> <li><strong>User</strong> refers to any student, tutor, or member of administrative staff with authorised access.</li> <li><strong>University Account</strong> means the login credentials issued by the University to access the Portal and related services.</li> </ul> <h2>3. Eligibility</h2> <p>Access to the Portal is restricted to:</p> <ul> <li>Enrolled students</li> <li>Approved tutors</li> <li>Administrative staff with authorised roles</li> </ul> <p> Users must maintain an active and valid University Account to use the Portal. </p> <p> The Portal is not intended for individuals under the age of 16. </p> <h2>4. User Responsibilities</h2> <p>Users agree to:</p> <ul> <li>Provide accurate and up-to-date information</li> <li>Keep login credentials confidential</li> <li>Use the Portal solely for academic and university-related purposes</li> <li>Ensure that uploaded files are safe, appropriate, and virus-free</li> <li>Regularly check university communications for updates or instructions</li> <li>Immediately report suspicious activity, security concerns, or account compromise</li> </ul> <h2>5. Acceptable Use & Code of Conduct</h2> <p> Users must behave respectfully and professionally while using the Portal and must not: </p> <ul> <li>Share or allow others to use their login details</li> <li>Attempt to access another user’s account, dashboard, or data</li> <li>Interfere with, disrupt, or reverse-engineer any part of the Portal</li> <li>Upload malicious software, harmful files, or unauthorised content</li> <li>Share copyrighted course materials without permission</li> <li>Engage in harassment, impersonation, discrimination, or abusive behaviour</li> <li>Post inappropriate, offensive, or unlawful content in any communication areas</li> </ul> <p> Violations may result in immediate account suspension or disciplinary action. </p> <h2>6. Academic Integrity</h2> <p> Users must comply with the University’s academic integrity regulations. </p> <p> All coursework, files, and submissions made through the Portal must be the user’s own work unless group work is explicitly permitted. Plagiarism, cheating, or unauthorised collaboration is strictly prohibited. </p> <h2>7. Intellectual Property</h2> <p> All materials accessible through the Portal — including lecture notes, documents, videos, assessments, and digital resources — are the intellectual property of the University of Studingham or its licensors. </p> <p>Users may:</p> <ul> <li>View materials</li> <li>Download materials</li> <li>Use materials solely for personal academic purposes</li> </ul> <p>Users may not:</p> <ul> <li>Copy, redistribute, or publish materials</li> <li>Share materials outside the Portal</li> <li>Use materials for commercial or non-academic purposes</li> </ul> <h2>8. Portal Availability</h2> <p> The University aims to provide reliable access to the Portal but cannot guarantee uninterrupted service. </p> <p>Temporary downtime may occur due to:</p> <ul> <li>Scheduled maintenance</li> <li>System updates</li> <li>Network failures</li> <li>Technical issues or security incidents</li> </ul> <p>The University is not responsible for:</p> <ul> <li>Data loss caused by user negligence</li> <li>Missed deadlines resulting from personal device or internet issues</li> <li>Incompatibility with user devices or software</li> </ul> <p> In the event of a system-wide outage, the University will communicate instructions or deadline adjustments if appropriate. </p> <h2>9. Security Measures</h2> <p> The University uses a secure authentication system, encrypted password storage, and protected databases to safeguard user data. </p> <p>Users must follow all security requirements, including:</p> <ul> <li>Maintaining strong passwords</li> <li>Updating credentials when prompted</li> <li>Avoiding login from insecure or public devices</li> </ul> <p> Suspicious activity must be reported immediately. </p> <h2>10. Monitoring and Logging</h2> <p> To maintain system security, academic integrity, and compliance: </p> <ul> <li>User activity may be monitored</li> <li>Interactions may be logged</li> <li>File submissions, access history, and system usage may be recorded</li> </ul> <p> Monitoring is performed in accordance with University policy and applicable laws. </p> <h2>11. User-Submitted Content</h2> <p> Users are responsible for the accuracy, legality, and safety of any content they upload. </p> <p>The University is not liable for:</p> <ul> <li>Copyright violations caused by user uploads</li> <li>Harmful or inaccurate information uploaded by users</li> <li>User-generated content on discussion boards, submissions, or messaging areas</li> </ul> <p> The University may remove inappropriate or harmful content at its discretion. </p> <h2>12. Termination of Access</h2> <p> The University may suspend or terminate access to the Portal if: </p> <ul> <li>A user violates these Terms</li> <li>A user engages in harmful, disruptive, or unauthorised activities</li> <li>A user’s enrollment, employment, or affiliation with the University ends</li> </ul> <p> Termination may occur immediately if required for security purposes. </p> <h2>13. Limitation of Liability</h2> <p>The University of Studingham is not liable for:</p> <ul> <li>Technical issues beyond its control</li> <li>Loss of files, progress, or data due to user error</li> <li>Device malfunction or internet failure affecting Portal use</li> <li>Damages resulting from misuse of Portal content or functionality</li> </ul> <p> Use of the Portal is at the user’s own risk. </p> <h2>14. Third-Party Links or Tools</h2> <p> If the Portal links to external websites or resources: </p> <ul> <li>The University is not responsible for their content, security, or privacy practices</li> <li>Users access third-party links at their own discretion</li> </ul> <p> This clause ensures future compatibility even if no third-party links are currently present. </p> <h2>15. Governing Law</h2> <p> These Terms are governed by applicable University regulations and relevant regional laws. </p> <p> Any disputes shall be handled according to the University’s official procedures. </p> <h2>16. Changes to Terms</h2> <p> The University reserves the right to update or amend these Terms at any time. </p> <p> Users will be notified of significant changes. Continued use of the Portal after updates constitutes acceptance of the revised Terms. </p> <h2>17. Contact Information</h2> <p> For questions, concerns, or support regarding these Terms, users may contact the University of Studingham through the official communication channels provided on the Portal.</p>"
+}
+
+<> 2026-01-06T121341.500.json
+
+###
+
+POST http://localhost:5000/api/policies
+Content-Type: application/json
+Content-Length: 7395
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "key": "terms",
+  "title": "Terms & Conditions",
+  "content": "<h2>1. Introduction</h2> <p> These Terms & Conditions (“Terms”) govern access to and use of the University of Studingham Portal (“the Portal”). </p> <p> By using the Portal, users acknowledge that they have read, understood, and agree to be bound by these Terms. If you do not agree, you must discontinue use immediately. </p> <p> These Terms operate alongside the University of Studingham Privacy Policy, which explains how personal data is collected and processed. </p> <h2>2. Definitions</h2> <ul> <li><strong>University</strong> means the University of Studingham.</li> <li><strong>Portal</strong> refers to the official online platform used for academic, administrative, and communication purposes.</li> <li><strong>User</strong> refers to any student, tutor, or member of administrative staff with authorised access.</li> <li><strong>University Account</strong> means the login credentials issued by the University to access the Portal and related services.</li> </ul> <h2>3. Eligibility</h2> <p>Access to the Portal is restricted to:</p> <ul> <li>Enrolled students</li> <li>Approved tutors</li> <li>Administrative staff with authorised roles</li> </ul> <p> Users must maintain an active and valid University Account to use the Portal. </p> <p> The Portal is not intended for individuals under the age of 16. </p> <h2>4. User Responsibilities</h2> <p>Users agree to:</p> <ul> <li>Provide accurate and up-to-date information</li> <li>Keep login credentials confidential</li> <li>Use the Portal solely for academic and university-related purposes</li> <li>Ensure that uploaded files are safe, appropriate, and virus-free</li> <li>Regularly check university communications for updates or instructions</li> <li>Immediately report suspicious activity, security concerns, or account compromise</li> </ul> <h2>5. Acceptable Use & Code of Conduct</h2> <p> Users must behave respectfully and professionally while using the Portal and must not: </p> <ul> <li>Share or allow others to use their login details</li> <li>Attempt to access another user’s account, dashboard, or data</li> <li>Interfere with, disrupt, or reverse-engineer any part of the Portal</li> <li>Upload malicious software, harmful files, or unauthorised content</li> <li>Share copyrighted course materials without permission</li> <li>Engage in harassment, impersonation, discrimination, or abusive behaviour</li> <li>Post inappropriate, offensive, or unlawful content in any communication areas</li> </ul> <p> Violations may result in immediate account suspension or disciplinary action. </p> <h2>6. Academic Integrity</h2> <p> Users must comply with the University’s academic integrity regulations. </p> <p> All coursework, files, and submissions made through the Portal must be the user’s own work unless group work is explicitly permitted. Plagiarism, cheating, or unauthorised collaboration is strictly prohibited. </p> <h2>7. Intellectual Property</h2> <p> All materials accessible through the Portal — including lecture notes, documents, videos, assessments, and digital resources — are the intellectual property of the University of Studingham or its licensors. </p> <p>Users may:</p> <ul> <li>View materials</li> <li>Download materials</li> <li>Use materials solely for personal academic purposes</li> </ul> <p>Users may not:</p> <ul> <li>Copy, redistribute, or publish materials</li> <li>Share materials outside the Portal</li> <li>Use materials for commercial or non-academic purposes</li> </ul> <h2>8. Portal Availability</h2> <p> The University aims to provide reliable access to the Portal but cannot guarantee uninterrupted service. </p> <p>Temporary downtime may occur due to:</p> <ul> <li>Scheduled maintenance</li> <li>System updates</li> <li>Network failures</li> <li>Technical issues or security incidents</li> </ul> <p>The University is not responsible for:</p> <ul> <li>Data loss caused by user negligence</li> <li>Missed deadlines resulting from personal device or internet issues</li> <li>Incompatibility with user devices or software</li> </ul> <p> In the event of a system-wide outage, the University will communicate instructions or deadline adjustments if appropriate. </p> <h2>9. Security Measures</h2> <p> The University uses a secure authentication system, encrypted password storage, and protected databases to safeguard user data. </p> <p>Users must follow all security requirements, including:</p> <ul> <li>Maintaining strong passwords</li> <li>Updating credentials when prompted</li> <li>Avoiding login from insecure or public devices</li> </ul> <p> Suspicious activity must be reported immediately. </p> <h2>10. Monitoring and Logging</h2> <p> To maintain system security, academic integrity, and compliance: </p> <ul> <li>User activity may be monitored</li> <li>Interactions may be logged</li> <li>File submissions, access history, and system usage may be recorded</li> </ul> <p> Monitoring is performed in accordance with University policy and applicable laws. </p> <h2>11. User-Submitted Content</h2> <p> Users are responsible for the accuracy, legality, and safety of any content they upload. </p> <p>The University is not liable for:</p> <ul> <li>Copyright violations caused by user uploads</li> <li>Harmful or inaccurate information uploaded by users</li> <li>User-generated content on discussion boards, submissions, or messaging areas</li> </ul> <p> The University may remove inappropriate or harmful content at its discretion. </p> <h2>12. Termination of Access</h2> <p> The University may suspend or terminate access to the Portal if: </p> <ul> <li>A user violates these Terms</li> <li>A user engages in harmful, disruptive, or unauthorised activities</li> <li>A user’s enrollment, employment, or affiliation with the University ends</li> </ul> <p> Termination may occur immediately if required for security purposes. </p> <h2>13. Limitation of Liability</h2> <p>The University of Studingham is not liable for:</p> <ul> <li>Technical issues beyond its control</li> <li>Loss of files, progress, or data due to user error</li> <li>Device malfunction or internet failure affecting Portal use</li> <li>Damages resulting from misuse of Portal content or functionality</li> </ul> <p> Use of the Portal is at the user’s own risk. </p> <h2>14. Third-Party Links or Tools</h2> <p> If the Portal links to external websites or resources: </p> <ul> <li>The University is not responsible for their content, security, or privacy practices</li> <li>Users access third-party links at their own discretion</li> </ul> <p> This clause ensures future compatibility even if no third-party links are currently present. </p> <h2>15. Governing Law</h2> <p> These Terms are governed by applicable University regulations and relevant regional laws. </p> <p> Any disputes shall be handled according to the University’s official procedures. </p> <h2>16. Changes to Terms</h2> <p> The University reserves the right to update or amend these Terms at any time. </p> <p> Users will be notified of significant changes. Continued use of the Portal after updates constitutes acceptance of the revised Terms. </p> <h2>17. Contact Information</h2> <p> For questions, concerns, or support regarding these Terms, users may contact the University of Studingham through the official communication channels provided on the Portal.</p>"
+}
+
+<> 2026-01-06T121024.500.json
+
+###
+
+POST http://localhost:5000/api/policies/
+Content-Type: application/json
+Content-Length: 7395
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "key": "terms",
+  "title": "Terms & Conditions",
+  "content": "<h2>1. Introduction</h2> <p> These Terms & Conditions (“Terms”) govern access to and use of the University of Studingham Portal (“the Portal”). </p> <p> By using the Portal, users acknowledge that they have read, understood, and agree to be bound by these Terms. If you do not agree, you must discontinue use immediately. </p> <p> These Terms operate alongside the University of Studingham Privacy Policy, which explains how personal data is collected and processed. </p> <h2>2. Definitions</h2> <ul> <li><strong>University</strong> means the University of Studingham.</li> <li><strong>Portal</strong> refers to the official online platform used for academic, administrative, and communication purposes.</li> <li><strong>User</strong> refers to any student, tutor, or member of administrative staff with authorised access.</li> <li><strong>University Account</strong> means the login credentials issued by the University to access the Portal and related services.</li> </ul> <h2>3. Eligibility</h2> <p>Access to the Portal is restricted to:</p> <ul> <li>Enrolled students</li> <li>Approved tutors</li> <li>Administrative staff with authorised roles</li> </ul> <p> Users must maintain an active and valid University Account to use the Portal. </p> <p> The Portal is not intended for individuals under the age of 16. </p> <h2>4. User Responsibilities</h2> <p>Users agree to:</p> <ul> <li>Provide accurate and up-to-date information</li> <li>Keep login credentials confidential</li> <li>Use the Portal solely for academic and university-related purposes</li> <li>Ensure that uploaded files are safe, appropriate, and virus-free</li> <li>Regularly check university communications for updates or instructions</li> <li>Immediately report suspicious activity, security concerns, or account compromise</li> </ul> <h2>5. Acceptable Use & Code of Conduct</h2> <p> Users must behave respectfully and professionally while using the Portal and must not: </p> <ul> <li>Share or allow others to use their login details</li> <li>Attempt to access another user’s account, dashboard, or data</li> <li>Interfere with, disrupt, or reverse-engineer any part of the Portal</li> <li>Upload malicious software, harmful files, or unauthorised content</li> <li>Share copyrighted course materials without permission</li> <li>Engage in harassment, impersonation, discrimination, or abusive behaviour</li> <li>Post inappropriate, offensive, or unlawful content in any communication areas</li> </ul> <p> Violations may result in immediate account suspension or disciplinary action. </p> <h2>6. Academic Integrity</h2> <p> Users must comply with the University’s academic integrity regulations. </p> <p> All coursework, files, and submissions made through the Portal must be the user’s own work unless group work is explicitly permitted. Plagiarism, cheating, or unauthorised collaboration is strictly prohibited. </p> <h2>7. Intellectual Property</h2> <p> All materials accessible through the Portal — including lecture notes, documents, videos, assessments, and digital resources — are the intellectual property of the University of Studingham or its licensors. </p> <p>Users may:</p> <ul> <li>View materials</li> <li>Download materials</li> <li>Use materials solely for personal academic purposes</li> </ul> <p>Users may not:</p> <ul> <li>Copy, redistribute, or publish materials</li> <li>Share materials outside the Portal</li> <li>Use materials for commercial or non-academic purposes</li> </ul> <h2>8. Portal Availability</h2> <p> The University aims to provide reliable access to the Portal but cannot guarantee uninterrupted service. </p> <p>Temporary downtime may occur due to:</p> <ul> <li>Scheduled maintenance</li> <li>System updates</li> <li>Network failures</li> <li>Technical issues or security incidents</li> </ul> <p>The University is not responsible for:</p> <ul> <li>Data loss caused by user negligence</li> <li>Missed deadlines resulting from personal device or internet issues</li> <li>Incompatibility with user devices or software</li> </ul> <p> In the event of a system-wide outage, the University will communicate instructions or deadline adjustments if appropriate. </p> <h2>9. Security Measures</h2> <p> The University uses a secure authentication system, encrypted password storage, and protected databases to safeguard user data. </p> <p>Users must follow all security requirements, including:</p> <ul> <li>Maintaining strong passwords</li> <li>Updating credentials when prompted</li> <li>Avoiding login from insecure or public devices</li> </ul> <p> Suspicious activity must be reported immediately. </p> <h2>10. Monitoring and Logging</h2> <p> To maintain system security, academic integrity, and compliance: </p> <ul> <li>User activity may be monitored</li> <li>Interactions may be logged</li> <li>File submissions, access history, and system usage may be recorded</li> </ul> <p> Monitoring is performed in accordance with University policy and applicable laws. </p> <h2>11. User-Submitted Content</h2> <p> Users are responsible for the accuracy, legality, and safety of any content they upload. </p> <p>The University is not liable for:</p> <ul> <li>Copyright violations caused by user uploads</li> <li>Harmful or inaccurate information uploaded by users</li> <li>User-generated content on discussion boards, submissions, or messaging areas</li> </ul> <p> The University may remove inappropriate or harmful content at its discretion. </p> <h2>12. Termination of Access</h2> <p> The University may suspend or terminate access to the Portal if: </p> <ul> <li>A user violates these Terms</li> <li>A user engages in harmful, disruptive, or unauthorised activities</li> <li>A user’s enrollment, employment, or affiliation with the University ends</li> </ul> <p> Termination may occur immediately if required for security purposes. </p> <h2>13. Limitation of Liability</h2> <p>The University of Studingham is not liable for:</p> <ul> <li>Technical issues beyond its control</li> <li>Loss of files, progress, or data due to user error</li> <li>Device malfunction or internet failure affecting Portal use</li> <li>Damages resulting from misuse of Portal content or functionality</li> </ul> <p> Use of the Portal is at the user’s own risk. </p> <h2>14. Third-Party Links or Tools</h2> <p> If the Portal links to external websites or resources: </p> <ul> <li>The University is not responsible for their content, security, or privacy practices</li> <li>Users access third-party links at their own discretion</li> </ul> <p> This clause ensures future compatibility even if no third-party links are currently present. </p> <h2>15. Governing Law</h2> <p> These Terms are governed by applicable University regulations and relevant regional laws. </p> <p> Any disputes shall be handled according to the University’s official procedures. </p> <h2>16. Changes to Terms</h2> <p> The University reserves the right to update or amend these Terms at any time. </p> <p> Users will be notified of significant changes. Continued use of the Portal after updates constitutes acceptance of the revised Terms. </p> <h2>17. Contact Information</h2> <p> For questions, concerns, or support regarding these Terms, users may contact the University of Studingham through the official communication channels provided on the Portal.</p>"
+}
+
+<> 2026-01-06T120658.404.html
+
+###
+
+POST http://localhost:5000/api/policies
+Content-Type: application/json
+Content-Length: 7395
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "key": "terms",
+  "title": "Terms & Conditions",
+  "content": "<h2>1. Introduction</h2> <p> These Terms & Conditions (“Terms”) govern access to and use of the University of Studingham Portal (“the Portal”). </p> <p> By using the Portal, users acknowledge that they have read, understood, and agree to be bound by these Terms. If you do not agree, you must discontinue use immediately. </p> <p> These Terms operate alongside the University of Studingham Privacy Policy, which explains how personal data is collected and processed. </p> <h2>2. Definitions</h2> <ul> <li><strong>University</strong> means the University of Studingham.</li> <li><strong>Portal</strong> refers to the official online platform used for academic, administrative, and communication purposes.</li> <li><strong>User</strong> refers to any student, tutor, or member of administrative staff with authorised access.</li> <li><strong>University Account</strong> means the login credentials issued by the University to access the Portal and related services.</li> </ul> <h2>3. Eligibility</h2> <p>Access to the Portal is restricted to:</p> <ul> <li>Enrolled students</li> <li>Approved tutors</li> <li>Administrative staff with authorised roles</li> </ul> <p> Users must maintain an active and valid University Account to use the Portal. </p> <p> The Portal is not intended for individuals under the age of 16. </p> <h2>4. User Responsibilities</h2> <p>Users agree to:</p> <ul> <li>Provide accurate and up-to-date information</li> <li>Keep login credentials confidential</li> <li>Use the Portal solely for academic and university-related purposes</li> <li>Ensure that uploaded files are safe, appropriate, and virus-free</li> <li>Regularly check university communications for updates or instructions</li> <li>Immediately report suspicious activity, security concerns, or account compromise</li> </ul> <h2>5. Acceptable Use & Code of Conduct</h2> <p> Users must behave respectfully and professionally while using the Portal and must not: </p> <ul> <li>Share or allow others to use their login details</li> <li>Attempt to access another user’s account, dashboard, or data</li> <li>Interfere with, disrupt, or reverse-engineer any part of the Portal</li> <li>Upload malicious software, harmful files, or unauthorised content</li> <li>Share copyrighted course materials without permission</li> <li>Engage in harassment, impersonation, discrimination, or abusive behaviour</li> <li>Post inappropriate, offensive, or unlawful content in any communication areas</li> </ul> <p> Violations may result in immediate account suspension or disciplinary action. </p> <h2>6. Academic Integrity</h2> <p> Users must comply with the University’s academic integrity regulations. </p> <p> All coursework, files, and submissions made through the Portal must be the user’s own work unless group work is explicitly permitted. Plagiarism, cheating, or unauthorised collaboration is strictly prohibited. </p> <h2>7. Intellectual Property</h2> <p> All materials accessible through the Portal — including lecture notes, documents, videos, assessments, and digital resources — are the intellectual property of the University of Studingham or its licensors. </p> <p>Users may:</p> <ul> <li>View materials</li> <li>Download materials</li> <li>Use materials solely for personal academic purposes</li> </ul> <p>Users may not:</p> <ul> <li>Copy, redistribute, or publish materials</li> <li>Share materials outside the Portal</li> <li>Use materials for commercial or non-academic purposes</li> </ul> <h2>8. Portal Availability</h2> <p> The University aims to provide reliable access to the Portal but cannot guarantee uninterrupted service. </p> <p>Temporary downtime may occur due to:</p> <ul> <li>Scheduled maintenance</li> <li>System updates</li> <li>Network failures</li> <li>Technical issues or security incidents</li> </ul> <p>The University is not responsible for:</p> <ul> <li>Data loss caused by user negligence</li> <li>Missed deadlines resulting from personal device or internet issues</li> <li>Incompatibility with user devices or software</li> </ul> <p> In the event of a system-wide outage, the University will communicate instructions or deadline adjustments if appropriate. </p> <h2>9. Security Measures</h2> <p> The University uses a secure authentication system, encrypted password storage, and protected databases to safeguard user data. </p> <p>Users must follow all security requirements, including:</p> <ul> <li>Maintaining strong passwords</li> <li>Updating credentials when prompted</li> <li>Avoiding login from insecure or public devices</li> </ul> <p> Suspicious activity must be reported immediately. </p> <h2>10. Monitoring and Logging</h2> <p> To maintain system security, academic integrity, and compliance: </p> <ul> <li>User activity may be monitored</li> <li>Interactions may be logged</li> <li>File submissions, access history, and system usage may be recorded</li> </ul> <p> Monitoring is performed in accordance with University policy and applicable laws. </p> <h2>11. User-Submitted Content</h2> <p> Users are responsible for the accuracy, legality, and safety of any content they upload. </p> <p>The University is not liable for:</p> <ul> <li>Copyright violations caused by user uploads</li> <li>Harmful or inaccurate information uploaded by users</li> <li>User-generated content on discussion boards, submissions, or messaging areas</li> </ul> <p> The University may remove inappropriate or harmful content at its discretion. </p> <h2>12. Termination of Access</h2> <p> The University may suspend or terminate access to the Portal if: </p> <ul> <li>A user violates these Terms</li> <li>A user engages in harmful, disruptive, or unauthorised activities</li> <li>A user’s enrollment, employment, or affiliation with the University ends</li> </ul> <p> Termination may occur immediately if required for security purposes. </p> <h2>13. Limitation of Liability</h2> <p>The University of Studingham is not liable for:</p> <ul> <li>Technical issues beyond its control</li> <li>Loss of files, progress, or data due to user error</li> <li>Device malfunction or internet failure affecting Portal use</li> <li>Damages resulting from misuse of Portal content or functionality</li> </ul> <p> Use of the Portal is at the user’s own risk. </p> <h2>14. Third-Party Links or Tools</h2> <p> If the Portal links to external websites or resources: </p> <ul> <li>The University is not responsible for their content, security, or privacy practices</li> <li>Users access third-party links at their own discretion</li> </ul> <p> This clause ensures future compatibility even if no third-party links are currently present. </p> <h2>15. Governing Law</h2> <p> These Terms are governed by applicable University regulations and relevant regional laws. </p> <p> Any disputes shall be handled according to the University’s official procedures. </p> <h2>16. Changes to Terms</h2> <p> The University reserves the right to update or amend these Terms at any time. </p> <p> Users will be notified of significant changes. Continued use of the Portal after updates constitutes acceptance of the revised Terms. </p> <h2>17. Contact Information</h2> <p> For questions, concerns, or support regarding these Terms, users may contact the University of Studingham through the official communication channels provided on the Portal.</p>"
+}
+
+<> 2026-01-06T120551.404.html
+
+###
+
+GET http://localhost:5000/api/auth/student/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTI1MCwiZXhwIjoxNzY3MzE1MzcwfQ.uN88QduZs_c8g-mokCB_xPUKuvlDVtwcneo2KO68C_Y
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 276
+
+POST http://localhost:5000/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTQzY2JhNjRhOGE3YjY3ZmY1YzFmN2UiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NjA3MDM3Mn0.x290DQfSIEEZKyaLaphjOqPda339PZl1OiFqBu1H8xc"
+}
+
+<> 2026-01-02T005444.401.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTI1MCwiZXhwIjoxNzY3MzE1MzcwfQ.uN88QduZs_c8g-mokCB_xPUKuvlDVtwcneo2KO68C_Y
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-02T005442.200.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-02T005410.403.json
+
+###
+
+GET http://localhost:5000/api/auth/student/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTEyNywiZXhwIjoxNzY3MzE1MTg3fQ.jFmjQdLnUUkeQNCc-TAHJ0_bAlITGLW95483QWNe8p8
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 276
+
+POST http://localhost:5000/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTQzY2JhNjRhOGE3YjY3ZmY1YzFmN2UiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NjA3MDM3Mn0.x290DQfSIEEZKyaLaphjOqPda339PZl1OiFqBu1H8xc"
+}
+
+<> 2026-01-02T005310.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTEyNywiZXhwIjoxNzY3MzE1MTg3fQ.jFmjQdLnUUkeQNCc-TAHJ0_bAlITGLW95483QWNe8p8
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-02T005234.200.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-02T005207.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI3MTY3MCwiZXhwIjoxNzY3MjcxNzMwfQ.5WdO72KsRl5eCC7lXLNrs6bC-Tz7K_m0BwfjosALKm4
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T124806.200.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T124750.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI3MTM5MSwiZXhwIjoxNzY3MjcxNDUxfQ.3KoGafhNPVXhqcr3Xg3ZGd2pQGopnBeLobTn9w2m-c8
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T124332.500.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T124311.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI3MTMwNSwiZXhwIjoxNzY3MjcxMzI1fQ.3X5qRuNOWswmAnPaQnkh3C6D1
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T124216.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI3MTMwNSwiZXhwIjoxNzY3MjcxMzI1fQ.3X5qRuNOWswmAnPaQnkh3C6D1
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T124210.401.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T124145.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI2OTIyOCwiZXhwIjoxNzY3MjY5MjQ4fQ.-ybwA8y977rPhsBeg-FhmBBi1QKarF4W7d9fc0s9CVo
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T120726.500.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T120708.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI2OTE0NiwiZXhwIjoxNzY3MjY5MTY2fQ.o6USYVzN1wBcV-fWFxnRV3jCm0UDs5suiLQ1WYqC4sc
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T120609.403.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T120546.403.json
+
+###
+
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzI2OTAxMywiZXhwIjoxNzY3MjY5MDMzfQ.hwUwRjiVw4cfKpCY7nvRCtCIABwSYzqyhbdVgBMixsI
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-01-01T120523.403.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T120333.403.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T115419.403.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 469
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Cybersecurity",
+  "description": "You will study topics such as network security, cryptography, and threat detection. Students loan to identify vulnerabilities, implement security protocols and learn how machine learning techniques can be used to predict and mitigate cyber threats. Practical sessions often involve hands-on labs and projects to apply theoretical knowledge in real-world scenarios.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2026-01-01T115417.201.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 76
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "kennywenny@gmail.com",
+  "password": "Kennywennyistired44()"
+}
+
+<> 2026-01-01T115401.403.json
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+Content-Length: 92
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "email": "ibrahimkhairiuk@gmail.com",
+  "password": "Ibrahimjustwantsthistobeover12!!"
+}
+
+<> 2026-01-01T114526.401.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 469
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Cybersecurity",
+  "description": "You will study topics such as network security, cryptography, and threat detection. Students loan to identify vulnerabilities, implement security protocols and learn how machine learning techniques can be used to predict and mitigate cyber threats. Practical sessions often involve hands-on labs and projects to apply theoretical knowledge in real-world scenarios.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T231010.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 338
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Mobile Development",
+  "description": "Here, you'll focus on mobile application development using tools like Android Studio and the Java programming language, you'll create and refine mobile applications adhering to industry standards for quality and user experience.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230937.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 291
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Machine Learning",
+  "description": "You will learn the principles of intelligent systems and their application to computer science and the types of algorithms and programming languages used to solve real-world problems.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230904.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 333
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Spatial Computing",
+  "description": " You will develop an understanding of the theory and practical skills to develop virtual or augmented worlds using software or other frameworks to create 3D digital assets, and explore new technologies as the field develops.",
+  "year": 3,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230833.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 345
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Algorithm Design and Analysis",
+  "description": "Understand the heart of computational problem-solving. This course will introduce you to the design, analysis, and implementation of algorithms, ensuring you can develop efficient and effective solutions to complex problems.",
+  "year": 2,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230642.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 416
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Web Development",
+  "description": "Building on your software engineering foundation, this topic looks into client- to server-side coding. You'll learn to integrate databases with websites, creating robust registration, login, and logout systems. Dynamic server interactions using AJAX and enhancing user experiences will also be key components.",
+  "year": 2,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230613.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 365
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Introduction to Software Engineering",
+  "description": "Master the principles of software development, from requirement analysis to deployment. This topic covers best practices, design patterns, and methodologies that ensure the creation of robust, scalable, and maintainable software systems.",
+  "year": 2,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230520.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 318
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Object-oriented Programming with C++",
+  "description": "This topic provides a comprehensive understanding of classes, objects, inheritance, polymorphism, and other core OOP concepts, ensuring a strong foundation for advanced software development.",
+  "year": 2,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230516.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 1120
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Fundamentals of Computational Science",
+  "description": "This module introduces the foundations of computer science by weaving together mathematics, C programming, cryptography and scientific computing. Students begin with sets, logic, and proofs to build the habits of abstract reasoning and formal problem-solving. These mathematical tools naturally flow into programming, where they gain practical competence in C, learning to manage variables, control flow, memory and debugging while building an appreciation for efficient and reliable code. The curriculum expands into applied domains, showing how mathematics and programming underpin security and scientific analysis. Students implement and break classical ciphers, apply public-key principles and tackle numerical methods such as matrix operations, integration and error analysis. Integration is central, in that through collaborative projects and simulations, students see how these themes combine to support secure, optimised and interdisciplinary problem-solving across computer science.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T230122.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 352
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Data Fundamentals",
+  "description": "The Data Fundamentals module introduces the concept of data and its collection, processing, analysis, and interpretation, while exploring storage systems such as relational databases and the end-to-end lifecycle of data in real-world contexts.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T225935.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 969
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Introduction to Artificial Intelligence",
+  "description": "In this course, we will explore the field of Artificial Intelligence (AI), starting with foundational concepts and progressing through its diverse applications and implications. We begin by understanding what AI is, its history, and core principles such as machine learning, neural networks, and natural language processing. The course also covers key AI techniques such as supervised and unsupervised learning, data analysis, and algorithm development. We will look at the applications of these techniques in engineering and real-world scenarios. In addition, we will examine the ethical and societal impacts of AI technologies, particularly in fields such as automation and data privacy. Throughout, we will link AI concepts with engineering mathematics and applications and differential equations to enhance problem-solving approaches.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T225836.201.json
+
+###
+
+POST http://localhost:5000/api/setup/module
+Content-Type: application/json
+Content-Length: 408
+User-Agent: IntelliJ HTTP Client/WebStorm 2025.2.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Introduction to Programming",
+  "description": "This module explores the foundational concepts of programming and data structures, focusing on Java and Python, and examines how skills in structured coding, object-oriented programming, and core algorithms support the design of efficient, maintainable solutions to computational problems.",
+  "year": 1,
+  "courseId": "6943c7ca9a4f32dd7ce69ef1"
+}
+
+<> 2025-12-30T225828.201.json
+
+###
+
