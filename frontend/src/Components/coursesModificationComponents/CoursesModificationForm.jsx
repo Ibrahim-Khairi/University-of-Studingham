@@ -84,6 +84,9 @@ export const CoursesModificationForm = () => {
 
             if (!moduleRes.ok) console.log("Failed to create modules");
 
+            await fetchCourses();
+            setCourseAdded(true);
+
             setFormData({
                 name: "",
                 code: "",
@@ -204,6 +207,8 @@ export const CoursesModificationForm = () => {
             });
 
             if (!moduleRes.ok) console.log("Failed to recreate modules");
+
+            await fetchCourses();
 
             setSelectedCourse(null);
             setStep(1);
