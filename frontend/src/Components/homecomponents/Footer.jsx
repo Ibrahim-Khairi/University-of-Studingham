@@ -50,7 +50,7 @@ const Footer = () => {
                   <Link to="/gateway">Login Portal</Link>
                 </li>
                 <li>
-                  <Link to="/privacypolicy">Privacy Policy</Link>
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </li>
               </ul>
               <ul className="mt-2 text-white">
@@ -59,7 +59,7 @@ const Footer = () => {
                 </li>
                 <li>
                   {" "}
-                  <Link className="text-[15px]" to="/Accessibility">
+                  <Link className="text-[15px]" to="/accessibility">
                     Accessibility Statement
                   </Link>
                 </li>
