@@ -2,7 +2,10 @@ import React from "react";
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+<<<<<<< HEAD
 import Moodle from "./Pages/Moodle.jsx";
+=======
+>>>>>>> ccc4e0b3ad743e638bdea713ed668718b135df5a
 import Timetablestaff from "./pages/Timetablestaff";
 import LibraryPortal from "./pages/Libraryportal";
 import Digitalregisterstaff from "./pages/Digitalregisterstaff";
@@ -43,6 +46,7 @@ const App = () => {
         <ScrollToTop></ScrollToTop>
 
         <Routes>
+<<<<<<< HEAD
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/community" element={<Community />}></Route>
@@ -122,10 +126,38 @@ const App = () => {
             path="/admin/policy-modification"
             element={<PolicyModification />}
           ></Route>
+=======
+            {/* Public Routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/community" element={<Community />}></Route>
+            <Route path="/accessibility" element={<Accessibility />}></Route>
+            <Route path="/terms&conditions" element={<TermsConditions />}></Route>
+            <Route path="/privacy-policy" element={<PrivacyPolicy />}></Route>
+
+            <Route path="/gateway" element={<Gateway />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/student-registration" element={<StudentRegistration />} />
+            <Route path="/tutor-registration" element={<TutorRegistration />} />
+            <Route path="/admin-registration" element={<AdminRegistration />} />
+
+            {/* Student Routes */}
+            <Route path="/student/dashboard" element={<AuthGate allowedRoles={["student"]}><StudentDashboard /></AuthGate>} />
+
+            {/* Tutor Routes */}
+            <Route path="/tutor/dashboard" element={<AuthGate allowedRoles={["tutor"]}><TutorDashboard /></AuthGate>} />
+            <Route path="/tutor/pending-approvals" element={<AuthGate allowedRoles={["tutor"]}><PendingApprovals /></AuthGate>} />
+
+            {/* Admin Routes */}
+            <Route path="/admin/dashboard" element={<AuthGate allowedRoles={["admin"]}><AdminDashboard /></AuthGate>} />
+            <Route path="/admin/pending-approvals" element={<AuthGate allowedRoles={["admin"]}><PendingApprovals /></AuthGate>} />
+            <Route path="/admin/courses-modification" element={<CoursesModification />}></Route>
+            <Route path="/admin/policy-modification" element={<PolicyModification />}></Route>
+>>>>>>> ccc4e0b3ad743e638bdea713ed668718b135df5a
 
           <Route path="/courses" element={<Courses />}></Route>
           <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
           <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>
+<<<<<<< HEAD
           <Route
             path="/digitalregisterstaff"
             element={<Digitalregisterstaff />}
@@ -134,6 +166,10 @@ const App = () => {
             path="/librarycollection"
             element={<Librarycollection />}
           ></Route>
+=======
+          <Route path="/digitalregisterstaff" element={<Digitalregisterstaff />}></Route>
+          <Route path="/librarycollection" element={<Librarycollection />}></Route>
+>>>>>>> ccc4e0b3ad743e638bdea713ed668718b135df5a
           <Route path="/bookdetail" element={<Bookdetail />}></Route>
           <Route path="/libraryhistory" element={<Libraryhistory />}></Route>
           <Route path="/mentorship" element={<Mentorship />}></Route>
