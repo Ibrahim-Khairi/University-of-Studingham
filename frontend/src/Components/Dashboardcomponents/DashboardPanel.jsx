@@ -61,7 +61,9 @@ const DashboardPanel = () => {
             <div className="bg-[#72333B] min-w-[330px] min-h-[840px] rounded-3xl flex flex-col p-[60px] lg:p-[30px]">
                 <div>
                     <div className="mb-5">
-                        <div className="rounded-4xl bg-[#D9D9D9] w-full h-[219px] bg-[url('./Images/unilogo.png')] bg-cover bg-center" />
+                        <div className="rounded-4xl bg-[#D9D9D9] w-full h-[219px] bg-cover bg-center"
+                             style={{ backgroundImage: "url('/Images/unilogo.png')" }}
+                        />
                     </div>
 
                     <ul className="mt-2 mb-1 space-y-1">
