@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {registerTutor} from "../../services/authService.js";
+import {Spinner} from "./Spinner.jsx";
 
 const TutorRegistration = () => {
 
@@ -19,6 +20,7 @@ const TutorRegistration = () => {
     const [courses, setCourses] = useState([]);
     const [modules, setModules] = useState([]);
     const [selectedModules, setSelectedModules] = useState([]);
+    const [pendingSpinner, setPendingSpinner] = useState(false);
 
     useEffect(() => {
         void (async () => {
@@ -79,11 +81,31 @@ const TutorRegistration = () => {
             await registerTutor(data);
 
             console.log("Tutor registered successfully");
+
+            setPendingSpinner(true);
         } catch (error) {
             console.error(error);
             alert(error.response?.data?.message || "Registration failed");
         }
     };
+    if (pendingSpinner) {
+        return (
+            <div
+                className="min-h-screen flex items-center justify-center bg-cover bg-center relative"
+                style={{ backgroundImage: `url(/comunity4.png)` }}
+            >
+                <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
+
+                <div className="relative z-10 bg-white rounded-2xl shadow-xl w-full max-w-md px-8 py-10 flex flex-col items-center justify-center">
+                    <Spinner
+                        size="lg"
+                        color="blue"
+                        text="Awaiting approval. Please wait..."
+                    />
+                </div>
+            </div>
+        );
+    }
   return (
     <div
       className="min-h-screen bg-cover bg-center relative"

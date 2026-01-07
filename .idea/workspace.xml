@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/AdminRegistration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/AdminRegistration.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/StudentRegistration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/StudentRegistration.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/TutorRegistration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/TutorRegistration.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +168,7 @@
       <workItem from="1766499669263" duration="106961000" />
       <workItem from="1767130842361" duration="145832000" />
       <workItem from="1767716443576" duration="4000" />
-      <workItem from="1767787166373" duration="5830000" />
+      <workItem from="1767787166373" duration="7526000" />
     </task>
     <servers />
   </component>
