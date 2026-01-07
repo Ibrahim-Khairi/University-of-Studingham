@@ -133,7 +133,7 @@ const PendingApprovals = () => {
                 }
             });
 
-            setItems(prev => prev.filter(item => item.entityId === id
+            setItems(prev => prev.map(item => item.entityId === id
                 ? { ...item, removing: true }
                 : item
             ));
@@ -176,7 +176,7 @@ const PendingApprovals = () => {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
-            setItems(prev => prev.filter(item => item.entityId === id
+            setItems(prev => prev.map(item => item.entityId === id
                 ? { ...item, removing: true }
                 : item
             ));
@@ -220,10 +220,10 @@ const PendingApprovals = () => {
                                     key={item.entityId}
                                     name={item.name}
                                     role={item.role}
-                                    email={student.email}
-                                    phoneNumber={student.phoneNumber}
+                                    email={item.email}
+                                    phoneNumber={item.phoneNumber}
                                     onApprove={() => handleApprove(item.entityId)}
-                                    onReject={() => handleReject(item.entityid)}
+                                    onReject={() => handleReject(item.entityId)}
                                     className={`transition-opacity duration-300 
                                     ${item.removing ? "opacity-0" : "opacity-100"
                                     }`}

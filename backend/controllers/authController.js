@@ -167,7 +167,6 @@ export const registerTutor = async(req, res) => {
             email,
             password: hashedPassword,
             role: "tutor",
-            status: "approved"
         });
 
         // Step 6: Create Image
@@ -253,7 +252,6 @@ export const registerAdmin = async (req, res) => {
             email,
             password: hashedPassword,
             role: "admin",
-            status: "approved"
         });
 
         // Step 6: Create image
