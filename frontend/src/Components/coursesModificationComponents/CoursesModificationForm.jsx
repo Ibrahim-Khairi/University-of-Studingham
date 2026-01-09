@@ -53,10 +53,13 @@ export const CoursesModificationForm = () => {
                 return;
             }
 
+            const token = localStorage.getItem("accessToken");
+
             const courseRes = await fetch("http://localhost:5000/api/courses", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     name: formData.name,
@@ -169,11 +172,14 @@ export const CoursesModificationForm = () => {
                 return;
             }
 
+            const token = localStorage.getItem("accessToken");
+
             const courseRes = await fetch (`http://localhost:5000/api/courses/${selectedCourse._id}`,
                 {
                     method: "PUT",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
                     },
                     body: JSON.stringify({
                         name: formData.name,

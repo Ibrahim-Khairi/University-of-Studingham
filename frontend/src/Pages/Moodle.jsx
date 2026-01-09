@@ -37,7 +37,7 @@ const Moodle = () => {
       if (!token) return;
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/tutors/my-modules",
+          "http://localhost:5000/api/tutor/my-modules",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

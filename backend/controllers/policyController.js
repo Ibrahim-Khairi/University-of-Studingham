@@ -1,4 +1,5 @@
 import Policy from "../models/Policy.js";
+import ActivityLog from "../models/ActivityLog.js";
 
 export const getAllPolicies = async (req, res) => {
     try {
@@ -23,6 +24,11 @@ export const getPolicyByKey = async (req, res) => {
 export const updatePolicyByKey = async (req, res) => {
     try {
         const { content } = req.body;
+        const POLICY_LABELS = {
+            terms: "Terms & Conditions",
+            privacy: "Privacy Policy",
+            accessibility: "Accessibility Statement"
+        };
 
         const policy = await Policy.findOneAndUpdate(
             { key: req.params.key },
@@ -32,6 +38,15 @@ export const updatePolicyByKey = async (req, res) => {
 
         if (!policy) return res.status(404).json({ message: "Policy not found" });
 
+        await ActivityLog.create({
+            actor: req.user.userId,
+            action: "UPDATED_POLICY",
+            target: {
+                id: policy._id,
+                model: "Policy",
+            },
+            description: `Updated policy "${POLICY_LABELS[policy.key] || policy.key}"`,
+        });
         res.json(policy);
     } catch (error) {
         console.error(error);

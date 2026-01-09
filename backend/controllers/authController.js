@@ -9,6 +9,7 @@ import Course from '../models/Course.js';
 import Module from '../models/Module.js';
 import RefreshToken from '../models/RefreshToken.js';
 import {generateAccessToken} from "../utils/generateAccessToken.js";
+import ActivityLog from "../models/ActivityLog.js";
 
 export const registerStudent = async (req, res) => {
     // Account fields:
@@ -67,12 +68,29 @@ export const registerStudent = async (req, res) => {
         const imagePath = req.file ? `/uploads/students/${req.file.filename}` : null;
 
         // Step 7: Create profile
-        await Student.create({
+        const student = await Student.create({
             userId: user._id,
             firstName, middleName, lastName, dateOfBirth, gender, phoneNumber,
             picture: imagePath,
             courseId: course._id,
             levelOfStudy, modeOfStudy
+        });
+
+        await ActivityLog.create({
+            actor: user._id,
+            action: "STUDENT_REGISTRATION",
+            target:{
+                id: user._id,
+                model: "User"
+            },
+            description: "New Student registration request",
+            meta: {
+                name: `${student.firstName} ${student.middleName} ${student.lastName}`,
+                email: user.email,
+                role: "Student",
+                courseName: course.name,
+                courseCode: course.code
+            }
         });
 
         // Step 8: Respond with success
@@ -201,6 +219,23 @@ export const registerTutor = async(req, res) => {
             return res.status(409).json({ message: "One or more modules were taken. Please retry. "});
         }
 
+        await ActivityLog.create({
+            actor: user._id,
+            action: "TUTOR_REGISTRATION",
+            target:{
+                id: user._id,
+                model: "User"
+            },
+            description: "New Tutor registration request",
+            meta: {
+                name: `${tutor.firstName} ${tutor.middleName} ${tutor.lastName}`,
+                email: user.email,
+                role: "Tutor",
+                courseName: course.name,
+                courseCode: course.code
+            }
+        });
+
         // Step 9: Respond with success
         res.status(201).json({ message: "Tutor registered successfully." });
     } catch (error) {
@@ -258,10 +293,25 @@ export const registerAdmin = async (req, res) => {
         const imagePath = req.file ? `/uploads/admins/${req.file.filename}` : null;
 
         // Step 7: Create profile
-        await Admin.create({
+        const admin = await Admin.create({
             userId: user._id,
             firstName, middleName, lastName, dateOfBirth, gender, phoneNumber,
             picture: imagePath
+        });
+
+        await ActivityLog.create({
+            actor: user._id,
+            action: "ADMIN_REGISTRATION",
+            target:{
+                id: user._id,
+                model: "User"
+            },
+            description: "New Admin registration request",
+            meta: {
+                name: `${admin.firstName} ${admin.middleName} ${admin.lastName}`,
+                email: user.email,
+                role: "Admin"
+            }
         });
 
         // Step 8: Respond with success

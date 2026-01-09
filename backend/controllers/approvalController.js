@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import Student from "../models/Student.js";
 import Tutor from "../models/Tutor.js";
 import Admin from "../models/Admin.js";
+import ActivityLog from "../models/ActivityLog.js";
 import fs from "fs";
 import path from "path";
 
@@ -46,9 +47,28 @@ export const approveStudent = async (req, res) => {
 
         const student = await Student.findById(studentId);
         if (!student) return res.status(404).json({ message: "Student not found" });
+        const tutor = await Tutor.findOne({ userId: req.user.userId });
+        if (!tutor) return res.status(404).json({ message: "Tutor profile not found" });
+
+        if (
+            student.courseId.toString() !== tutor.courseId.toString() ||
+            student.levelOfStudy !== tutor.year
+        ) {
+            return res.status(403).json({ message: "Unauthorized student approval" });
+        }
 
         await User.findByIdAndUpdate(student.userId, {
             status: "approved"
+        });
+
+        await ActivityLog.create({
+            actor: req.user.userId,
+            action: "APPROVED_STUDENT",
+            target:{
+                id: student.userId,
+                model: "User"
+            },
+            description: `Dr. ${tutor.lastName} approved Student registration`
         });
 
         res.json({ message: "Student approved successfully" });
@@ -66,6 +86,16 @@ export const rejectStudent = async (req, res) => {
 
         const student = await Student.findById(studentId);
         if (!student) return res.status(404).json({ message: "Student not found" });
+        const tutor = await Tutor.findOne({ userId: req.user.userId });
+        if (!tutor) return res.status(404).json({ message: "Tutor profile not found" });
+
+        if (
+            student.courseId.toString() !== tutor.courseId.toString() ||
+            student.levelOfStudy !== tutor.year
+        ) {
+            return res.status(403).json({ message: "Unauthorized student approval" });
+        }
+
 
         await User.findByIdAndUpdate(student.userId, {
             status: "rejected"
@@ -77,6 +107,16 @@ export const rejectStudent = async (req, res) => {
         }
 
         await student.deleteOne();
+
+        await ActivityLog.create({
+            actor: req.user.userId,
+            action: "REJECTED_STUDENT",
+            target:{
+                id: student.userId,
+                model: "User"
+            },
+            description: `Dr. ${tutor.lastName} rejected Student registration`
+        });
 
         res.json({ message: "Student rejected and deleted successfully" });
     } catch (error) {
@@ -99,7 +139,8 @@ export const getPendingUsersForAdmin = async (req, res) => {
                 if (!student) continue;
 
                 results.push({
-                    id: student._id,
+                    userId: user._id,
+                    profileId: student._id,
                     name: `${student.firstName} ${student.middleName} ${student.lastName}`,
                     role: "Student",
                     email: user.email,
@@ -112,7 +153,8 @@ export const getPendingUsersForAdmin = async (req, res) => {
                 if (!tutor) continue;
 
                 results.push({
-                    id: tutor._id,
+                    userId: user._id,
+                    profileId: tutor._id,
                     name: `${tutor.firstName} ${tutor.middleName} ${tutor.lastName}`,
                     role: "Tutor",
                     email: user.email,
@@ -125,7 +167,8 @@ export const getPendingUsersForAdmin = async (req, res) => {
                 if (!admin) continue;
 
                 results.push({
-                    id: admin._id,
+                    userId: user._id,
+                    profileId: admin._id,
                     name: `${admin.firstName} ${admin.middleName} ${admin.lastName}`,
                     role: "Admin",
                     email: user.email,
@@ -146,6 +189,11 @@ export const approveUser = async (req, res) => {
         if (req.user.role !== "admin") return res.status(403).json({ message: "Access denied" });
 
         const { userId } = req.params;
+        const APPROVAL_LABELS = {
+            student: "Student",
+            tutor: "Tutor",
+            admin: "Admin"
+        }
 
         const user = await User.findByIdAndUpdate(
             userId, {
@@ -154,6 +202,16 @@ export const approveUser = async (req, res) => {
         );
 
         if (!user) return res.status(404).json({ message: "User not found" });
+
+        await ActivityLog.create({
+            actor: req.user.userId,
+            action: "APPROVED_USER",
+            target:{
+                id: userId,
+                model: "User"
+            },
+            description: `Admin approved ${APPROVAL_LABELS[user.role]} registration`
+        });
 
         res.json({ message: "User approved successfully" });
     } catch (error) {
@@ -167,6 +225,12 @@ export const rejectUser = async (req, res) => {
         if (req.user.role !== "admin") return res.status(403).json({ message: "Access denied" });
 
         const { userId } = req.params;
+        const REJECTION_LABELS = {
+            student: "Student",
+            tutor: "Tutor",
+            admin: "Admin",
+        };
+
 
         const user = await User.findById(userId);
 
@@ -186,6 +250,16 @@ export const rejectUser = async (req, res) => {
 
         await User.findByIdAndUpdate(userId, {
             status: "rejected"
+        });
+
+        await ActivityLog.create({
+            actor: req.user.userId,
+            action: "REJECTED_USER",
+            target:{
+                id: userId,
+                model: "User"
+            },
+            description: `Admin rejected ${REJECTION_LABELS[user.role]} registration`
         });
 
         res.json({ message: "User rejected and profile deleted successfully" });

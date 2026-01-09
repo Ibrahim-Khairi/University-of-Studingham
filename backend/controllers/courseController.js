@@ -1,4 +1,5 @@
-import Course from "../models/Course.js"
+import Course from "../models/Course.js";
+import ActivityLog from "../models/ActivityLog.js";
 
 export const createCourse = async (req, res) => {
     try {
@@ -11,6 +12,16 @@ export const createCourse = async (req, res) => {
             aboutTheCourse: about,
             courseStructure: structure,
             assessments
+        });
+
+        await ActivityLog.create({
+            actor: req.user.userId,
+            action: "CREATED_COURSE",
+            target: {
+                id: course._id,
+                model: "Course",
+            },
+            description: `Created course "${course.name}"`,
         });
 
         res.status(201).json(course);
@@ -36,6 +47,16 @@ export const updateCourse = async (req, res) => {
         );
 
         if (!updatedCourse) res.status(404).json({ message: "Course not found" });
+
+        await ActivityLog.create({
+            actor: req.user.userId,
+            action: "UPDATED_COURSE",
+            target: {
+                id: updatedCourse._id,
+                model: "Course",
+            },
+            description: `Updated course "${updatedCourse.name}"`,
+        });
 
         res.status(200).json(updatedCourse);
     } catch (error) {
