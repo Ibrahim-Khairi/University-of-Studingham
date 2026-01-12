@@ -8,6 +8,9 @@ const moduleSchema = new mongoose.Schema({
 
     year: { type: Number, enum: [1, 2, 3], required: true },
 
+    startWeek: { type: Number, required: true },
+    endWeek: { type: Number, required: true },
+
     description: { type: String, required: true }
 }, { timestamps: true });
 

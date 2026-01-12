@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Timetablestaff from "./pages/Timetablestaff";
+import TimetableStaff from "./Pages/TimetableStaff.jsx";
 import LibraryPortal from "./pages/Libraryportal";
 import Digitalregisterstaff from "./pages/Digitalregisterstaff";
 import Librarycollection from "./pages/Librarycollection";
@@ -72,7 +72,7 @@ const App = () => {
             <Route path="/admin/policy-modification" element={<PolicyModification />}></Route>
 
           <Route path="/courses" element={<Courses />}></Route>
-          <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
+          <Route path="/timetablestaff" element={<TimetableStaff />}></Route>
           <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>
           <Route path="/digitalregisterstaff" element={<Digitalregisterstaff />}></Route>
           <Route path="/librarycollection" element={<Librarycollection />}></Route>

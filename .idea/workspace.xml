@@ -5,29 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/approvalController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/approvalController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/courseController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/courseController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/policyController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/policyController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middleware/authMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middleware/authMiddleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/request.rest" beforeDir="false" afterPath="$PROJECT_DIR$/backend/request.rest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/moduleController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/moduleController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Module.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Module.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/courseRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/courseRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/moduleRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/moduleRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/policyRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/policyRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/Images/Icons/Ellipse 49.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/Images/Icons/Ellipse 49.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/PolicyModification/PolicyModificationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/PolicyModification/PolicyModificationForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/homecomponents/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/homecomponents/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/AdminDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/AdminDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Moodle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Moodle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/PendingApprovals.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/PendingApprovals.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/TutorDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/TutorDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/context/AuthContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/AuthContext.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Timetablestaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/TimetableStaff.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,11 +93,11 @@
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\public\Images\Icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\frontend\src\Components\coursesModificationComponents" />
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\frontend" />
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\backend" />
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\src\Components\PolicyModification" />
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project" />
-      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\public\Images\Icons" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -187,7 +173,8 @@
       <workItem from="1766499669263" duration="106961000" />
       <workItem from="1767130842361" duration="145832000" />
       <workItem from="1767716443576" duration="4000" />
-      <workItem from="1767787166373" duration="49202000" />
+      <workItem from="1767787166373" duration="49931000" />
+      <workItem from="1768050759436" duration="37588000" />
     </task>
     <servers />
   </component>

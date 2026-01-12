@@ -1,4 +1,5 @@
 import Course from "../models/Course.js";
+import Module from "../models/Module.js";
 import ActivityLog from "../models/ActivityLog.js";
 
 export const createCourse = async (req, res) => {
@@ -63,3 +64,50 @@ export const updateCourse = async (req, res) => {
         res.status(500).json({ message: "Failed to update course" });
     }
 };
+
+export const replaceCourseModules = async (req, res) => {
+    const { courseId } = req.params;
+    const { modules } = req.body;
+
+    if (!modules) return res.status(400).json({ message: "Modules data required" });
+
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    try {
+        await Module.deleteMany({ courseId }).session(session);
+
+        const formattedModules = [];
+
+        Object.entries(modules).forEach(([yearKey, moduleList]) => {
+            const year = Number(yearKey.replace("year", ""));
+
+            moduleList.forEach((module, index) => {
+                if (module.name && module.description) {
+                    formattedModules.push({
+                        name: module.name,
+                        description: module.description,
+                        year,
+                        courseId,
+                        tutorId: null,
+                        startWeek: index * 8 + 1,
+                        endWeek: index * 8 + 8
+                    });
+                }
+            });
+        });
+
+        if (formattedModules.length > 0) {
+            await Module.insertMany(formattedModules, { session });
+        }
+
+        await session.commitTransaction();
+        session.endSession();
+
+        res.status(200).json({ message: "Modules replaced successfully" });
+    } catch (error) {
+        await session.abortTransaction();
+        session.endSession();
+        res.status(500).json({ message: "Failed to replace modules" });
+    }
+}
