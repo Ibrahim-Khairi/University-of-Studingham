@@ -1,60 +1,69 @@
 import React from "react";
-import DashboardPanel from "../components/Dashboardcomponents/DashboardPanel";
-import DashboardSearch from "../components/Dashboardcomponents/DashboardSearch";
-import DashboardSchedule from "../Components/Dashboardcomponents/DashboardSchedule.jsx";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import DashboardPanel from "../components/Dashboardcomponents/DashboardPanel";
+import DashboardSearch from "../components/Dashboardcomponents/DashboardSearch";
+import DashboardSchedule from "../components/Dashboardcomponents/DashboardSchedule.jsx";
 
 const TutorDashboard = () => {
-    const { loading } = useAuth();
+    const { loading, user } = useAuth();
 
-    // 🔒 PAGE-LEVEL AUTH GATE (THIS IS THE KEY)
+    // 🔒 PAGE-LEVEL AUTH GATE
     if (loading) {
         return (
-            <div className="bg-[#EFEFEF] p-5">
+            <div className="bg-[#EFEFEF] p-5 min-h-screen">
                 <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4">
-                    <div className="min-w-[330px] min-h-[840px] bg-[#72333B] rounded-3xl" />
-                    <div className="bg-white rounded-3xl min-h-[840px]" />
+                    <div className="min-w-[330px] min-h-[840px] bg-[#72333B] rounded-3xl animate-pulse" />
+                    <div className="bg-white rounded-3xl min-h-[840px] animate-pulse" />
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="bg-[#EFEFEF]">
+        <div className="bg-[#EFEFEF] min-h-screen">
             <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 p-5">
+                {/* Left Sidebar */}
                 <div>
                     <DashboardPanel />
                 </div>
-                <div>
+
+                {/* Right Main Content */}
+                <div className="flex flex-col gap-5">
                     <DashboardSearch />
 
-                    <div className="grid grid-cols-1 lg:grid-cols-[0.7fr_1.7fr] gap-4">
-                        <div className="bg-[#4C86A8] p-6 rounded-3xl mt-5">
+                    {/* Top Cards: Lecturer Overview + Noticeboard */}
+                    <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.6fr] gap-4">
+                        {/* Lecturer Overview */}
+                        <div className="bg-[#4C86A8] p-8 rounded-[40px] shadow-lg flex flex-col justify-center">
                             <Link
-                                to="/"
-                                className="text-white border-b-3 text-[18px] inline-block mb-2"
+                                to="#"
+                                className="text-white border-b-2 border-white/30 text-[20px] font-bold inline-block mb-4 self-start hover:border-white transition-all"
                             >
                                 Lecturer Overview
                             </Link>
-                            <p className="text-white text-[18px] font-medium">
-                                Website Development - 45 students
-                            </p>
-                            <p className="text-white text-[18px] font-medium">
-                                C++ Programming - 38 students
-                            </p>
-                            <p className="text-white text-[18px] font-medium">
-                                Next Class: 10 am, FML-014
-                            </p>
-                            <p className="text-white text-[18px] font-medium">
-                                Dr. Michael Owens
-                            </p>
+                            <div className="space-y-1 text-white/90">
+                                <p className="text-[18px] font-bold">
+                                    Website Development - 45 students
+                                </p>
+                                <p className="text-[18px] font-bold">
+                                    C++ Programming - 38 students
+                                </p>
+                                <p className="text-[18px] font-bold">
+                                    Next Class: 10 am, FML-014
+                                </p>
+                                <p className="text-[18px] font-black mt-4 text-white">
+                                    Dr. {user?.firstName || "Michael"} {user?.lastName || "Owens"}
+                                </p>
+                            </div>
                         </div>
-                        <div className="bg-white rounded-xl p-5 mt-5">
-                            <div className="flex items-center">
+
+                        {/* Noticeboard */}
+                        <div className="bg-white rounded-[40px] p-8 shadow-sm flex flex-col justify-center">
+                            <div className="flex items-center mb-6">
                                 <svg
                                     width="45"
-                                    height="58"
+                                    height="45"
                                     viewBox="0 0 45 58"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -68,18 +77,20 @@ const TutorDashboard = () => {
                                         fill="black"
                                     />
                                 </svg>
-
-                                <h3 className="text-[35px] font-bold ml-5">Noticeboard</h3>
+                                <h3 className="text-[35px] font-black ml-5 uppercase tracking-tighter">
+                                    Noticeboard
+                                </h3>
                             </div>
                             <div className="grid grid-cols-3 gap-6">
-                                <div className="h-[100px] mt-2 rounded-2xl border-4 border-[#8E3B46]"></div>
-                                <div className="h-[100px] mt-2 rounded-2xl border-4 border-[#4C86A8]"></div>
-                                <div className="h-[100px] mt-2 rounded-2xl border-4 border-[#407008]"></div>
+                                <div className="h-[120px] rounded-[25px] border-4 border-[#8E3B46] bg-[#8E3B46]/5 hover:bg-[#8E3B46]/10 transition-colors"></div>
+                                <div className="h-[120px] rounded-[25px] border-4 border-[#4C86A8] bg-[#4C86A8]/5 hover:bg-[#4C86A8]/10 transition-colors"></div>
+                                <div className="h-[120px] rounded-[25px] border-4 border-[#407008] bg-[#407008]/5 hover:bg-[#407008]/10 transition-colors"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div>
+                    {/* Bottom Section: Schedule / Tasks */}
+                    <div className="mt-2">
                         <DashboardSchedule />
                     </div>
                 </div>

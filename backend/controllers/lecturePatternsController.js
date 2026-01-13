@@ -52,8 +52,11 @@ export const upsertLecturePatterns = async (req, res) => {
                 })
             );
         }
+
         let insertedLectures = [];
-        if (lectures.length) insertedLectures = await Lecture.insertMany(lectures);
+        if (lectures.length) {
+            insertedLectures = await Lecture.insertMany(lectures);
+        }
 
         res.json({
             message: "Lecture & Lecture patterns regenerated",
@@ -63,4 +66,4 @@ export const upsertLecturePatterns = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "Failed to update lecture patterns" });
     }
-}
+};

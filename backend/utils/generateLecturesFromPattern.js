@@ -4,7 +4,7 @@ const DAY_INDEX = {
     Wednesday: 2,
     Thursday: 3,
     Friday: 4
-}
+};
 
 export function generateLecturesFromPattern({
     courseId,
@@ -21,9 +21,7 @@ export function generateLecturesFromPattern({
         for (const slot of pattern) {
             const lectureDate = new Date(academicYearStart);
             lectureDate.setDate(
-                lectureDate.getDate() +
-                (week - 1) * 7 +
-                DAY_INDEX[slot.day]
+                lectureDate.getDate() + (week - 1) * 7 + DAY_INDEX[slot.day]
             );
 
             const [hour, minute] = slot.startTime.split(":").map(Number);

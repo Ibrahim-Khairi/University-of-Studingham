@@ -12,7 +12,7 @@ export const getMyModules = async (req, res) => {
 
     // Return both the registered year and the modules
     res.json({
-      registeredYear: tutor.year, // This is the 1, 2, or 3 from registration
+      registeredYear: tutor.year,
       modules: tutor.modules,
     });
   } catch (error) {

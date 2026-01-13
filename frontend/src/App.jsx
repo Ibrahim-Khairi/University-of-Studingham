@@ -2,7 +2,11 @@ import React from "react";
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Timetable from "./Pages/Timetable.jsx";
+
+import Moodle from "./Pages/Moodle/Moodle.jsx";
+
 import LibraryPortal from "./pages/Libraryportal";
 import Digitalregisterstaff from "./pages/Digitalregisterstaff";
 import Librarycollection from "./pages/Librarycollection";
@@ -13,7 +17,6 @@ import Mentorship from "./pages/Mentorship";
 import ScrollToTop from "./ScrollToTop";
 
 import AuthGate from "./Pages/AuthGate.jsx";
-
 import Home from "./pages/Home";
 import Community from "./pages/Community";
 import Courses from "./pages/Courses";
@@ -27,8 +30,6 @@ import StudentDashboard from "./Pages/StudentDashboard.jsx";
 import TutorDashboard from "./Pages/TutorDashboard.jsx";
 import AdminDashboard from "./Pages/AdminDashboard.jsx";
 
-import Moodle from "./Pages/Moodle.jsx";
-
 import PrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
 import TermsConditions from "./Pages/Terms&Conditions.jsx";
 import Accessibility from "./pages/Accessibility";
@@ -37,6 +38,7 @@ import Financetracker from "./pages/Financetracker.jsx";
 import CoursesModification from "./Pages/CoursesModification.jsx";
 import PolicyModification from "./Pages/PolicyModification.jsx";
 import PendingApprovals from "./Pages/PendingApprovals.jsx";
+
 const App = () => {
   return (
     <div>
@@ -47,6 +49,7 @@ const App = () => {
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
             <Route path="/community" element={<Community />}></Route>
+
             <Route path="/accessibility" element={<Accessibility />}></Route>
             <Route path="/terms&conditions" element={<TermsConditions />}></Route>
             <Route path="/privacy-policy" element={<PrivacyPolicy />}></Route>
@@ -73,16 +76,16 @@ const App = () => {
             <Route path="/admin/courses-modification" element={<CoursesModification />}></Route>
             <Route path="/admin/policy-modification" element={<PolicyModification />}></Route>
 
-          <Route path="/courses" element={<Courses />}></Route>
-          <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>
-          <Route path="/digitalregisterstaff" element={<Digitalregisterstaff />}></Route>
-          <Route path="/librarycollection" element={<Librarycollection />}></Route>
-          <Route path="/digitalregisterstaff" element={<Digitalregisterstaff />}></Route>
-          <Route path="/librarycollection" element={<Librarycollection />}></Route>
-          <Route path="/bookdetail" element={<Bookdetail />}></Route>
-          <Route path="/libraryhistory" element={<Libraryhistory />}></Route>
-          <Route path="/mentorship" element={<Mentorship />}></Route>
-          <Route path="/financetracker" element={<Financetracker />}></Route>
+            <Route path="/courses" element={<Courses />}></Route>
+            <Route path="/digitalregisterstaff" element={<Digitalregisterstaff />}></Route>
+
+            <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>
+            <Route path="/librarycollection" element={<Librarycollection />}></Route>
+            <Route path="/bookdetail" element={<Bookdetail />}></Route>
+            <Route path="/libraryhistory" element={<Libraryhistory />}></Route>
+            <Route path="/mentorship" element={<Mentorship />}></Route>
+
+            <Route path="/financetracker" element={<Financetracker />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
