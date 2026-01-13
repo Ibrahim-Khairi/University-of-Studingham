@@ -15,8 +15,9 @@ import {
   Trash2,
   Eye,
   EyeOff,
-  Activity,
   ChevronRight,
+  PlusCircle,
+  HelpCircle,
 } from "lucide-react";
 import DashboardPanel from "../../components/Dashboardcomponents/DashboardPanel";
 import DashboardSearch from "../../components/Dashboardcomponents/DashboardSearch";
@@ -28,24 +29,21 @@ const MoodleAdmin = () => {
   const [selectedModule, setSelectedModule] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-
-  // --- 8-WEEK STATE ---
   const [weekData, setWeekData] = useState([]);
 
   const token = localStorage.getItem("accessToken");
+  const BASE_URL = "http://localhost:5000/api/modules";
 
   useEffect(() => {
     fetchCourses();
   }, []);
 
-  // Initialize week data when a module is selected
   useEffect(() => {
     if (selectedModule) {
-      // If module already has weeks in DB, use them, otherwise create empty 8 weeks
       if (selectedModule.weeks && selectedModule.weeks.length > 0) {
         setWeekData(selectedModule.weeks);
       } else {
-        const emptyWeeks = Array.from({ length: 8 }, (_, i) => ({
+        const skeleton = Array.from({ length: 8 }, (_, i) => ({
           weekNumber: i + 1,
           topic: "",
           materials: [
@@ -53,112 +51,92 @@ const MoodleAdmin = () => {
             { info: "", fileUrl: "" },
             { info: "", fileUrl: "" },
           ],
+          quiz: { questions: [] }, // Prepared for week 8
         }));
-        setWeekData(emptyWeeks);
+        setWeekData(skeleton);
       }
     }
   }, [selectedModule]);
 
   const fetchCourses = async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/api/setup/courses");
-      setCourses(res.data);
-    } catch (error) {
-      console.error("Fetch Courses Error:", error);
-    }
+    const res = await axios.get("http://localhost:5000/api/setup/courses");
+    setCourses(res.data);
   };
 
   const handleCourseSelect = async (course) => {
-    try {
-      const res = await axios.get(
-        `http://localhost:5000/api/modules/course/${course._id}`
-      );
-      setModules(res.data);
-      setSelectedCourse(course);
-    } catch (error) {
-      console.error("Fetch Modules Error:", error);
-    }
+    const res = await axios.get(`${BASE_URL}/course/${course._id}`);
+    setModules(res.data);
+    setSelectedCourse(course);
   };
 
-  // --- API: TOGGLE VISIBILITY ---
   const toggleModuleVisibility = async (moduleId) => {
-    try {
-      const token = localStorage.getItem("accessToken");
-
-      const res = await axios.patch(
-        `http://localhost:5000/api/modules/${moduleId}/visibility`,
-        {}, // Empty body
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-
-      // Check the console to see what the backend returned
-      console.log("Server returned isVisible:", res.data.isVisible);
-
-      // Update the state using the value directly from the server
-      setModules((prev) =>
-        prev.map((m) =>
-          m._id === moduleId ? { ...m, isVisible: res.data.isVisible } : m
-        )
-      );
-    } catch (error) {
-      console.error("Visibility update failed:", error);
-      alert("Failed to update visibility. Check console for details.");
-    }
+    const res = await axios.patch(
+      `${BASE_URL}/${moduleId}/visibility`,
+      {},
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    setModules((prev) =>
+      prev.map((m) =>
+        m._id === moduleId ? { ...m, isVisible: res.data.isVisible } : m
+      )
+    );
   };
-  // --- HANDLERS FOR EDITOR ---
-  const handleTopicChange = (weekIdx, value) => {
+
+  // --- Handlers ---
+  const handleTopicChange = (idx, val) => {
     const updated = [...weekData];
-    updated[weekIdx].topic = value;
+    updated[idx].topic = val;
     setWeekData(updated);
   };
 
-  const handleMaterialInfoChange = (weekIdx, slotIdx, value) => {
+  const handleMaterialInfoChange = (wIdx, sIdx, val) => {
     const updated = [...weekData];
-    updated[weekIdx].materials[slotIdx].info = value;
+    updated[wIdx].materials[sIdx].info = val;
     setWeekData(updated);
   };
 
-  const handleFileChange = (weekIdx, slotIdx, e) => {
+  const handleFileChange = (wIdx, sIdx, e) => {
     const file = e.target.files[0];
     if (file) {
       const updated = [...weekData];
-      // Store the file object locally for upload
-      updated[weekIdx].materials[slotIdx].file = file;
+      updated[wIdx].materials[sIdx].file = file;
       setWeekData(updated);
     }
   };
 
-  // --- API: SAVE CURRICULUM ---
+  // --- Week 8 Quiz Logic ---
+  const handleAddQuestion = () => {
+    const updated = [...weekData];
+    // Index 7 is Week 8
+    if (!updated[7].quiz) updated[7].quiz = { questions: [] };
+    updated[7].quiz.questions.push({
+      questionText: "",
+      options: ["", "", "", ""],
+      correctAnswer: 0,
+    });
+    setWeekData(updated);
+  };
+
   const handleSaveCurriculum = async () => {
     setIsSaving(true);
     const formData = new FormData();
-
-    // 1. Prepare JSON data (topics and info text)
-    // We remove the file objects from the JSON before stringifying
-    const sanitizedWeeks = weekData.map((week) => ({
-      ...week,
-      materials: week.materials.map((m) => ({
-        info: m.info,
-        fileUrl: m.fileUrl,
-      })),
+    const sanitizedWeeks = weekData.map((w) => ({
+      weekNumber: w.weekNumber,
+      topic: w.topic,
+      materials: w.materials.map((m) => ({ info: m.info, fileUrl: m.fileUrl })),
+      quiz: w.weekNumber === 8 ? w.quiz : { questions: [] }, // Ensure quiz only saved for week 8
     }));
     formData.append("weeks", JSON.stringify(sanitizedWeeks));
-
-    // 2. Append actual files with specific naming convention
-    weekData.forEach((week) => {
-      week.materials.forEach((slot, slotIdx) => {
-        if (slot.file) {
-          formData.append(
-            `file_week_${week.weekNumber}_slot_${slotIdx}`,
-            slot.file
-          );
-        }
-      });
-    });
+    weekData.forEach((w) =>
+      w.materials.forEach((s, i) => {
+        if (s.file)
+          formData.append(`file_week_${w.weekNumber}_slot_${i}`, s.file);
+      })
+    );
 
     try {
       await axios.post(
-        `http://localhost:5000/api/modules/${selectedModule._id}/curriculum`,
+        `${BASE_URL}/${selectedModule._id}/curriculum`,
         formData,
         {
           headers: {
@@ -167,102 +145,13 @@ const MoodleAdmin = () => {
           },
         }
       );
-      alert("Module Curriculum Published Successfully!");
+      alert("Published Successfully!");
       setSelectedModule(null);
-    } catch (error) {
-      console.error(error);
-      alert("Error saving curriculum");
+    } catch (err) {
+      alert("Error saving");
     } finally {
       setIsSaving(false);
     }
-  };
-
-  const renderYearSection = (yearNumber) => {
-    const filteredModules = modules.filter((m) => m.year === yearNumber);
-    if (filteredModules.length === 0) return null;
-
-    return (
-      <div key={yearNumber} className="mb-14">
-        <div className="flex items-center justify-between mb-6 border-b-2 border-gray-100 pb-4">
-          <div className="flex items-center gap-3">
-            <div className="bg-[#72333B] p-2 rounded-lg text-white">
-              <Calendar size={20} />
-            </div>
-            <h2 className="text-2xl font-black uppercase text-gray-800">
-              Academic Year {yearNumber}
-            </h2>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredModules.map((m) => (
-            <div
-              key={m._id}
-              className={`bg-white rounded-[35px] shadow-sm border-2 transition-all ${
-                m.isVisible
-                  ? "border-[#407008]/20"
-                  : "border-gray-100 opacity-80"
-              }`}
-            >
-              <div className="p-8">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="flex-1">
-                    <h3 className="font-black uppercase text-gray-800 text-xl mb-2">
-                      {m.name}
-                    </h3>
-                    <span
-                      className={`text-[9px] font-black uppercase ${
-                        m.tutorId ? "text-blue-500" : "text-amber-500"
-                      }`}
-                    >
-                      {m.tutorId ? "Tutor Assigned" : "Awaiting Tutor"}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => toggleModuleVisibility(m._id)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-2xl transition-all font-black text-[10px] uppercase shadow-sm ${
-                      m.isVisible
-                        ? "bg-[#407008] text-white"
-                        : "bg-gray-100 text-gray-400"
-                    }`}
-                  >
-                    {m.isVisible ? (
-                      <>
-                        <Eye size={14} /> Published
-                      </>
-                    ) : (
-                      <>
-                        <EyeOff size={14} /> Hidden
-                      </>
-                    )}
-                  </button>
-                </div>
-                <div className="flex justify-between items-center mt-6">
-                  <div className="flex items-center gap-2">
-                    <div
-                      className={`w-2 h-2 rounded-full ${
-                        m.isVisible
-                          ? "bg-[#407008] animate-pulse"
-                          : "bg-gray-300"
-                      }`}
-                    />
-                    <span className="text-[9px] font-black text-gray-400 uppercase">
-                      Status: {m.isVisible ? "Active" : "Locked"}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => setSelectedModule(m)}
-                    className="bg-gray-800 text-white p-3 rounded-xl hover:bg-[#72333B] transition-all"
-                  >
-                    <ChevronRight size={20} />
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
   };
 
   return (
@@ -273,153 +162,178 @@ const MoodleAdmin = () => {
           <DashboardSearch />
 
           {!selectedCourse ? (
-            /* --- STEP 1: COURSE SELECT --- */
             <div className="mt-8 p-4">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="bg-[#72333B] p-4 rounded-3xl text-white shadow-xl rotate-3">
-                  <ShieldCheck size={35} />
-                </div>
-                <h1 className="text-4xl font-black uppercase tracking-tighter text-gray-800">
-                  Management Console
-                </h1>
-              </div>
+              <h1 className="text-4xl font-black uppercase text-gray-800 mb-8 tracking-tighter leading-none">
+                Management Console
+              </h1>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {courses.map((c) => (
                   <div
                     key={c._id}
                     onClick={() => handleCourseSelect(c)}
-                    className="bg-white p-10 rounded-[40px] border-b-[12px] border-[#72333B] cursor-pointer shadow-md hover:translate-y-[-8px] transition-all text-center"
+                    className="bg-white p-10 rounded-[40px] border-b-[12px] border-[#72333B] cursor-pointer shadow-md hover:translate-y-[-5px] transition-all text-center"
                   >
                     <BookOpen
                       size={40}
                       className="text-[#72333B] mx-auto mb-4"
                     />
-                    <h2 className="font-black uppercase text-gray-800 text-xl">
+                    <h2 className="font-black uppercase text-gray-800 text-xl tracking-tight leading-none">
                       {c.name}
                     </h2>
-                    <p className="text-gray-400 text-[10px] font-black mt-2">
-                      {c.code}
-                    </p>
                   </div>
                 ))}
               </div>
             </div>
           ) : !selectedModule ? (
-            /* --- STEP 2: YEAR VIEW --- */
             <div className="mt-8 p-4">
               <button
                 onClick={() => setSelectedCourse(null)}
-                className="mb-8 text-gray-400 font-black flex items-center gap-2 hover:text-[#72333B] transition-colors uppercase text-xs"
+                className="mb-8 text-gray-400 font-black uppercase text-xs"
               >
-                <ArrowLeft size={16} /> Back to Courses
+                ← Back to Courses
               </button>
               <h1 className="text-5xl font-black mb-12 uppercase text-gray-800 tracking-tighter">
                 {selectedCourse.name}
               </h1>
-              {[1, 2, 3].map((year) => renderYearSection(year))}
+              {[1, 2, 3].map((year) => (
+                <div key={year} className="mb-14">
+                  <h2 className="text-2xl font-black uppercase mb-6 text-gray-700 border-b-2 pb-2">
+                    Academic Year {year}
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {modules
+                      .filter((m) => m.year === year)
+                      .map((m) => (
+                        <div
+                          key={m._id}
+                          className="bg-white p-8 rounded-[35px] shadow-sm flex justify-between items-center border-2 border-transparent hover:border-[#407008]/20 transition-all"
+                        >
+                          <div
+                            onClick={() => setSelectedModule(m)}
+                            className="cursor-pointer"
+                          >
+                            <h3 className="font-black text-gray-800 uppercase text-xl">
+                              {m.name}
+                            </h3>
+                            <span
+                              className={`text-[10px] font-black uppercase ${
+                                m.isVisible ? "text-[#407008]" : "text-gray-300"
+                              }`}
+                            >
+                              {m.isVisible ? "Published" : "Hidden"}
+                            </span>
+                          </div>
+                          <button
+                            onClick={() => toggleModuleVisibility(m._id)}
+                            className={`p-4 rounded-2xl transition-all shadow-sm ${
+                              m.isVisible
+                                ? "bg-[#407008] text-white"
+                                : "bg-gray-100 text-gray-400"
+                            }`}
+                          >
+                            {m.isVisible ? (
+                              <Eye size={20} />
+                            ) : (
+                              <EyeOff size={20} />
+                            )}
+                          </button>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              ))}
             </div>
           ) : (
-            /* --- STEP 3: 8-WEEK EDITOR --- */
             <div className="mt-5 max-w-6xl mx-auto pb-20 px-4">
               <button
                 onClick={() => setSelectedModule(null)}
                 className="flex items-center gap-2 text-gray-400 mb-8 font-black uppercase text-xs hover:text-[#72333B]"
               >
-                <ArrowLeft size={20} /> Back to Year View
+                <ArrowLeft size={16} /> Back to Modules
               </button>
-
               <div className="bg-white p-12 rounded-[60px] shadow-2xl border-t-[20px] border-[#72333B]">
-                <div className="border-b border-gray-100 pb-10 mb-14">
-                  <h1 className="text-5xl font-black text-gray-800 uppercase tracking-tighter">
-                    {selectedModule.name}
-                  </h1>
-                  <p className="text-[#407008] font-black uppercase text-sm mt-4 tracking-widest">
-                    Year {selectedModule.year} Curriculum Editor
-                  </p>
-                </div>
+                <h1 className="text-5xl font-black text-gray-800 uppercase mb-20 tracking-tighter leading-none">
+                  {selectedModule.name}
+                </h1>
 
-                <div className="space-y-32">
-                  {weekData.map((week, weekIdx) => (
+                <div className="space-y-40">
+                  {weekData.map((week, wIdx) => (
                     <div
-                      key={week.weekNumber}
-                      className="relative pl-16 border-l-8 border-gray-50"
+                      key={wIdx}
+                      className="relative pl-16 border-l-8 border-gray-100"
                     >
-                      <div className="absolute -left-9 top-0 bg-[#72333B] text-white w-16 h-16 rounded-[25px] flex items-center justify-center font-black text-2xl shadow-2xl">
+                      <div className="absolute -left-[36px] top-0 bg-[#72333B] text-white w-16 h-16 rounded-[25px] flex items-center justify-center font-black text-2xl shadow-xl">
                         {week.weekNumber}
                       </div>
 
-                      <div className="mb-8">
+                      <div className="mb-10">
                         <label className="text-[10px] font-black text-gray-300 uppercase tracking-widest block mb-3">
                           Weekly Learning Topic
                         </label>
                         <textarea
                           value={week.topic}
                           onChange={(e) =>
-                            handleTopicChange(weekIdx, e.target.value)
+                            handleTopicChange(wIdx, e.target.value)
                           }
-                          className="w-full p-6 bg-gray-50 border-2 border-gray-100 rounded-[30px] outline-none focus:border-[#72333B] font-bold text-gray-700 h-28 resize-none transition-all"
-                          placeholder="Describe this week's content..."
+                          className="w-full p-8 border-2 border-gray-100 rounded-[35px] focus:border-[#72333B] outline-none bg-gray-50/50 h-32 resize-none transition-all font-bold text-gray-700"
+                          placeholder="Describe the week..."
                         />
                       </div>
 
+                      {/* 3 MATERIALS SLOTS */}
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {week.materials.map((slot, slotIdx) => (
+                        {week.materials.map((slot, sIdx) => (
                           <div
-                            key={slotIdx}
+                            key={sIdx}
                             className="bg-white border-2 border-gray-100 p-6 rounded-[35px] hover:border-[#407008] transition-all"
                           >
                             <input
                               type="text"
-                              placeholder="Material Name (e.g. Slides)"
+                              placeholder="Material Title..."
                               value={slot.info}
                               onChange={(e) =>
                                 handleMaterialInfoChange(
-                                  weekIdx,
-                                  slotIdx,
+                                  wIdx,
+                                  sIdx,
                                   e.target.value
                                 )
                               }
-                              className="w-full text-[10px] font-black uppercase border-b border-gray-100 pb-2 mb-4 outline-none focus:border-[#407008]"
+                              className="w-full text-[10px] font-black uppercase p-2 border-b mb-4 outline-none focus:border-[#407008]"
                             />
-
                             {slot.file || slot.fileUrl ? (
                               <div className="bg-green-50 p-4 rounded-2xl flex items-center justify-between">
-                                <div className="flex items-center gap-2 overflow-hidden">
-                                  <FileText
-                                    size={18}
-                                    className="text-[#407008]"
-                                  />
-                                  <span className="text-[9px] font-black text-[#407008] truncate">
-                                    {slot.file ? slot.file.name : "Stored File"}
-                                  </span>
-                                </div>
+                                <span className="text-[9px] font-black text-[#407008] truncate w-[80%]">
+                                  {slot.file
+                                    ? slot.file.name
+                                    : "Stored Material"}
+                                </span>
                                 <button
                                   onClick={() => {
-                                    const updated = [...weekData];
-                                    updated[weekIdx].materials[slotIdx] = {
+                                    const copy = [...weekData];
+                                    copy[wIdx].materials[sIdx] = {
                                       info: "",
                                       fileUrl: "",
                                     };
-                                    setWeekData(updated);
+                                    setWeekData(copy);
                                   }}
                                 >
-                                  <XCircle size={16} className="text-red-400" />
+                                  <XCircle
+                                    size={16}
+                                    className="text-red-400 hover:scale-110"
+                                  />
                                 </button>
                               </div>
                             ) : (
-                              <label className="flex flex-col items-center justify-center py-6 border-2 border-dashed border-gray-100 rounded-2xl cursor-pointer hover:bg-gray-50 group">
+                              <label className="flex flex-col items-center justify-center py-8 border-4 border-dashed border-gray-100 rounded-2xl cursor-pointer hover:bg-gray-50 group transition-all">
                                 <Upload
-                                  size={20}
-                                  className="text-gray-300 group-hover:text-[#407008]"
+                                  size={24}
+                                  className="text-gray-200 group-hover:text-[#407008]"
                                 />
-                                <span className="text-[8px] font-black text-gray-400 uppercase mt-2">
-                                  Upload File
-                                </span>
                                 <input
                                   type="file"
                                   className="hidden"
                                   onChange={(e) =>
-                                    handleFileChange(weekIdx, slotIdx, e)
+                                    handleFileChange(wIdx, sIdx, e)
                                   }
                                 />
                               </label>
@@ -427,25 +341,107 @@ const MoodleAdmin = () => {
                           </div>
                         ))}
                       </div>
+
+                      {/* --- WEEK 8 ONLY: QUIZ BUILDER --- */}
+                      {week.weekNumber === 8 && (
+                        <div className="bg-gray-50 p-10 rounded-[45px] border-2 border-white mt-12 shadow-inner">
+                          <div className="flex justify-between items-center mb-10">
+                            <div className="flex items-center gap-3">
+                              <HelpCircle
+                                className="text-[#72333B]"
+                                size={28}
+                              />
+                              <h4 className="text-2xl font-black text-gray-800 uppercase tracking-tighter italic">
+                                Final Assessment
+                              </h4>
+                            </div>
+                            <button
+                              onClick={handleAddQuestion}
+                              className="bg-gray-800 text-white px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase flex items-center gap-2 hover:bg-[#72333B] active:scale-95 shadow-lg transition-all"
+                            >
+                              <PlusCircle size={14} /> Add New Question
+                            </button>
+                          </div>
+
+                          {week.quiz?.questions.map((q, qIdx) => (
+                            <div
+                              key={qIdx}
+                              className="bg-white p-10 rounded-[40px] mb-8 border border-gray-100 relative shadow-sm group"
+                            >
+                              <input
+                                value={q.questionText}
+                                onChange={(e) => {
+                                  const copy = [...weekData];
+                                  copy[7].quiz.questions[qIdx].questionText =
+                                    e.target.value;
+                                  setWeekData(copy);
+                                }}
+                                className="w-full border-b-4 border-gray-50 p-4 font-black text-lg outline-none mb-8 focus:border-[#72333B] transition-all bg-transparent"
+                                placeholder="Type the question here..."
+                              />
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {q.options.map((opt, oIdx) => (
+                                  <div
+                                    key={oIdx}
+                                    className="flex items-center gap-4 bg-gray-50 p-4 rounded-3xl border border-transparent hover:border-gray-200 transition-all"
+                                  >
+                                    <input
+                                      type="radio"
+                                      checked={q.correctAnswer === oIdx}
+                                      onChange={() => {
+                                        const copy = [...weekData];
+                                        copy[7].quiz.questions[
+                                          qIdx
+                                        ].correctAnswer = oIdx;
+                                        setWeekData(copy);
+                                      }}
+                                      className="accent-[#407008] w-6 h-6 cursor-pointer"
+                                    />
+                                    <input
+                                      value={opt}
+                                      onChange={(e) => {
+                                        const copy = [...weekData];
+                                        copy[7].quiz.questions[qIdx].options[
+                                          oIdx
+                                        ] = e.target.value;
+                                        setWeekData(copy);
+                                      }}
+                                      className="bg-transparent text-sm font-black uppercase outline-none w-full text-gray-600"
+                                      placeholder="Option text..."
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                              <button
+                                onClick={() => {
+                                  const copy = [...weekData];
+                                  copy[7].quiz.questions.splice(qIdx, 1);
+                                  setWeekData(copy);
+                                }}
+                                className="absolute -top-4 -right-4 bg-red-500 text-white p-3 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 transition-all hover:scale-110"
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </div>
+                          ))}
+
+                          {week.quiz?.questions.length === 0 && (
+                            <div className="text-center py-10 opacity-30 italic font-black uppercase text-sm tracking-widest">
+                              No questions defined for the final week.
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
-
-                <div className="mt-32 pt-16 border-t-8 border-gray-50">
-                  <button
-                    onClick={handleSaveCurriculum}
-                    disabled={isSaving}
-                    className="w-full bg-[#407008] text-white py-8 rounded-[40px] font-black text-2xl shadow-2xl hover:bg-[#2d5006] transition-all flex items-center justify-center gap-6"
-                  >
-                    {isSaving ? (
-                      "SYNCING TO DATABASE..."
-                    ) : (
-                      <>
-                        <CheckCircle size={35} /> PUBLISH UPDATES
-                      </>
-                    )}
-                  </button>
-                </div>
+                <button
+                  onClick={handleSaveCurriculum}
+                  disabled={isSaving}
+                  className="w-full bg-[#407008] text-white py-8 rounded-[40px] font-black text-2xl shadow-2xl mt-32 hover:bg-[#2d5006] transition-all"
+                >
+                  {isSaving ? "PUBLISHING..." : "PUBLISH COMPLETE MODULE"}
+                </button>
               </div>
             </div>
           )}

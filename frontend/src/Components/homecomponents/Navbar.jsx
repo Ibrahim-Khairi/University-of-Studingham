@@ -11,12 +11,6 @@ const Navbar = () => {
         navigate("/gateway");
     };
 
-    // Returns dynamic dashboard path based on role
-    const getDashboardPath = () => {
-        if (!user || !user.role) return "/gateway";
-        return `/${user.role}/dashboard`;
-    };
-
     return (
         <div className="bg-[#72333B] sticky top-0 z-50 shadow-md">
             <div className="container mx-auto flex justify-between items-center py-4 px-6">
@@ -26,7 +20,7 @@ const Navbar = () => {
                 </Link>
 
                 <div className="flex gap-8 text-[18px] text-white items-center font-[Century Gothic]">
-                    <Link to="/" className="hover:text-gray-300 transition-colors">
+                    <Link to="/courses" className="hover:text-gray-300 transition-colors">
                         A-Z
                     </Link>
                     <Link to="/community" className="hover:text-gray-300 transition-colors">
@@ -36,21 +30,10 @@ const Navbar = () => {
                         Library
                     </Link>
 
-                    {/* Dynamic Dashboard Link */}
-                    {user && (
-                        <Link
-                            to={getDashboardPath()}
-                            className="hover:text-gray-300 font-bold border-b-2 border-transparent hover:border-white transition-all"
-                        >
-                            Dashboard
-                        </Link>
-                    )}
-
                     {/* Login / Logout Toggle */}
                     {!loading ? (
                         user ? (
                             <div className="flex items-center gap-4">
-                                {/* Optional: show user email */}
                                 <span className="text-xs opacity-70 hidden md:block">{user.email}</span>
                                 <button
                                     onClick={handleLogout}
@@ -68,7 +51,6 @@ const Navbar = () => {
                             </Link>
                         )
                     ) : (
-                        // Loading skeleton for buttons
                         <div className="w-20 h-8 bg-white/5 animate-pulse rounded-full"></div>
                     )}
                 </div>

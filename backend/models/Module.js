@@ -52,6 +52,15 @@ const moduleSchema = new mongoose.Schema(
                         fileUrl: { type: String, default: "" },
                     },
                 ],
+                quiz: {
+                    questions: [
+                        {
+                            questionText: String,
+                            options: [String],
+                            correctAnswer: Number,
+                        },
+                    ],
+                },
             },
         ],
     },
