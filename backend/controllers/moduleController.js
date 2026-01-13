@@ -1,7 +1,58 @@
 import Module from "../models/Module.js";
+import QuizSubmission from "../models/QuizSubmission.js";
 
-// --- YOUR EXISTING FUNCTIONS (Keep these) ---
+export const submitQuiz = async (req, res) => {
+  try {
+    const { moduleId, weekNumber, answers } = req.body;
+    const studentId = req.user.userId;
 
+    const module = await Module.findById(moduleId);
+    const week = module.weeks.find((w) => w.weekNumber === weekNumber);
+
+    if (!week || !week.quiz || !week.quiz.questions.length) {
+      return res.status(404).json({ message: "Quiz not found" });
+    }
+
+    // Calculate Score
+    let correctCount = 0;
+    week.quiz.questions.forEach((q, index) => {
+      if (q.correctAnswer === answers[index]) correctCount++;
+    });
+
+    const submission = await QuizSubmission.create({
+      studentId,
+      moduleId,
+      weekNumber,
+      score: correctCount,
+      totalQuestions: week.quiz.questions.length,
+    });
+
+    res.json({
+      message: "Success",
+      score: correctCount,
+      total: week.quiz.questions.length,
+    });
+  } catch (error) {
+    if (error.code === 11000)
+      return res
+        .status(400)
+        .json({ message: "You have already completed this assessment." });
+    res.status(500).json({ message: "Submission failed" });
+  }
+};
+
+// 2. Fetch User Scores for a Module (Used by MoodleStudent)
+export const getMyScores = async (req, res) => {
+  try {
+    const scores = await QuizSubmission.find({
+      studentId: req.user.userId,
+      moduleId: req.params.moduleId,
+    });
+    res.json(scores);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching scores" });
+  }
+};
 export const createModules = async (req, res) => {
   try {
     const { modules, courseId } = req.body;

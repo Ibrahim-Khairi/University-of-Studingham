@@ -9,7 +9,7 @@ import {
   toggleVisibility,
   updateCurriculum,
 } from "../controllers/moduleController.js";
-
+import { submitQuiz, getMyScores } from "../controllers/moduleController.js";
 const router = express.Router();
 
 // --- Existing Routes ---
@@ -26,5 +26,7 @@ router.post(
   uploadCurriculum.any(),
   updateCurriculum
 );
+router.post("/quiz/submit", authMiddleware, submitQuiz);
+router.get("/:moduleId/my-scores", authMiddleware, getMyScores);
 
 export default router;

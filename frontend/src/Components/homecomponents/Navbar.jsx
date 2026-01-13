@@ -26,7 +26,7 @@ const Navbar = () => {
         </Link>
 
         <div className="flex gap-8 text-[18px] text-white items-center font-[Century Gothic]">
-          <Link to="/" className="hover:text-gray-300 transition-colors">
+          <Link to="/courses" className="hover:text-gray-300 transition-colors">
             A-Z
           </Link>
           <Link

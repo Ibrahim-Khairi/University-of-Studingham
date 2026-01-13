@@ -25,7 +25,7 @@ const Footer = () => {
             </h3>
             <ul className="mt-2 text-white">
               <li>
-                <Link>Courses</Link>
+                <Link to="/courses">Courses</Link>
               </li>
               <li>
                 <Link>Student Life</Link>
