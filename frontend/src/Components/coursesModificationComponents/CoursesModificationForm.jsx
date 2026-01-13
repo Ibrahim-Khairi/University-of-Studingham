@@ -1,5 +1,6 @@
 // import { useEffect, useState } from "react";
 // import CourseAddedSuccess from "./CourseAddedSuccess.jsx";
+// import CourseTimetableSetup from "./CourseTimetableSetup.jsx";
 //
 // export const CoursesModificationForm = () => {
 //     const [activeTab, setActiveTab] = useState("add");
@@ -8,7 +9,7 @@
 //     const [courseAdded, setCourseAdded] = useState(false);
 //     const [step, setStep] = useState(1);
 //
-//     const emptyModule = { name: "", description: "", startWeek: null, endWeek: null };
+//     const emptyModule = { name: "", description: "", _id: null };
 //
 //     const [modules, setModules] = useState({
 //         year1: Array(4).fill(null).map(() => ({ ...emptyModule })),
@@ -21,10 +22,17 @@
 //         code: "",
 //         about: "",
 //         assessments: "",
-//         structure: "",
+//         structure: ""
 //     });
 //
-//     const isStepOneValid = formData.name.trim() && formData.code.trim() && formData.about.trim() && formData.assessments.trim() && formData.structure.trim();
+//     const [lecturePatterns, setLecturePatterns] = useState([]);
+//
+//     const isStepOneValid =
+//         formData.name.trim() &&
+//         formData.code.trim() &&
+//         formData.about.trim() &&
+//         formData.assessments.trim() &&
+//         formData.structure.trim();
 //
 //     const handleChange = (e) => {
 //         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,46 +54,86 @@
 //         if (activeTab === "edit") fetchCourses();
 //     }, [activeTab]);
 //
+//     const saveCourseAndModules = async () => {
+//         if (!isStepOneValid) {
+//             alert("Please complete all course details first.");
+//             return;
+//         }
+//
+//         const token = localStorage.getItem("accessToken");
+//
+//         const courseRes = await fetch("http://localhost:5000/api/courses", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 Authorization: `Bearer ${token}`
+//             },
+//             body: JSON.stringify({
+//                 name: formData.name,
+//                 code: formData.code,
+//                 aboutTheCourse: formData.about,
+//                 courseStructure: formData.structure,
+//                 assessments: formData.assessments
+//             })
+//         });
+//
+//         if (!courseRes.ok) console.log("Failed to create course");
+//         const course = await courseRes.json();
+//
+//         const moduleRes = await fetch(`http://localhost:5000/api/courses/${course._id}/modules`, {
+//             method: "PUT",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({ modules })
+//         });
+//
+//         if (!moduleRes.ok) console.log("Failed to create modules");
+//
+//         const savedModules = await moduleRes.json();
+//         setModules(savedModules);
+//
+//         return course;
+//     }
+//
 //     const handleSubmit = async () => {
 //         try {
-//             if (!formData.name.trim() || !formData.code.trim() || !formData.about.trim() || !formData.structure.trim() || !formData.assessments.trim()) {
-//                 alert("Please complete all course details first.");
+//             if (!selectedCourse?._id) {
+//                 alert("Course not saved properly. Please restart");
 //                 return;
 //             }
 //
-//             const token = localStorage.getItem("accessToken");
+//             const isValidTimetable = lecturePatterns.every(pattern =>
+//                 pattern.moduleId &&
+//                 pattern.year &&
+//                 pattern.weekBlock?.start &&
+//                 pattern.weekBlock?.end &&
+//                 Array.isArray(pattern.pattern) &&
+//                 pattern.pattern.length > 0 &&
+//                 pattern.pattern.every(slot =>
+//                     slot.day &&
+//                     slot.startTime &&
+//                     typeof slot.durationHours === "number"
+//                 )
+//             );
 //
-//             const courseRes = await fetch("http://localhost:5000/api/courses", {
-//                 method: "POST",
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                     Authorization: `Bearer ${token}`
-//                 },
-//                 body: JSON.stringify({
-//                     name: formData.name,
-//                     code: formData.code,
-//                     about: formData.about,
-//                     structure: formData.structure,
-//                     assessments: formData.assessments
-//                 })
-//             });
+//             if (!isValidTimetable) {
+//                 alert("Timetable setup is incomplete or invalid. Please review all modules.");
+//                 return;
+//             }
 //
-//             if (!courseRes.ok) console.log("Failed to create course");
-//
-//             const course = await courseRes.json();
-//
-//             const moduleRes = await fetch("http://localhost:5000/api/modules", {
-//                 method: "POST",
+//             const lectureRes = await fetch(`http://localhost:5000/api/lecture-patterns/course/${selectedCourse._id}`, {
+//                 method: "PUT",
 //                 headers: {
 //                     "Content-Type": "application/json"
 //                 },
 //                 body: JSON.stringify({
-//                     courseId: course._id,
-//                     modules
+//                     academicYearStart: "2025-09-22",
+//                     patterns: lecturePatterns
 //                 })
 //             });
 //
-//             if (!moduleRes.ok) console.log("Failed to create modules");
+//             if (!lectureRes.ok) console.log("Failed to create lecture patterns");
 //
 //             await fetchCourses();
 //             setCourseAdded(true);
@@ -94,8 +142,8 @@
 //                 name: "",
 //                 code: "",
 //                 about: "",
-//                 structure: "",
-//                 assessments: ""
+//                 assessments: "",
+//                 structure: ""
 //             });
 //
 //             setModules({
@@ -107,8 +155,9 @@
 //             setSelectedCourse(null);
 //             setStep(1);
 //             setActiveTab("add");
-//         } catch (error) {
-//             console.error(error);
+//         } catch (err) {
+//             console.error(err);
+//             alert("Failed to create course");
 //         }
 //     };
 //
@@ -137,28 +186,22 @@
 //
 //             moduleData.forEach((module) => {
 //                 const yearKey = `year${module.year}`;
-//
 //                 const emptyIndex = grouped[yearKey].findIndex(
 //                     (module) => !module.name && !module.description
 //                 );
 //
 //                 if (emptyIndex !== -1) {
 //                     grouped[yearKey][emptyIndex] = {
+//                         _id: module._id || null,
 //                         name: module.name,
 //                         description: module.description
 //                     };
 //                 }
 //             });
 //
-//             Object.keys(grouped).forEach((year) => {
-//                 while (grouped[year].length < 4) {
-//                     grouped[year].push({ name: "", description: "" });
-//                 }
-//             });
-//
 //             setModules(grouped);
+//             setStep(2);
 //             setActiveTab("edit");
-//             setStep(1);
 //         } catch (error) {
 //             console.error(error);
 //             console.log("Failed to load course modules");
@@ -193,39 +236,41 @@
 //
 //             if (!courseRes.ok) console.log("Failed to update course");
 //
-//             const deleteRes = await fetch(`http://localhost:5000/api/modules/courses/${selectedCourse._id}`,
-//                 {
-//                     method: "DELETE",
-//                 }
-//             );
+//             const moduleRes = await fetch(`http://localhost:5000/api/courses/${selectedCourse._id}/modules`, {
+//                 method: "PUT",
+//                 headers: {
+//                     "Content-Type": "application/json"
+//                 },
+//                 body: JSON.stringify({ modules })
+//             });
 //
-//             if (!deleteRes.ok) console.log("Failed to delete old modules");
+//             if (!moduleRes.ok) console.log("Failed to update modules");
 //
-//             const moduleRes = await fetch("http://localhost:5000/api/modules", {
-//                 method: "POST",
+//             const lectureRes = await fetch(`http://localhost:5000/api/lecture-patterns/course/${selectedCourse._id}`, {
+//                 method: "PUT",
 //                 headers: {
 //                     "Content-Type": "application/json"
 //                 },
 //                 body: JSON.stringify({
-//                     courseId: selectedCourse._id,
-//                     modules
+//                     academicYearStart: "2025-09-22",
+//                     patterns: lecturePatterns
 //                 })
 //             });
 //
-//             if (!moduleRes.ok) console.log("Failed to recreate modules");
+//             if (!lectureRes.ok) console.log("Failed to update lecture patterns");
 //
 //             await fetchCourses();
-//
 //             setSelectedCourse(null);
 //             setStep(1);
 //             setActiveTab("edit");
-//
 //             console.log("Course updated successfully");
 //         } catch (error) {
 //             console.error(error);
 //             console.log("Something went wrong while saving edits");
 //         }
-//     }
+//     };
+//
+//     const isEditing = Boolean(selectedCourse);
 //
 //     return (
 //         <div className="bg-white rounded-3xl px-20 py-6 mt-4">
@@ -256,21 +301,6 @@
 //                     Edit Course
 //                 </button>
 //             </div>
-//
-//             {activeTab === "edit" && !selectedCourse && (
-//                 <div className="space-y-4">
-//                     {courses.map((course) => (
-//                         <div
-//                             key={course._id}
-//                             onClick={() => handleEditSelect(course)}
-//                             className="cursor-pointer p-5 bg-[#F3F6FB] rounded-xl hover:bg-[#E8EEFA]"
-//                         >
-//                             <p className="font-semibold text-lg">{course.name}</p>
-//                             <p className="text-sm text-gray-500">{course.code}</p>
-//                         </div>
-//                     ))}
-//                 </div>
-//             )}
 //
 //             {courseAdded && (
 //                 <CourseAddedSuccess
@@ -372,11 +402,11 @@
 //                                 disabled={!isStepOneValid}
 //                                 className={`mt-6 w-[200px] bg-[#4877DF] text-white py-2 rounded-full font-semibold transition
 //                                     ${isStepOneValid
-//                                         ? "bg-[#4877DF] text-white"
-//                                         : "bg-gray-300 text-gray-500 cursor-not-allowed"}
+//                                     ? "bg-[#4877DF] text-white"
+//                                     : "bg-gray-300 text-gray-500 cursor-not-allowed"}
 //                                 `}
 //                             >
-//                                 NEXT
+//                                 NEXT: SET MODULES
 //                             </button>
 //                         </div>
 //                     </div>
@@ -449,9 +479,40 @@
 //
 //                         <button
 //                             onClick={() => {
-//                                 if (selectedCourse) handleEditSave();
-//                                 else {
-//                                     handleSubmit();
+//                                 setStep(3);
+//                             }}
+//                             className="w-[220px] bg-[#4877DF] text-white py-3 rounded-full font-semibold"
+//                         >
+//                             NEXT: SET TIMETABLE
+//                         </button>
+//                     </div>
+//                 </div>
+//             )}
+//
+//             {step === 3 && (
+//                 <>
+//                     <CourseTimetableSetup
+//                         selectedCourse={selectedCourse}
+//                         modules={modules}
+//                         onComplete={(patterns) => {
+//                             setLecturePatterns(patterns);
+//                         }}
+//                     />
+//
+//                     <div className="flex justify-between items-center">
+//                         <button
+//                             onClick={() => setStep(2)}
+//                             className="px-6 py-2 rounded-full font-semibold bg-[#EBF0F3] text-[#333]"
+//                         >
+//                             ← Back
+//                         </button>
+//
+//                         <button
+//                             onClick={async () => {
+//                                 if (isEditing) {
+//                                     await handleEditSave();
+//                                 } else {
+//                                     await handleSubmit();
 //                                     setCourseAdded(true);
 //                                 }
 //                             }}
@@ -460,6 +521,21 @@
 //                             SAVE COURSE
 //                         </button>
 //                     </div>
+//                 </>
+//             )}
+//
+//             {activeTab === "edit" && !selectedCourse && (
+//                 <div className="space-y-4">
+//                     {courses.map((course) => (
+//                         <div
+//                             key={course._id}
+//                             onClick={() => handleEditSelect(course)}
+//                             className="cursor-pointer p-5 bg-[#F3F6FB] rounded-xl hover:bg-[#E8EEFA]"
+//                         >
+//                             <p className="font-semibold text-lg">{course.name}</p>
+//                             <p className="text-sm text-gray-500">{course.code}</p>
+//                         </div>
+//                     ))}
 //                 </div>
 //             )}
 //         </div>
@@ -477,7 +553,7 @@ export const CoursesModificationForm = () => {
     const [courseAdded, setCourseAdded] = useState(false);
     const [step, setStep] = useState(1);
 
-    const emptyModule = { name: "", description: "" };
+    const emptyModule = { name: "", description: "", _id: null };
 
     const [modules, setModules] = useState({
         year1: Array(4).fill(null).map(() => ({ ...emptyModule })),
@@ -510,7 +586,6 @@ export const CoursesModificationForm = () => {
         try {
             const res = await fetch("http://localhost:5000/api/setup/courses");
             if (!res.ok) console.log("Failed to fetch courses");
-
             const data = await res.json();
             setCourses(data);
         } catch (error) {
@@ -522,44 +597,82 @@ export const CoursesModificationForm = () => {
         if (activeTab === "edit") fetchCourses();
     }, [activeTab]);
 
+    // SAVE COURSE + MODULES for step 3
+    const saveCourseAndModules = async () => {
+        if (!isStepOneValid) {
+            alert("Please complete all course details first.");
+            return null;
+        }
+
+        const token = localStorage.getItem("accessToken");
+
+        console.log("Submitting course:", formData);
+        // 1️⃣ Create course
+        const courseRes = await fetch("http://localhost:5000/api/courses/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                name: formData.name,
+                code: formData.code,
+                about: formData.about,
+                structure: formData.structure,
+                assessments: formData.assessments
+            })
+        });
+
+        if (!courseRes.ok) {
+            const errorText = await courseRes.text();
+            throw new Error(`Failed to create course: ${errorText}`);
+        }
+
+        const course = await courseRes.json();
+
+        // 2️⃣ Flatten modules
+        const flattenedModules = [
+            ...modules.year1.map(m => ({ ...m, year: 1 })),
+            ...modules.year2.map(m => ({ ...m, year: 2 })),
+            ...modules.year3.map(m => ({ ...m, year: 3 }))
+        ];
+
+        // 3️⃣ Save modules
+        const moduleRes = await fetch(`http://localhost:5000/api/courses/${course._id}/modules`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({ modules: flattenedModules }) // important: flattened array
+        });
+
+        if (!moduleRes.ok) {
+            const errorText = await moduleRes.text();
+            throw new Error(`Failed to save modules: ${errorText}`);
+        }
+
+        const savedModules = await moduleRes.json();
+
+        // 4️⃣ Reshape for frontend state
+        setModules({
+            year1: savedModules.filter(m => m.year === 1),
+            year2: savedModules.filter(m => m.year === 2),
+            year3: savedModules.filter(m => m.year === 3)
+        });
+
+        return course;
+    };
+
+    // FINAL SUBMIT (after timetable setup)
     const handleSubmit = async () => {
         try {
-            if (!formData.name.trim() || !formData.code.trim() || !formData.about.trim() || !formData.structure.trim() || !formData.assessments.trim()) {
-                alert("Please complete all course details first.");
+            if (!selectedCourse?._id) {
+                alert("Course not saved properly. Please restart.");
                 return;
             }
 
-            const token = localStorage.getItem("accessToken");
-
-            const courseRes = await fetch("http://localhost:5000/api/courses", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    code: formData.code,
-                    aboutTheCourse: formData.about,
-                    courseStructure: formData.structure,
-                    assessments: formData.assessments
-                })
-            });
-
-            if (!courseRes.ok) console.log("Failed to create course");
-
-            const course = await courseRes.json();
-
-            const moduleRes = await fetch(`http://localhost:5000/api/courses/${course._id}/modules`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ modules })
-            });
-
-            if (!moduleRes.ok) console.log("Failed to create modules");
-
+            // Validate lecture patterns
             const isValidTimetable = lecturePatterns.every(pattern =>
                 pattern.moduleId &&
                 pattern.year &&
@@ -579,22 +692,26 @@ export const CoursesModificationForm = () => {
                 return;
             }
 
-            const lectureRes = await fetch(`http://localhost:5000/api/lecture-patterns/course/${course._id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    academicYearStart: "2025-09-22",
-                    patterns: lecturePatterns
-                })
-            });
+            // Save lecture patterns
+            const lectureRes = await fetch(
+                `http://localhost:5000/api/lecture-patterns/course/${selectedCourse._id}`,
+                {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        academicYearStart: "2025-09-22",
+                        patterns: lecturePatterns
+                    })
+                }
+            );
 
-            if (!lectureRes.ok) console.log("Failed to create lecture patterns");
+            if (!lectureRes.ok) throw new Error("Failed to save lecture patterns");
 
+            // REFRESH COURSES
             await fetchCourses();
             setCourseAdded(true);
 
+            // RESET FORM
             setFormData({
                 name: "",
                 code: "",
@@ -614,10 +731,11 @@ export const CoursesModificationForm = () => {
             setActiveTab("add");
         } catch (err) {
             console.error(err);
-            alert("Failed to create course");
+            alert(err.message || "Failed to submit course");
         }
     };
 
+    // EDIT FLOW
     const handleEditSelect = async (course) => {
         try {
             setSelectedCourse(course);
@@ -630,6 +748,7 @@ export const CoursesModificationForm = () => {
                 assessments: course.assessments
             });
 
+            // Load modules
             const res = await fetch(`http://localhost:5000/api/modules/course/${course._id}`);
             if (!res.ok) console.log("Failed to fetch modules for editing");
 
@@ -641,39 +760,26 @@ export const CoursesModificationForm = () => {
                 year3: Array(4).fill(null).map(() => ({ ...emptyModule }))
             };
 
-            moduleData.forEach((module) => {
-                const yearKey = `year${module.year}`;
+            moduleData.forEach((mod) => {
+                const yearKey = `year${mod.year}`;
                 const emptyIndex = grouped[yearKey].findIndex(
-                    (module) => !module.name && !module.description
+                    (m) => !m.name && !m.description
                 );
-
                 if (emptyIndex !== -1) {
                     grouped[yearKey][emptyIndex] = {
-                        name: module.name,
-                        description: module.description
+                        _id: mod._id || null,
+                        name: mod.name,
+                        description: mod.description
                     };
                 }
             });
 
-            const lectureRes = await fetch(`http://localhost:5000/api/lecture-patterns/course/${course._id}`);
-
-            if (!lectureRes.ok) {
-                const patterns = await lectureRes.json();
-                setLecturePatterns(patterns);
-            }
-
-            Object.keys(grouped).forEach((year) => {
-                while (grouped[year].length < 4) {
-                    grouped[year].push({ name: "", description: "" });
-                }
-            });
-
             setModules(grouped);
+            setStep(2);
             setActiveTab("edit");
-            setStep(1);
-        } catch (error) {
-            console.error(error);
-            console.log("Failed to load course modules");
+        } catch (err) {
+            console.error(err);
+            alert("Failed to load course for editing");
         }
     };
 
@@ -686,77 +792,56 @@ export const CoursesModificationForm = () => {
 
             const token = localStorage.getItem("accessToken");
 
-            const courseRes = await fetch (`http://localhost:5000/api/courses/${selectedCourse._id}`,
+            // Update course
+            const courseRes = await fetch(`http://localhost:5000/api/courses/${selectedCourse._id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    code: formData.code,
+                    about: formData.about,
+                    structure: formData.structure,
+                    assessments: formData.assessments
+                })
+            });
+
+            if (!courseRes.ok) throw new Error("Failed to update course");
+
+            // Update modules
+            const moduleRes = await fetch(`http://localhost:5000/api/courses/${selectedCourse._id}/modules`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ modules })
+            });
+
+            if (!moduleRes.ok) throw new Error("Failed to update modules");
+
+            // Save lecture patterns
+            const lectureRes = await fetch(
+                `http://localhost:5000/api/lecture-patterns/course/${selectedCourse._id}`,
                 {
                     method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`
-                    },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        name: formData.name,
-                        code: formData.code,
-                        about: formData.about,
-                        structure: formData.structure,
-                        assessments: formData.assessments
+                        academicYearStart: "2025-09-22",
+                        patterns: lecturePatterns
                     })
                 }
             );
 
-            if (!courseRes.ok) console.log("Failed to update course");
-
-            const moduleRes = await fetch(`http://localhost:5000/api/courses/${selectedCourse._id}/modules`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ modules })
-            });
-
-            if (!moduleRes.ok) console.log("Failed to update modules");
-
-            const isValidTimetable = lecturePatterns.every(pattern =>
-                pattern.moduleId &&
-                pattern.year &&
-                pattern.weekBlock?.start &&
-                pattern.weekBlock?.end &&
-                Array.isArray(pattern.pattern) &&
-                pattern.pattern.length > 0 &&
-                pattern.pattern.every(slot =>
-                    slot.day &&
-                    slot.startTime &&
-                    typeof slot.durationHours === "number"
-                )
-            );
-
-            if (!isValidTimetable) {
-                alert("Timetable setup is incomplete or invalid. Please review all modules.");
-                return;
-            }
-
-            const lectureRes = await fetch(`http://localhost:5000/api/lecture-patterns/course/${selectedCourse._id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    academicYearStart: "2025-09-22",
-                    patterns: lecturePatterns
-                })
-            });
-
-            if (!lectureRes.ok) console.log("Failed to update lecture patterns");
+            if (!lectureRes.ok) throw new Error("Failed to update lecture patterns");
 
             await fetchCourses();
-
             setSelectedCourse(null);
             setStep(1);
             setActiveTab("edit");
-
-            console.log("Course updated successfully");
-        } catch (error) {
-            console.error(error);
-            console.log("Something went wrong while saving edits");
+            alert("Course updated successfully");
+        } catch (err) {
+            console.error(err);
+            alert(err.message || "Failed to save edits");
         }
     };
 
@@ -764,13 +849,10 @@ export const CoursesModificationForm = () => {
 
     return (
         <div className="bg-white rounded-3xl px-20 py-6 mt-4">
+            {/* TAB SELECT */}
             <div className="flex justify-center gap-8 mb-10">
                 <button
-                    onClick={() => {
-                        setActiveTab("add");
-                        setSelectedCourse(null);
-                        setStep(1);
-                    }}
+                    onClick={() => { setActiveTab("add"); setSelectedCourse(null); setStep(1); }}
                     className={`h-[52px] px-8 font-semibold flex items-center justify-center ${
                         activeTab === "add"
                             ? "border-b-4 border-[#4877DF] text-black"
@@ -779,7 +861,6 @@ export const CoursesModificationForm = () => {
                 >
                     Add Course
                 </button>
-
                 <button
                     onClick={() => setActiveTab("edit")}
                     className={`h-[52px] px-8 font-semibold flex items-center justify-center ${
@@ -792,12 +873,10 @@ export const CoursesModificationForm = () => {
                 </button>
             </div>
 
+            {/* SUCCESS MESSAGE */}
             {courseAdded && (
                 <CourseAddedSuccess
-                    onAddAnother={() => {
-                        setCourseAdded(false);
-                        setActiveTab("add");
-                    }}
+                    onAddAnother={() => { setCourseAdded(false); setActiveTab("add"); }}
                 />
             )}
 
@@ -968,8 +1047,26 @@ export const CoursesModificationForm = () => {
                         </button>
 
                         <button
-                            onClick={() => {
-                                setStep(3);
+                            onClick={async () => {
+                                if (!isStepOneValid) {
+                                    alert("Please complete course details first.");
+                                    return;
+                                }
+
+                                try {
+                                    // Save course + modules before moving to timetable
+                                    const course = await saveCourseAndModules();
+                                    if (!course || !course._id) {
+                                        alert("Failed to save course. Please try again.");
+                                        return;
+                                    }
+
+                                    setSelectedCourse(course); // so Step 3 knows the course ID
+                                    setStep(3);
+                                } catch (err) {
+                                    console.error(err);
+                                    alert("Failed to save course and modules before timetable.");
+                                }
                             }}
                             className="w-[220px] bg-[#4877DF] text-white py-3 rounded-full font-semibold"
                         >
@@ -982,6 +1079,7 @@ export const CoursesModificationForm = () => {
             {step === 3 && (
                 <>
                     <CourseTimetableSetup
+                        selectedCourse={selectedCourse}
                         modules={modules}
                         onComplete={(patterns) => {
                             setLecturePatterns(patterns);
@@ -998,11 +1096,67 @@ export const CoursesModificationForm = () => {
 
                         <button
                             onClick={async () => {
-                                if (isEditing) {
-                                    await handleEditSave();
-                                } else {
-                                    await handleSubmit();
+                                if (!selectedCourse?._id) {
+                                    alert("No course selected. Please restart.");
+                                    return;
+                                }
+
+                                try {
+                                    // Validate timetable
+                                    const isValidTimetable = lecturePatterns.every(pattern =>
+                                        pattern.moduleId &&
+                                        pattern.year &&
+                                        pattern.weekBlock?.start &&
+                                        pattern.weekBlock?.end &&
+                                        Array.isArray(pattern.pattern) &&
+                                        pattern.pattern.length > 0 &&
+                                        pattern.pattern.every(slot =>
+                                            slot.day &&
+                                            slot.startTime &&
+                                            typeof slot.durationHours === "number"
+                                        )
+                                    );
+
+                                    if (!isValidTimetable) {
+                                        alert("Timetable setup is incomplete or invalid.");
+                                        return;
+                                    }
+
+                                    // Save lecture patterns
+                                    const token = localStorage.getItem("accessToken");
+                                    const res = await fetch(
+                                        `http://localhost:5000/api/lecture-patterns/course/${selectedCourse._id}`,
+                                        {
+                                            method: "PUT",
+                                            headers: {
+                                                "Content-Type": "application/json",
+                                                Authorization: token ? `Bearer ${token}` : undefined
+                                            },
+                                            body: JSON.stringify({ academicYearStart: "2025-09-22", patterns: lecturePatterns })
+                                        }
+                                    );
+
+                                    if (!res.ok) throw new Error("Failed to save timetable.");
+
+                                    alert("Course and timetable saved successfully!");
                                     setCourseAdded(true);
+                                    setStep(1);
+                                    setSelectedCourse(null);
+                                    setFormData({
+                                        name: "",
+                                        code: "",
+                                        about: "",
+                                        assessments: "",
+                                        structure: ""
+                                    });
+                                    setModules({
+                                        year1: Array(4).fill(null).map(() => ({ ...emptyModule })),
+                                        year2: Array(4).fill(null).map(() => ({ ...emptyModule })),
+                                        year3: Array(4).fill(null).map(() => ({ ...emptyModule }))
+                                    });
+                                } catch (err) {
+                                    console.error(err);
+                                    alert(err.message);
                                 }
                             }}
                             className="w-[220px] bg-[#4877DF] text-white py-3 rounded-full font-semibold"

@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import TimetableStaff from "./Pages/TimetableStaff.jsx";
+import Timetable from "./Pages/Timetable.jsx";
 import LibraryPortal from "./pages/Libraryportal";
 import Digitalregisterstaff from "./pages/Digitalregisterstaff";
 import Librarycollection from "./pages/Librarycollection";
@@ -59,10 +59,12 @@ const App = () => {
 
             {/* Student Routes */}
             <Route path="/student/dashboard" element={<AuthGate allowedRoles={["student"]}><StudentDashboard /></AuthGate>} />
+            <Route path="/student/timetable" element={<AuthGate allowedRoles={["student"]}><Timetable /></AuthGate>}></Route>
 
             {/* Tutor Routes */}
             <Route path="/tutor/dashboard" element={<AuthGate allowedRoles={["tutor"]}><TutorDashboard /></AuthGate>} />
             <Route path="/tutor/moodle" element={<AuthGate allowedRoles={["tutor"]}><Moodle /></AuthGate>} />
+            <Route path="/tutor/timetable" element={<AuthGate allowedRoles={["tutor"]}><Timetable /></AuthGate>}></Route>
             <Route path="/tutor/pending-approvals" element={<AuthGate allowedRoles={["tutor"]}><PendingApprovals /></AuthGate>} />
 
             {/* Admin Routes */}
@@ -72,7 +74,6 @@ const App = () => {
             <Route path="/admin/policy-modification" element={<PolicyModification />}></Route>
 
           <Route path="/courses" element={<Courses />}></Route>
-          <Route path="/timetablestaff" element={<TimetableStaff />}></Route>
           <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>
           <Route path="/digitalregisterstaff" element={<Digitalregisterstaff />}></Route>
           <Route path="/librarycollection" element={<Librarycollection />}></Route>

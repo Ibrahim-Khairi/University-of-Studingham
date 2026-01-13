@@ -11,6 +11,7 @@ import moduleRoutes from "./routes/moduleRoutes.js"
 import policyRoutes from "./routes/policyRoutes.js";
 import tutorRoutes from "./routes/tutorRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import lecturePatternsRoutes from "./routes/lecturePatternsRoutes.js";
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.use("/api/modules", moduleRoutes);
 app.use("/api/policies", policyRoutes);
 app.use("/api/tutor", tutorRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/lecture-patterns", lecturePatternsRoutes);
 
 app.get("/", (req, res) => {
   res.send("API running successfully.");

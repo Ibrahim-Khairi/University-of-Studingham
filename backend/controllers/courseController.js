@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Course from "../models/Course.js";
 import Module from "../models/Module.js";
 import ActivityLog from "../models/ActivityLog.js";
@@ -71,43 +72,62 @@ export const replaceCourseModules = async (req, res) => {
 
     if (!modules) return res.status(400).json({ message: "Modules data required" });
 
-    const session = await mongoose.startSession();
-    session.startTransaction();
-
     try {
-        await Module.deleteMany({ courseId }).session(session);
+        // Remove all existing modules for this course
+        await Module.deleteMany({ courseId });
 
-        const formattedModules = [];
+        // Normalize incoming modules into a flat array with year property
+        let incoming = [];
 
-        Object.entries(modules).forEach(([yearKey, moduleList]) => {
-            const year = Number(yearKey.replace("year", ""));
-
-            moduleList.forEach((module, index) => {
-                if (module.name && module.description) {
-                    formattedModules.push({
-                        name: module.name,
-                        description: module.description,
-                        year,
-                        courseId,
-                        tutorId: null,
-                        startWeek: index * 8 + 1,
-                        endWeek: index * 8 + 8
-                    });
+        if (Array.isArray(modules)) {
+            // Already flattened array
+            incoming = modules;
+        } else if (typeof modules === "object" && modules !== null) {
+            // Object shape: { year1: [...], year2: [...], year3: [...] }
+            Object.entries(modules).forEach(([yearKey, moduleList]) => {
+                const year = Number(String(yearKey).replace("year", ""));
+                if (Array.isArray(moduleList)) {
+                    moduleList.forEach(m => incoming.push({ ...m, year }));
                 }
             });
-        });
-
-        if (formattedModules.length > 0) {
-            await Module.insertMany(formattedModules, { session });
         }
 
-        await session.commitTransaction();
-        session.endSession();
+        // Build formatted modules with defaults and computed week ranges per index per year
+        const formattedModules = [];
 
-        res.status(200).json({ message: "Modules replaced successfully" });
+        // Track index within each year to compute start/endWeek segments of 8 weeks
+        const yearCounters = { 1: 0, 2: 0, 3: 0 };
+
+        for (const m of incoming) {
+            const name = m?.name?.trim?.();
+            const description = m?.description?.trim?.();
+            const year = Number(m?.year);
+            if (!name || !description || ![1, 2, 3].includes(year)) continue;
+
+            const idx = yearCounters[year] ?? 0;
+            const startWeek = idx * 8 + 1;
+            const endWeek = idx * 8 + 8;
+            yearCounters[year] = idx + 1;
+
+            formattedModules.push({
+                name,
+                description,
+                year,
+                courseId,
+                tutorId: null,
+                startWeek,
+                endWeek
+            });
+        }
+
+        let inserted = [];
+        if (formattedModules.length > 0) {
+            inserted = await Module.insertMany(formattedModules);
+        }
+
+        // Respond with the saved modules array so frontend can reshape by year
+        res.status(200).json(inserted);
     } catch (error) {
-        await session.abortTransaction();
-        session.endSession();
         res.status(500).json({ message: "Failed to replace modules" });
     }
 }

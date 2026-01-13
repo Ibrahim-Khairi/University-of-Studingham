@@ -365,7 +365,7 @@ export const refresh = async (req, res) => {
             const accessToken = jwt.sign({
                 userId: payload.userId,
                 role: payload.role
-            }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
+            }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "30d" });
 
             res.json({ accessToken });
         });

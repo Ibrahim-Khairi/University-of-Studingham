@@ -6,14 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/courseController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/courseController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/moduleController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/moduleController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Module.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/courseRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/courseRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/moduleRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/moduleRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/lecturePatternsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/lecturePatternsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Lecture.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Lecture.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/utils/generateAccessToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/utils/generateAccessToken.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CourseTimetableSetup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CourseTimetableSetup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Timetablestaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/TimetableStaff.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/TimetableStaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Timetable.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +176,8 @@
       <workItem from="1767130842361" duration="145832000" />
       <workItem from="1767716443576" duration="4000" />
       <workItem from="1767787166373" duration="49931000" />
-      <workItem from="1768050759436" duration="37588000" />
+      <workItem from="1768050759436" duration="53514000" />
+      <workItem from="1768312127000" duration="3824000" />
     </task>
     <servers />
   </component>

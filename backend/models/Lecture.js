@@ -14,7 +14,8 @@ const lectureSchema = new mongoose.Schema({
     startTime: { type: String, required: true },
     endTime: { type: String, required: true },
 
-    room: { type: String, required: true },
+    // Room may be assigned later; make it optional with a null default
+    room: { type: String, default: null },
 }, { timestamps: true });
 
 export default mongoose.model("Lecture", lectureSchema);
