@@ -4,10 +4,10 @@ import axios from "axios";
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-<<<<<<< HEAD
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // 1. Run on app load (Handle Refresh)
   useEffect(() => {
     const fetchMe = async () => {
       const token = localStorage.getItem("accessToken");
@@ -20,10 +20,9 @@ export const AuthProvider = ({ children }) => {
         const res = await axios.get("/api/auth/me", {
           headers: { Authorization: `Bearer ${token}` },
         });
-
         setUser(res.data);
       } catch (error) {
-        console.error(error);
+        console.error("Auth initialization failed:", error);
         logout();
       } finally {
         setLoading(false);
@@ -33,64 +32,29 @@ export const AuthProvider = ({ children }) => {
     fetchMe();
   }, []);
 
-  // --- LOGOUT FUNCTIONALITY ---
+  // 2. LOGIN FUNCTION (This fixes your issue)
+  const login = (userData) => {
+    // Save tokens to storage
+    localStorage.setItem("accessToken", userData.accessToken);
+    localStorage.setItem("refreshToken", userData.refreshToken);
+
+    setUser(userData);
+    setLoading(false);
+  };
+
+  // 3. LOGOUT FUNCTION
   const logout = () => {
-    // 1. Clear Storage
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
-
-    // 2. Clear State
     setUser(null);
-
-    // 3. Force a hard redirect to Login
     window.location.href = "/login";
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useAuth = () => useContext(AuthContext);
-=======
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchMe = async () => {
-            const token = localStorage.getItem("accessToken");
-            if (!token) {
-                setLoading(false);
-                return;
-            }
-
-            try {
-                const res = await axios.get("/api/auth/me", {
-                    headers: {Authorization: `Bearer ${token}`},
-                });
-
-                setUser(res.data);
-            } catch (error) {
-                console.error(error);
-                localStorage.removeItem("accessToken");
-                localStorage.removeItem("refreshToken");
-                setUser(null);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchMe();
-    }, []);
-
-    return (
-        <AuthContext.Provider value={{ user, loading }}>
-            { children }
-        </AuthContext.Provider>
-    )
-}
-
-export const useAuth = () => useContext(AuthContext);
->>>>>>> ccc4e0b3ad743e638bdea713ed668718b135df5a

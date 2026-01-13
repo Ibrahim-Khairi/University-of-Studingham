@@ -1,24 +1,30 @@
 import express from "express";
-<<<<<<< HEAD
+import { authMiddleware } from "../middleware/authMiddleware.js";
+import uploadCurriculum from "../middleware/uploadCurriculum.js";
 import {
   createModules,
   getModulesByCourse,
   deleteModulesByCourse,
   createModulesByBulk,
+  toggleVisibility,
+  updateCurriculum,
 } from "../controllers/moduleController.js";
-=======
-import { createModules, getModulesByCourse, deleteModulesByCourse, createModulesByBulk } from "../controllers/moduleController.js";
->>>>>>> ccc4e0b3ad743e638bdea713ed668718b135df5a
 
 const router = express.Router();
 
+// --- Existing Routes ---
 router.post("/", createModules);
 router.get("/course/:courseId", getModulesByCourse);
 router.delete("/course/:courseId", deleteModulesByCourse);
 router.post("/bulk", createModulesByBulk);
 
-<<<<<<< HEAD
+router.patch("/:moduleId/visibility", authMiddleware, toggleVisibility);
+
+router.post(
+  "/:moduleId/curriculum",
+  authMiddleware,
+  uploadCurriculum.any(),
+  updateCurriculum
+);
+
 export default router;
-=======
-export default router;
->>>>>>> ccc4e0b3ad743e638bdea713ed668718b135df5a
