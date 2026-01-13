@@ -1,8 +1,156 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DashboardPanel from "../components/Dashboardcomponents/DashboardPanel";
 import DashboardSearch from "../components/Dashboardcomponents/DashboardSearch";
+import { useAuth } from "../context/AuthContext.jsx";
+import axios from "axios";
 import { Link } from "react-router-dom";
+
+const formatActivityTime = (date) => {
+    const d = new Date(date);
+    const now = new Date();
+
+    const isToday = d.toDateString(0) === now.toDateString();
+
+    if (isToday) {
+        return d.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+    }
+
+    return d.toLocaleTimeString();
+};
+
 const AdminDashboard = () => {
+    const { user, loading } = useAuth();
+
+    const [adminProfile, setAdminProfile] = useState(null);
+    const [adminLoading, setAdminLoading] = useState(true);
+    const [activities, setActivities] = useState([]);
+    const [loadingActivity, setLoadingActivity] = useState(true);
+    const [latestAction, setLatestAction] = useState(null);
+    const [platformStatus, setPlatformStatus] = useState({
+        students: 0,
+        tutors: 0,
+        admins: 0,
+        courses: 0
+    });
+    const [recentRegistrations, setRecentRegistrations] = useState([]);
+    const [loadingRegistrations, setLoadingRegistrations] = useState(true);
+
+    useEffect(() => {
+        if (!user || user.role !== "admin") return;
+
+        const fetchAdminProfile = async () => {
+            try {
+                const token = localStorage.getItem("accessToken");
+                const res = await axios.get("/api/admin/profile", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                setAdminProfile(res.data);
+            } catch (error) {
+                console.error("Failed to fetch admin profile", error);
+            } finally {
+                setAdminLoading(false);
+            }
+        };
+
+        fetchAdminProfile();
+    }, [user]);
+
+    useEffect(() => {
+        const fetchRecentActivity = async () => {
+            try {
+                const token = localStorage.getItem("accessToken");
+
+                const res = await axios.get("/api/admin/recent-activity", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                setActivities(res.data);
+            } catch (error) {
+                console.error("Failed to load recent activity", error);
+            } finally {
+                setLoadingActivity(false);
+            }
+        };
+
+        fetchRecentActivity();
+    }, []);
+
+    useEffect(() => {
+        if (!user || user.role !== "admin") return;
+
+        const fetchLatestAction = async () => {
+            try {
+                const token = localStorage.getItem("accessToken");
+
+                const res = await axios.get("/api/admin/latest-action", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                setLatestAction(res.data);
+            } catch (error) {
+                console.error("Failed to fetch Latest action", error);
+            }
+        }
+
+        fetchLatestAction();
+    }, [user]);
+
+    useEffect(() => {
+        if (!user || user.role !== "admin") return;
+
+        const fetchPlatformStatus = async () => {
+            try {
+                const token = localStorage.getItem("accessToken");
+
+                const res = await axios.get("http://localhost:5000/api/admin/platform-status", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                console.log("Platform status response: ", res.data);
+                setPlatformStatus(res.data);
+            } catch (error) {
+                console.error("Failed to fetch platform status", error);
+            }
+        }
+
+        fetchPlatformStatus();
+    }, [user]);
+
+    useEffect(() => {
+        if (!user || user.role !== "admin") return;
+
+        const fetchRecentRegistrations = async () => {
+            try {
+                const token = localStorage.getItem("accessToken");
+
+                const res = await axios.get("/api/admin/recent-registrations", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                setRecentRegistrations(res.data);
+            } catch (error) {
+                console.error("Failed to fetch registrations", error);
+            } finally {
+                setLoadingRegistrations(false);
+            }
+        };
+
+        fetchRecentRegistrations();
+    }, [user]);
     return (
         <div className="bg-[#EFEFEF]   ">
             <div className=" grid grid-cols-1 lg:grid-cols-[0.4fr_1.7fr] gap-4 p-5 ">
@@ -15,83 +163,58 @@ const AdminDashboard = () => {
                     <div>
                         <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.7fr] gap-8">
                             <div className="bg-[#4C86A8] p-6 rounded-3xl mt-5">
-                                <Link
-                                    to="/"
-                                    className="text-white border-b-3 text-[18px] inline-block  mb-2"
-                                >
-                                    {" "}
-                                    Administrator Details
-                                </Link>
-                                <p className="text-white text-[18px] font-medium">
-                                    Platform Administrator
-                                </p>
-                                <p className="text-white text-[18px] font-medium">
-                                    ADM_03
-                                </p>
-                                <p className="text-white text-[18px] font-medium">
-                                    Full Permissions
-                                </p>
-                                <p className="text-white text-[18px] font-medium">
-                                    Last Action: Updated Course List
-                                </p>
+                                {loading || adminLoading ? (
+                                    <p className="text-white text-[18px] font-medium">Loading admin details...</p>
+                                ) : (
+                                    <>
+                                        <p className="text-white border-b-3 text-[18px] inline-block mb-2">
+                                            Administrator Details
+                                        </p>
+                                        <p className="text-white text-[18px] font-medium">
+                                            {adminProfile.firstName} {adminProfile.middleName} {adminProfile.lastName}
+                                        </p>
+                                        <p className="text-white text-[18px] font-medium">
+                                            {`ADM-${adminProfile._id.slice(-4).toUpperCase()}`}
+                                        </p>
+                                        <p className="text-white text-[18px] font-medium">
+                                            Full Permissions
+                                        </p>
+                                        <p className="text-white text-[18px] font-medium">
+                                            Last Action: {latestAction?.description || "No actions yet"}
+                                        </p>
+                                    </>
+                                )}
                             </div>
                             <div className="bg-white rounded-3xl p-5 mt-5">
                                 <div className="flex items-center">
-                                    <h3 className="text-[35px] font-bold">Recent Updates</h3>
+                                    <h3 className="text-[35px] font-bold">Recent Activities</h3>
                                 </div>
 
                                 <div className="space-y-1">
-                                    <div className="flex items-center gap-2">
-                                        <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" clipRule="evenodd" d="M15.2558 1.13333C14.9959 0.781444 14.6588 0.495835 14.2713 0.299123C13.8838 0.102411 13.4565 0 13.0233 0H2.7907C2.05056 0 1.34073 0.298511 0.817377 0.829864C0.294019 1.36122 0 2.08189 0 2.83333V14.1667C0 14.9181 0.294019 15.6388 0.817377 16.1701C1.34073 16.7015 2.05056 17 2.7907 17H13.0233C13.4565 17 13.8838 16.8976 14.2713 16.7009C14.6588 16.5042 14.9959 16.2186 15.2558 15.8667L19.4419 10.2C19.8042 9.70956 20 9.11305 20 8.5C20 7.88695 19.8042 7.29044 19.4419 6.8L15.2558 1.13333Z" fill="black"/>
-                                        </svg>
+                                    {loadingActivity ? (
                                         <p className="text-[16px] font-medium">
-                                            Course ‘Computer Science (CS301)’ updated
+                                            Loading Activity...
                                         </p>
-                                        <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="3.5" cy="3.5" r="3.5" fill="black"/>
-                                        </svg>
-                                        <span className="text-[16px] font-medium">10:15 AM</span>
-                                    </div>
-
-                                    <div className="flex items-center gap-2">
-                                        <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" clipRule="evenodd" d="M15.2558 1.13333C14.9959 0.781444 14.6588 0.495835 14.2713 0.299123C13.8838 0.102411 13.4565 0 13.0233 0H2.7907C2.05056 0 1.34073 0.298511 0.817377 0.829864C0.294019 1.36122 0 2.08189 0 2.83333V14.1667C0 14.9181 0.294019 15.6388 0.817377 16.1701C1.34073 16.7015 2.05056 17 2.7907 17H13.0233C13.4565 17 13.8838 16.8976 14.2713 16.7009C14.6588 16.5042 14.9959 16.2186 15.2558 15.8667L19.4419 10.2C19.8042 9.70956 20 9.11305 20 8.5C20 7.88695 19.8042 7.29044 19.4419 6.8L15.2558 1.13333Z" fill="black"/>
-                                        </svg>
+                                    ) : activities.length === 0 ? (
                                         <p className="text-[16px] font-medium">
-                                            New Tutor Registration Request
+                                            No recent activity
                                         </p>
-                                        <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="3.5" cy="3.5" r="3.5" fill="black"/>
-                                        </svg>
-                                        <span className="text-[16px] font-medium">11:47 AM</span>
-                                    </div>
-
-                                    <div className="flex items-center gap-2">
-                                        <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" clipRule="evenodd" d="M15.2558 1.13333C14.9959 0.781444 14.6588 0.495835 14.2713 0.299123C13.8838 0.102411 13.4565 0 13.0233 0H2.7907C2.05056 0 1.34073 0.298511 0.817377 0.829864C0.294019 1.36122 0 2.08189 0 2.83333V14.1667C0 14.9181 0.294019 15.6388 0.817377 16.1701C1.34073 16.7015 2.05056 17 2.7907 17H13.0233C13.4565 17 13.8838 16.8976 14.2713 16.7009C14.6588 16.5042 14.9959 16.2186 15.2558 15.8667L19.4419 10.2C19.8042 9.70956 20 9.11305 20 8.5C20 7.88695 19.8042 7.29044 19.4419 6.8L15.2558 1.13333Z" fill="black"/>
-                                        </svg>
-                                        <p className="text-[16px] font-medium">
-                                            System Policy Section Updated
-                                        </p>
-                                        <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="3.5" cy="3.5" r="3.5" fill="black"/>
-                                        </svg>
-                                        <span className="text-[16px] font-medium">Yesterday</span>
-                                    </div>
-
-                                    <div className="flex items-center gap-2">
-                                        <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" clipRule="evenodd" d="M15.2558 1.13333C14.9959 0.781444 14.6588 0.495835 14.2713 0.299123C13.8838 0.102411 13.4565 0 13.0233 0H2.7907C2.05056 0 1.34073 0.298511 0.817377 0.829864C0.294019 1.36122 0 2.08189 0 2.83333V14.1667C0 14.9181 0.294019 15.6388 0.817377 16.1701C1.34073 16.7015 2.05056 17 2.7907 17H13.0233C13.4565 17 13.8838 16.8976 14.2713 16.7009C14.6588 16.5042 14.9959 16.2186 15.2558 15.8667L19.4419 10.2C19.8042 9.70956 20 9.11305 20 8.5C20 7.88695 19.8042 7.29044 19.4419 6.8L15.2558 1.13333Z" fill="black"/>
-                                        </svg>
-                                        <p className="text-[16px] font-medium">
-                                            News Announcement Published
-                                        </p>
-                                        <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="3.5" cy="3.5" r="3.5" fill="black"/>
-                                        </svg>
-                                        <span className="text-[16px] font-medium">12th November</span>
-                                    </div>
+                                    ) : (
+                                        activities.map(activity => (
+                                            <div
+                                                key={activity._id}
+                                                className="flex items-center gap-2"
+                                            >
+                                                <img src="/Images/Icons/recentUpdatesPointer.svg" alt="Pointer"/>
+                                                <p className="text-[16px] font-medium">
+                                                    {activity.description}
+                                                </p>
+                                                <img src="/Images/Icons/Ellipse%2049.svg" alt="Ellipse"/>
+                                                <span className="text-[16px] font-medium">{formatActivityTime(activity.createdAt)}</span>
+                                            </div>
+                                            )
+                                        )
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -110,7 +233,7 @@ const AdminDashboard = () => {
                                     </svg>
                                     <div>
                                         <p className="text-sm text-gray-500">Students Registered</p>
-                                        <p className="text-[30px] font-bold text-black">7,300</p>
+                                        <p className="text-[30px] font-bold text-black">{platformStatus.students}</p>
                                     </div>
                                 </div>
 
@@ -124,7 +247,7 @@ const AdminDashboard = () => {
                                     </svg>
                                     <div>
                                         <p className="text-sm text-gray-500">Tutors Registered</p>
-                                        <p className="text-[30px] font-bold text-black">300</p>
+                                        <p className="text-[30px] font-bold text-black">{platformStatus.tutors}</p>
                                     </div>
                                 </div>
 
@@ -137,7 +260,7 @@ const AdminDashboard = () => {
                                     </svg>
                                     <div>
                                         <p className="text-sm text-gray-500">Admins Registered</p>
-                                        <p className="text-[30px] font-bold text-black">15</p>
+                                        <p className="text-[30px] font-bold text-black">{platformStatus.admins}</p>
                                     </div>
                                 </div>
 
@@ -150,71 +273,39 @@ const AdminDashboard = () => {
                                     </svg>
                                     <div>
                                         <p className="text-sm text-gray-500">Courses Available</p>
-                                        <p className="text-[30px] font-bold text-black">26</p>
+                                        <p className="text-[30px] font-bold text-black">{platformStatus.courses}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="bg-white rounded-3xl p-5 mt-5">
-                            <h3 className="text-[26px] font-bold mb-6">Recent Registrations</h3>
+                            <h3 className="text-[26px] font-bold mb-6">Recent Registration Requests</h3>
 
-                            <div className="space-y-9">
-                                <div className="flex items-center gap-6">
-                                    <div className="w-[100px] h-[100px] rounded-full bg-gray-300"></div>
+                            {loadingRegistrations ? (
+                                <p className="text-[16px] font-medium">Loading registrations...</p>
+                            ) : recentRegistrations.length === 0 ? (
+                                <p className="text-[16px] font-medium">No recent registrations</p>
+                            ) : (
+                                <div className="space-y-9">
+                                    {recentRegistrations.map((registration) => (
+                                        <div key={registration._id} className="flex items-center gap-6">
+                                            <div className="w-[100px] h-[100px] rounded-full bg-gray-300"></div>
 
-                                    <div>
-                                        <p className="text-[26px] font-bold text-black">David Williams</p>
-                                        <p className="text-sm text-gray-500 font-bold">
-                                            Student, Computer Science (CS-301)
-                                        </p>
-                                        <p className="text-sm text-gray-500 font-bold">
-                                            davidwilliams@gmail.com
-                                        </p>
-                                    </div>
+                                            <div>
+                                                <p className="text-[26px] font-bold text-black">{registration.meta?.name || "Unknown User"}</p>
+                                                <p className="text-sm text-gray-500 font-bold">
+                                                    {registration.meta?.role || "Unknown Role"}, {registration.meta?.courseCode
+                                                    ? `${registration.meta.courseName} (${registration.meta.courseCode})`
+                                                    : ""}
+                                                </p>
+                                                <p className="text-sm text-gray-500 font-bold">
+                                                    {registration.meta?.email || "No email"}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-
-                                <div className="flex items-center gap-6">
-                                    <div className="w-[100px] h-[100px] rounded-full bg-gray-300"></div>
-
-                                    <div>
-                                        <p className="text-[26px] font-bold text-black">Sarah Johnson</p>
-                                        <p className="text-sm text-gray-500 font-bold">
-                                            Student, Software Engineering
-                                        </p>
-                                        <p className="text-sm text-gray-500 font-bold">
-                                            sarahjohnson@gmail.com
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center gap-6">
-                                    <div className="w-[100px] h-[100px] rounded-full bg-gray-300"></div>
-
-                                    <div>
-                                        <p className="text-[26px] font-bold text-black">Michael Brown</p>
-                                        <p className="text-sm text-gray-500 font-bold">
-                                            Student, Information Technology
-                                        </p>
-                                        <p className="text-sm text-gray-500 font-bold">
-                                            michaelbrown@gmail.com
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center gap-6">
-                                    <div className="w-[100px] h-[100px] rounded-full bg-gray-300"></div>
-
-                                    <div>
-                                        <p className="text-[26px] font-bold text-black">Emily Carter</p>
-                                        <p className="text-sm text-gray-500 font-bold">
-                                            Student, Data Science
-                                        </p>
-                                        <p className="text-sm text-gray-500 font-bold">
-                                            emilycarter@gmail.com
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>

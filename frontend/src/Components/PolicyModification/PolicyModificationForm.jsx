@@ -36,17 +36,22 @@ const PolicyModificationForm = () => {
 
     const handleSave = async () => {
         try {
+            const token = localStorage.getItem("accessToken");
+
             const res = await fetch(`http://localhost:5000/api/policies/${activeTab}`,{
                 method: "PUT",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({ content: policies[activeTab] })
             });
 
             if (!res.ok) {
                 const errorData = await res.json();
+                console.error(errorData);
                 alert("There was an error updating the policy");
+                return;
             }
 
             const updatedPolicy = await res.json();

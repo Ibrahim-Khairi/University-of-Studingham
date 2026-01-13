@@ -14,7 +14,7 @@ import Mentorship from "./pages/Mentorship";
 import ScrollToTop from "./ScrollToTop";
 
 import AuthGate from "./Pages/AuthGate.jsx";
-
+import TimetableStaff from "./pages/Timetablestaff";
 import Home from "./pages/Home";
 import Community from "./pages/Community";
 import Courses from "./pages/Courses";
@@ -124,7 +124,7 @@ const App = () => {
           ></Route>
 
           <Route path="/courses" element={<Courses />}></Route>
-          <Route path="/timetablestaff" element={<Timetablestaff />}></Route>
+          <Route path="/timetablestaff" element={<TimetableStaff />}></Route>
           <Route path="/LibraryPortal" element={<LibraryPortal />}></Route>
           <Route
             path="/digitalregisterstaff"

@@ -9,6 +9,7 @@ import Course from "../models/Course.js";
 import Module from "../models/Module.js";
 import RefreshToken from "../models/RefreshToken.js";
 import { generateAccessToken } from "../utils/generateAccessToken.js";
+import ActivityLog from "../models/ActivityLog.js";
 
 export const registerStudent = async (req, res) => {
   // Account fields:
@@ -75,12 +76,10 @@ export const registerStudent = async (req, res) => {
     // Password validation
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
     if (!passwordRegex.test(password))
-      return res
-        .status(400)
-        .json({
-          message:
-            "Password must be 8 characters long and it must contain uppercase, lowercase, number, and symbol",
-        });
+      return res.status(400).json({
+        message:
+          "Password must be 8 characters long and it must contain uppercase, lowercase, number, and symbol",
+      });
 
     // Step 3: User exists?
     const existingUser = await User.findOne({ email });
@@ -130,20 +129,8 @@ export const registerStudent = async (req, res) => {
 };
 
 export const registerTutor = async (req, res) => {
-  // Account fields:
-  // Personal Detail -> Firstname, middlename, lastname, dob, gender, email address, phone number, picture
-  // Academic Detail -> Course, modules
-  // Account Creation -> Create password
-  // Awaiting Approval
-  console.log("RAW req.body:", req.body);
-  console.log("TYPE CHECK:", {
-    year: typeof req.body.year,
-    modules: req.body.modules,
-    modulesType: typeof req.body.modules,
-    isArray: Array.isArray(req.body.modules),
-  });
-  // Step 1: Field extraction
   try {
+    // 1. Field extraction
     let {
       email,
       password,
@@ -158,13 +145,14 @@ export const registerTutor = async (req, res) => {
       modules,
     } = req.body || {};
 
-    // Normalization
+    // 2. Data Normalization
     year = Number(year);
+    // Ensure modules is an array (handles cases where frontend might send a single string)
     if (modules && !Array.isArray(modules)) {
       modules = [modules];
     }
 
-    // Step 2: Validation
+    // 3. Basic Validation (Guard Clauses)
     if (
       !email ||
       !password ||
@@ -174,16 +162,15 @@ export const registerTutor = async (req, res) => {
       !gender ||
       !phoneNumber ||
       !courseId ||
-      Number.isNaN(Number(year)) ||
+      Number.isNaN(year) ||
       !modules ||
       modules.length !== 2
-    )
-      return res
-        .status(400)
-        .json({
-          message:
-            "Missing required fields and exactly 2 modules must be selected.",
-        });
+    ) {
+      return res.status(400).json({
+        message:
+          "Missing required fields and exactly 2 modules must be selected.",
+      });
+    }
 
     // Name validation
     const nameRegex = /^[A-Za-z]+([ '-][A-Za-z]+)*$/;
@@ -194,36 +181,32 @@ export const registerTutor = async (req, res) => {
     if (!nameRegex.test(lastName))
       return res.status(400).json({ message: "Invalid last name." });
 
-    // Email validation
+    // Email & Phone validation
     if (!validator.isEmail(email))
       return res.status(400).json({ message: "Invalid email address." });
-
-    // Phone Number validation
     const phoneRegex = /^\+?[0-9\s]{10,15}$/;
     if (!phoneRegex.test(phoneNumber))
       return res.status(400).json({ message: "Invalid phone number" });
 
-    // Date Of Birth validation
+    // Age validation (Must be at least 16)
     const dob = new Date(dateOfBirth);
     const age = (Date.now() - dob.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
     if (isNaN(dob.getTime()) || age < 16)
       return res.status(400).json({ message: "Invalid date of birth" });
 
-    // Password validation
+    // Password complexity validation
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-    if (!passwordRegex.test(password))
-      return res
-        .status(400)
-        .json({
-          message:
-            "Password must be 8 characters long and it must contain uppercase, lowercase, number, and symbol",
-        });
+    if (!passwordRegex.test(password)) {
+      return res.status(400).json({
+        message:
+          "Password must be 8 characters long and contain uppercase, lowercase, number, and symbol",
+      });
+    }
 
-    // Year validation
-    if (!Number(year) || ![1, 2, 3].includes(Number(year)))
-      return res.status(400).json({ message: "Invalid year" });
+    if (![1, 2, 3].includes(year))
+      return res.status(400).json({ message: "Invalid year selection" });
 
-    // Step 3: User exists?
+    // 4. Database Checks (Existence)
     const existingUser = await User.findOne({ email });
     if (existingUser)
       return res.status(409).json({ message: "Email already registered" });
@@ -232,48 +215,37 @@ export const registerTutor = async (req, res) => {
     if (!course)
       return res.status(400).json({ message: "Invalid course selected" });
 
-    const selectedModules = await Module.find({
-      _id: { $in: modules },
-    });
+    // Check if the 2 selected modules exist and belong to the correct course
+    const selectedModules = await Module.find({ _id: { $in: modules } });
     if (selectedModules.length !== 2)
       return res.status(400).json({ message: "Invalid module selection" });
 
-    const [moduleA, moduleB] = selectedModules;
-
-    if (
-      !moduleA.courseId.equals(course._id) ||
-      !moduleB.courseId.equals(course._id)
-    )
-      return res
-        .status(400)
-        .json({
-          message: "Selected modules do not belong to the chosen course",
+    for (const mod of selectedModules) {
+      if (!mod.courseId.equals(course._id)) {
+        return res.status(400).json({
+          message: `Module ${mod.name} does not belong to the selected course`,
         });
+      }
+      if (mod.tutorId) {
+        return res.status(409).json({
+          message: `Module ${mod.name} is already assigned to another tutor`,
+        });
+      }
+    }
 
-    if (moduleA.tutorId || moduleB.tutorId)
-      return res
-        .status(409)
-        .json({ message: "One or more selected modules are already assigned" });
-
-    // 2 Modules validation
-    const moduleIds = [moduleA._id, moduleB._id];
-    if (moduleIds.length !== 2)
-      return res.status(400).json({ message: "Select exactly 2 modules" });
-
-    // Step 4: Hash password
+    // 5. Create Account Logic
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Step 5: Create user with role
+    // Create base User
     const user = await User.create({
       email,
       password: hashedPassword,
       role: "tutor",
     });
 
-    // Step 6: Create Image
     const imagePath = req.file ? `/uploads/tutors/${req.file.filename}` : null;
 
-    // Step 7: Create profile
+    // Create Tutor Profile
     const tutor = await Tutor.create({
       userId: user._id,
       firstName,
@@ -284,36 +256,53 @@ export const registerTutor = async (req, res) => {
       phoneNumber,
       picture: imagePath,
       courseId: course._id,
-      year: Number(year),
-      modules: [moduleA._id, moduleB._id],
+      year: year,
+      modules: modules, // IDs of the two modules
     });
 
-    // Step 8: Update module availability and tutor assignment
-    // Implies the concept of atomic cleanup. If 2 tutors click submit at the same time, one wins & the other loses. Validation passes but database state changed before update
-    // This causes a tutor account with no modules, a user who can login but is broken and then will have to be manually cleaned up later
-    // Therefore, this is rolling back tutor + user if the race condition did happen
+    // 6. Assign Modules to Tutor (Atomic Check)
+    // We only update if tutorId is currently null to prevent race conditions
     const updatedResult = await Module.updateMany(
-      {
-        _id: { $in: modules },
-        tutorId: null,
-      },
+      { _id: { $in: modules }, tutorId: null },
       { tutorId: tutor._id }
     );
 
+    // If someone else took the modules between our check and our update:
     if (updatedResult.modifiedCount !== 2) {
+      // Rollback
       await Tutor.findByIdAndDelete(tutor._id);
       await User.findByIdAndDelete(user._id);
-
-      return res
-        .status(409)
-        .json({ message: "One or more modules were taken. Please retry. " });
+      return res.status(409).json({
+        message:
+          "One or more modules were just taken by another user. Please retry.",
+      });
     }
 
-    // Step 9: Respond with success
-    res.status(201).json({ message: "Tutor registered successfully." });
+    // 7. Log the Activity
+    // Ensure ActivityLog is imported at the top of your file
+    if (typeof ActivityLog !== "undefined") {
+      await ActivityLog.create({
+        actor: user._id,
+        action: "TUTOR_REGISTRATION",
+        target: { id: user._id, model: "User" },
+        description: "New Tutor registration request",
+        meta: {
+          name: `${tutor.firstName} ${tutor.lastName}`,
+          email: user.email,
+          courseName: course.name,
+        },
+      });
+    }
+
+    // 8. Final Success Response
+    res.status(201).json({
+      message: "Tutor registered successfully. Awaiting admin approval.",
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Registration failed." });
+    console.error("Tutor Registration Error:", error);
+    res
+      .status(500)
+      .json({ message: "Registration failed due to server error." });
   }
 };
 
@@ -371,12 +360,10 @@ export const registerAdmin = async (req, res) => {
     // Password validation
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
     if (!passwordRegex.test(password))
-      return res
-        .status(400)
-        .json({
-          message:
-            "Password must be 8 characters long and it must contain uppercase, lowercase, number, and symbol",
-        });
+      return res.status(400).json({
+        message:
+          "Password must be 8 characters long and it must contain uppercase, lowercase, number, and symbol",
+      });
 
     // Step 3: User exists?
     const existingUser = await User.findOne({ email });

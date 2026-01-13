@@ -10,11 +10,11 @@ import courseRoutes from "./routes/courseRoutes.js";
 import moduleRoutes from "./routes/moduleRoutes.js";
 import policyRoutes from "./routes/policyRoutes.js";
 import tutorRoutes from "./routes/tutorRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 dotenv.config();
-const app = express();
 
-// ONLY ONE CORS BLOCK HERE - include PATCH
+const app = express();
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -36,7 +36,8 @@ app.use("/api/approval", approvalRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/modules", moduleRoutes);
 app.use("/api/policies", policyRoutes);
-app.use("/api/tutors", tutorRoutes);
+app.use("/api/tutor", tutorRoutes);
+app.use("/api/admin", adminRoutes);
 
 app.get("/", (req, res) => {
   res.send("API running successfully.");

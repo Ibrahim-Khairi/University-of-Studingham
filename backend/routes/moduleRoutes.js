@@ -15,8 +15,8 @@ const router = express.Router();
 // --- Existing Routes ---
 router.post("/", createModules);
 router.get("/course/:courseId", getModulesByCourse);
-router.delete("/course/:courseId", deleteModulesByCourse);
-router.post("/bulk", createModulesByBulk);
+// router.delete("/course/:courseId", deleteModulesByCourse);
+// router.post("/bulk", createModulesByBulk);
 
 router.patch("/:moduleId/visibility", authMiddleware, toggleVisibility);
 

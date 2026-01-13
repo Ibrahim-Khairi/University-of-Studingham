@@ -1,0 +1,6 @@
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTVhYzAxMDdiZTE2MzFhYzNhYWJlMTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Njc4MTY0OTEsImV4cCI6MTc2NzgxNzM5MX0.jvTv68xdYA2f4MFgFrqub4M7U3Z_Pbvog4Cz-hDvBRE",
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTVhYzAxMDdiZTE2MzFhYzNhYWJlMTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Njc4MTY0OTF9.-LxPCiI4-LhiizCCxjgVPvUq7cH3ZU422A2uKcX9cdA",
+  "status": "approved",
+  "role": "admin"
+}

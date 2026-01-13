@@ -249,14 +249,14 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "kennywenny@gmail.com",
-  "password": "Kennywennyistired44()"
+  "email": "admin1@gmail.com",
+  "password": "Admin12!"
 }
 
 ###
 
 GET http://localhost:5000/api/auth/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTU2NWZmMzVlNDNlNjYwMzgzNGUzOTMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc2NzMxNTI1MCwiZXhwIjoxNzY3MzE1MzcwfQ.uN88QduZs_c8g-mokCB_xPUKuvlDVtwcneo2KO68C_Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTVhYzAxMDdiZTE2MzFhYzNhYWJlMTAiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Njc4MTY1MDAsImV4cCI6MTc2NzgxNzQwMH0.L1HdyfJqaKuJfsPYxZFvE544sohKlVc7Hi1hoRN6nps
 ###
 
 GET http://localhost:5000/api/auth/student/dashboard

@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/courseController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/courseController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/moduleController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/moduleController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Module.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/courseRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/courseRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/moduleRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/moduleRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Timetablestaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/TimetableStaff.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,11 +93,11 @@
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\public\Images\Icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\frontend\src\Components\coursesModificationComponents" />
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\frontend" />
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\backend" />
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\src\Components\PolicyModification" />
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project" />
-      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\public\Images\Icons" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -99,8 +106,8 @@
         <entry key="HttpClient.HttpRequestRunConfigurationType">
           <value>
             <map>
+              <entry key="request | #16" value="STOPPED" />
               <entry key="request | #17" value="STOPPED" />
-              <entry key="request | #18" value="STOPPED" />
               <entry key="request | #20" value="STOPPED" />
               <entry key="request | #21" value="STOPPED" />
               <entry key="request | #22" value="STOPPED" />
@@ -110,11 +117,11 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.request | #22">
-    <configuration name="request | #17" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#17" index="17" runType="Run single request">
+  <component name="RunManager" selected="HTTP Request.request | #17">
+    <configuration name="request | #16" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#16" index="16" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="request | #18" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#18" index="18" runType="Run single request">
+    <configuration name="request | #17" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#17" index="17" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="request | #20" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#20" index="20" runType="Run single request">
@@ -128,11 +135,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.request | #17" />
+        <item itemvalue="HTTP Request.request | #16" />
         <item itemvalue="HTTP Request.request | #22" />
         <item itemvalue="HTTP Request.request | #21" />
         <item itemvalue="HTTP Request.request | #20" />
-        <item itemvalue="HTTP Request.request | #18" />
-        <item itemvalue="HTTP Request.request | #17" />
       </list>
     </recent_temporary>
   </component>
@@ -166,7 +173,8 @@
       <workItem from="1766499669263" duration="106961000" />
       <workItem from="1767130842361" duration="145832000" />
       <workItem from="1767716443576" duration="4000" />
-      <workItem from="1767787166373" duration="7901000" />
+      <workItem from="1767787166373" duration="49931000" />
+      <workItem from="1768050759436" duration="37588000" />
     </task>
     <servers />
   </component>
