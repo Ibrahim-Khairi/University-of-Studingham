@@ -36,10 +36,11 @@ import Mentorship from "./pages/Mentorship";
 
 // --- ROLE SPECIFIC FEATURES ---
 import Financetracker from "./pages/Financetracker.jsx";
-import CoursesModification from "./Pages/CoursesModification.jsx";
+import AdminCoursesModification from "./Pages/AdminCoursesModification.jsx";
 import PolicyModification from "./Pages/PolicyModification.jsx";
 import PendingApprovals from "./Pages/PendingApprovals.jsx";
-import Digitalregisterstaff from "./pages/Digitalregisterstaff";
+import TutorDigitalRegister from "./Pages/TutorDigitalRegister.jsx";
+import StudentDigitalRegister from "./Pages/StudentDigitalRegister.jsx";
 
 const App = () => {
     return (
@@ -74,19 +75,20 @@ const App = () => {
                 <Route path="/tutor/moodle" element={<AuthGate allowedRoles={["tutor"]}><Moodle /></AuthGate>} />
                 <Route path="/tutor/timetable" element={<AuthGate allowedRoles={["tutor"]}><Timetable /></AuthGate>} />
                 <Route path="/tutor/pending-approvals" element={<AuthGate allowedRoles={["tutor"]}><PendingApprovals /></AuthGate>} />
-                <Route path="/tutor/digital-register" element={<AuthGate allowedRoles={["tutor"]}><Digitalregisterstaff /></AuthGate>} />
+                <Route path="/tutor/digital-register" element={<AuthGate allowedRoles={["tutor"]}><TutorDigitalRegister /></AuthGate>} />
 
                 {/* ================= ADMIN ROUTES ================= */}
                 <Route path="/admin/dashboard" element={<AuthGate allowedRoles={["admin"]}><AdminDashboard /></AuthGate>} />
                 <Route path="/admin/moodle" element={<AuthGate allowedRoles={["admin"]}><Moodle /></AuthGate>} />
                 <Route path="/admin/pending-approvals" element={<AuthGate allowedRoles={["admin"]}><PendingApprovals /></AuthGate>} />
-                <Route path="/admin/courses-modification" element={<AuthGate allowedRoles={["admin"]}><CoursesModification /></AuthGate>} />
+                <Route path="/admin/courses-modification" element={<AuthGate allowedRoles={["admin"]}><AdminCoursesModification /></AuthGate>} />
                 <Route path="/admin/policy-modification" element={<AuthGate allowedRoles={["admin"]}><PolicyModification /></AuthGate>} />
 
                 {/* ================= MISC / LEGACY ROUTES ================= */}
                 <Route path="/mentorship" element={<Mentorship />} />
                 <Route path="/libraryhistory" element={<Libraryhistory />} />
                 <Route path="/financetracker" element={<AuthGate allowedRoles={["student"]}><Financetracker /></AuthGate>} />
+                <Route path="/studentdigitalregister" element={<StudentDigitalRegister />} />
             </Routes>
         </BrowserRouter>
     );

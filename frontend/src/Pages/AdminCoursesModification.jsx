@@ -2,7 +2,7 @@ import React from "react";
 import DashboardPanel from "../components/Dashboardcomponents/DashboardPanel";
 import DashboardSearch from "../components/Dashboardcomponents/DashboardSearch";
 import { CoursesModificationForm } from "../components/coursesModificationComponents/CoursesModificationForm.jsx";
-const CoursesModification = () => {
+const AdminCoursesModification = () => {
     return (
         <div className="bg-[#EFEFEF]   ">
             <div className=" grid grid-cols-1 lg:grid-cols-[0.4fr_1.7fr] gap-4 p-5 ">
@@ -22,4 +22,4 @@ const CoursesModification = () => {
     );
 };
 
-export default CoursesModification;
+export default AdminCoursesModification;
