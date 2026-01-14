@@ -5,94 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/middleware/uploadCurriculum.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/admins/1767871603564.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/admins/1767871623380.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/admins/1767871630260.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/admins/1767871637108.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/admins/1767871940172.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/admins/1768304617166.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242493-header-car.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242494-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242497-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242497-npcp-logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242499-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242501-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242502-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242503-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242505-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242507-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242509-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242510-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242511-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242512-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242514-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242515-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242516-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242517-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242518-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242520-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242521-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242523-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877242525-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767877842373-WhatsApp Image 2025-11-18 at 21.55.49_d808f947.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301375-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301375-WhatsApp Image 2025-12-01 at 21.14.35_8454b8e6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301377-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301379-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301382-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301383-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301385-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301386-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301388-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301389-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301390-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301391-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301393-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301395-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301397-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301400-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301401-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301404-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301405-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301406-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301408-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301409-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301410-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767878301412-DESTAVIA___Expert_Blueprint___Implementation_Guide_DER_VER.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/curriculum/curriculum-1767969303416-WhatsApp Image 2025-12-01 at 21.14.35_8454b8e6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/students/1767872423933.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/students/1767878722677.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/students/1767878735650.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/students/1767889903404.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/uploads/students/1768306257000.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/Pages/Moodle/Moodle.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/Pages/Moodle/MoodleAdmin.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/Pages/Moodle/MoodleStudent.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/Pages/Moodle/MoodleTutor.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/courseController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/courseController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/lecturePatternsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/lecturePatternsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/moduleController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/moduleController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/setupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/setupController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/tutorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/tutorController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Lecture.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Lecture.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Module.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/authRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/moduleRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/moduleRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/policyRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/policyRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/utils/generateLecturesFromPattern.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/utils/generateLecturesFromPattern.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Dashboardcomponents/DashboardPanel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/coursesModificationComponents/CoursesModificationForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Components/homecomponents/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/homecomponents/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Gateway.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Gateway.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/TimetableStaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/TimetableStaff.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/TutorDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/TutorDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/context/AuthContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/AuthContext.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,51 +36,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP Request.All in request.executor": "Run",
-    "HTTP Request.request | #1.executor": "Run",
-    "HTTP Request.request | #10.executor": "Run",
-    "HTTP Request.request | #11.executor": "Run",
-    "HTTP Request.request | #12.executor": "Run",
-    "HTTP Request.request | #13.executor": "Run",
-    "HTTP Request.request | #14.executor": "Run",
-    "HTTP Request.request | #16.executor": "Run",
-    "HTTP Request.request | #17.executor": "Run",
-    "HTTP Request.request | #18.executor": "Run",
-    "HTTP Request.request | #19.executor": "Run",
-    "HTTP Request.request | #2.executor": "Run",
-    "HTTP Request.request | #20.executor": "Run",
-    "HTTP Request.request | #21.executor": "Run",
-    "HTTP Request.request | #22.executor": "Run",
-    "HTTP Request.request | #3.executor": "Run",
-    "HTTP Request.request | #4.executor": "Run",
-    "HTTP Request.request | #5.executor": "Run",
-    "HTTP Request.request | #6.executor": "Run",
-    "HTTP Request.request | #7.executor": "Run",
-    "HTTP Request.request | #8.executor": "Run",
-    "HTTP Request.request | #9.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Merging main-v2",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Users/ibrah/WebstormProjects/2-year-project/frontend/public/Images/Icons",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "C:/Program Files/nodejs/node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.All in request.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #10.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #11.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #12.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #13.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #14.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #16.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #17.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #18.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #19.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #2.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #20.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #21.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #22.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #3.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #4.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #5.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #6.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #7.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #8.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.request | #9.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main-v2&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ibrah/WebstormProjects/2-year-project/frontend/public/Images/Icons&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Program Files/nodejs/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\frontend\public\Images\Icons" />
@@ -255,6 +170,7 @@
       <workItem from="1767787166373" duration="49931000" />
       <workItem from="1768050759436" duration="53514000" />
       <workItem from="1768312127000" duration="3824000" />
+      <workItem from="1768389283216" duration="775000" />
     </task>
     <servers />
   </component>

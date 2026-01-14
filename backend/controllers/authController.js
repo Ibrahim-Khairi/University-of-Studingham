@@ -11,6 +11,65 @@ import RefreshToken from "../models/RefreshToken.js";
 import ActivityLog from "../models/ActivityLog.js";
 import { generateAccessToken } from "../utils/generateAccessToken.js";
 
+export const login = async (req, res) => {
+    try {
+        const { email, password } = req.body || {};
+
+        const user = await User.findOne({ email });
+        if (!user) return res.status(401).json({ message: "Email address not registered" });
+
+        const isMatching = await bcrypt.compare(password, user.password);
+        if (!isMatching) return res.status(401).json({ message: "Invalid password" });
+
+        const payload = {
+            userId: user._id,
+            role: user.role
+        };
+
+        const accessToken = generateAccessToken(payload);
+        const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET);
+
+        await RefreshToken.create({ token: refreshToken, userId: user._id });
+
+        res.json({ accessToken, refreshToken, status: user.status, role: user.role });
+    } catch (err) {
+        res.status(500).json({ message: err.message || 'Login failed' });
+    }
+};
+
+export const logout = async (req, res) => {
+    const { refreshToken } = req.body;
+
+    if (!refreshToken) return res.sendStatus(204);
+
+    await RefreshToken.deleteOne({ token: refreshToken });
+
+    res.sendStatus(204);
+};
+
+export const refresh = async (req, res) => {
+    try {
+        const { refreshToken } = req.body || {};
+
+        if (!refreshToken) return res.status(401).json({ message: "Refresh token missing" });
+
+        // Ensure the refresh token exists in DB (not revoked)
+        const stored = await RefreshToken.findOne({ token: refreshToken });
+        if (!stored) return res.status(403).json({ message: "Invalid refresh token" });
+
+        const payload = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+
+        const accessToken = generateAccessToken({
+            userId: payload.userId,
+            role: payload.role
+        });
+
+        res.json({ accessToken });
+    } catch (error) {
+        res.status(403).json({ message: error.message });
+    }
+};
+
 export const registerStudent = async (req, res) => {
   // Account fields:
   // Personal Detail -> Firstname, middlename, lastname, dob, gender, email address, phone number, picture
