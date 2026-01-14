@@ -1,6 +1,6 @@
 import express from "express";
 import { authMiddleware } from "../middleware/authMiddleware.js";
-import { getTutorTimetable, getStudentTimetable } from "../controllers/timetable.controller.js";
+import { getTutorTimetable, getStudentTimetable } from "../controllers/timetableController.js";
 
 const router = express.Router();
 

@@ -12,6 +12,7 @@ import policyRoutes from "./routes/policyRoutes.js";
 import tutorRoutes from "./routes/tutorRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import lecturePatternsRoutes from "./routes/lecturePatternsRoutes.js";
+import timetableRoutes from "./routes/timetableRoutes.js";
 import financeRoutes from "./routes/financeRoutes.js";
 
 dotenv.config();
@@ -41,6 +42,7 @@ app.use("/api/policies", policyRoutes);
 app.use("/api/tutor", tutorRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/lecture-patterns", lecturePatternsRoutes);
+app.use("/api/timetable", timetableRoutes);
 app.use("/api/finance", financeRoutes);
 
 app.get("/", (req, res) => {

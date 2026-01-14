@@ -31,7 +31,7 @@ export const upsertLecturePatterns = async (req, res) => {
         await Lecture.deleteMany({ courseId });
 
         // Normalize and persist new patterns tied to this course
-        const createdPatterns = patterns.map(p => ({ ...p, courseId }));
+        const createdPatterns = patterns.map(p => ({ ...p, courseId, academicYearStart }));
         let insertedPatterns = [];
         if (createdPatterns.length) {
             insertedPatterns = await LecturePattern.insertMany(createdPatterns);

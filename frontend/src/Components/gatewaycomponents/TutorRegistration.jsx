@@ -38,7 +38,11 @@ const TutorRegistration = () => {
         if (!formData.courseId || !formData.year) return;
         void (async () => {
             try {
-                const res = await fetch (`http://localhost:5000/api/setup/modules/${formData.courseId}/${formData.year}`);
+                // Fetch all modules for the selected course/year, regardless of publish state (isVisible)
+                // so tutors can choose from the complete list during registration.
+                const res = await fetch (
+                    `http://localhost:5000/api/setup/modules/${formData.courseId}/${formData.year}?all=true`
+                );
                 const data = await res.json();
                 setModules(data);
                 setSelectedModules([]);
@@ -262,20 +266,23 @@ const TutorRegistration = () => {
               {/*  <input type="checkbox" />*/}
               {/*  Java and Data Structures*/}
               {/*</label>*/}
-                {modules.map((module) => (
-                    <label key={module._id} className="flex items-center gap-2">
+                {modules.map((module, idx) => {
+                    const moduleId = module?._id || module?.id;
+                    const selectable = Boolean(moduleId);
+                    return (
+                    <label key={moduleId || `${module.name}-${idx}`} className="flex items-center gap-2">
                         <input
                             type="checkbox"
-                            checked={selectedModules.includes(module._id)}
-                            onChange={() => toggleModule(module._id)}
+                            checked={moduleId ? selectedModules.includes(moduleId) : false}
+                            onChange={() => moduleId && toggleModule(moduleId)}
                             disabled={
-                                !selectedModules.includes(module._id) &&
-                                selectedModules.length === 2
+                                !selectable || (!selectedModules.includes(moduleId) &&
+                                selectedModules.length === 2)
                             }
                         />
                         {module.name}
                     </label>
-                ))}
+                )})}
             </div>
 
             <p className="text-xs text-gray-400 mt-2">

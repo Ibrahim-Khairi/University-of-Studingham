@@ -44,18 +44,26 @@ export const getCourses = async (req, res) => {
 export const getModulesByCourseByYear = async (req, res) => {
   try {
     const { courseId, year } = req.params;
+    const { all } = req.query;
 
     // 1. Check if the courseId and year are valid
     if (!courseId || isNaN(Number(year))) {
       return res.status(400).json({ message: "Invalid parameters" });
     }
 
-    // 2. Query: We want modules for this course AND this year AND marked as published
-    const modules = await Module.find({
+    // 2. Query: For student views we normally return only published modules (isVisible: true).
+    //    For admin/tutor registration we may need to see all modules irrespective of publish state.
+    //    When the query param `?all=true` is provided, we do NOT filter by isVisible.
+    const baseFilter = {
       courseId: courseId,
       year: Number(year),
-      isVisible: true, // This is why you must click 'Publish' in Admin
-    });
+    };
+
+    const filter = String(all).toLowerCase() === "true"
+      ? baseFilter
+      : { ...baseFilter, isVisible: true };
+
+    const modules = await Module.find(filter);
 
     res.json(modules);
   } catch (error) {

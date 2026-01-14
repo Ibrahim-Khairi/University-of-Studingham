@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/authController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/lecturePatternsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/lecturePatternsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/setupController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/setupController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/timetableController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/timetableController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/LecturePattern.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/LecturePattern.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/timetableRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/timetableRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/Timetablecomponents/LecturesCalendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/Timetablecomponents/LecturesCalendar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/TutorRegistration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Components/gatewaycomponents/TutorRegistration.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Timetable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/Timetable.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +177,7 @@
       <workItem from="1767787166373" duration="49931000" />
       <workItem from="1768050759436" duration="53514000" />
       <workItem from="1768312127000" duration="3824000" />
-      <workItem from="1768389283216" duration="775000" />
+      <workItem from="1768389283216" duration="9599000" />
     </task>
     <servers />
   </component>

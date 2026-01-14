@@ -18,7 +18,8 @@ const lecturePatternSchema = new mongoose.Schema({
             startTime: { type: String, required: true },
             durationHours: { type: Number, min: 1, max: 3 }
         }
-    ]
+    ],
+    academicYearStart: { type: Date, required: true },
 }, { timestamps: true });
 
 export default mongoose.model("LecturePattern", lecturePatternSchema);
