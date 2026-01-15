@@ -49,11 +49,6 @@ const DashboardPanel = () => {
         path: "/student/timetable",
       },
       {
-        label: "Digital Register",
-        icon: "/Images/Icons/DigitalRegisterIcon.svg",
-        path: "/student/digital-register",
-      },
-      {
         label: "Attendance Details",
         icon: "/Images/Icons/AttendanceDetailsIcon.svg",
         path: "/student/attendance-details",
@@ -91,11 +86,6 @@ const DashboardPanel = () => {
         path: "/tutor/digital-register",
       },
       {
-        label: "Library Hub",
-        icon: "/Images/Icons/LibraryPortalIcon.svg",
-        path: "/LibraryPortal",
-      },
-      {
         label: "Pending Approvals",
         icon: "/Images/Icons/PendingApprovalsIcon.svg",
         path: "/tutor/pending-approvals",
@@ -106,6 +96,12 @@ const DashboardPanel = () => {
         label: "Dashboard",
         icon: "/Images/Icons/DashboardIcon.svg",
         path: "/admin/dashboard",
+      },
+      /* --- NEW NOTICEBOARD ROUTE ADDED HERE --- */
+      {
+        label: "Noticeboard",
+        icon: "/Images/Icons/DigitalRegisterIcon.svg", // Reusing this icon or use a megaphone icon if available
+        path: "/admin/noticeboard",
       },
       {
         label: "Moodle",
@@ -131,7 +127,7 @@ const DashboardPanel = () => {
         label: "Library Management",
         icon: "/Images/Icons/LibraryPortalIcon.svg",
         path: "/admin/library",
-      }, // NEW ROUTE ADDED HERE
+      },
     ],
   };
 

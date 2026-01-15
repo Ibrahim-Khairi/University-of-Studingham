@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-
+import taskRoutes from "./routes/taskRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import setupRoutes from "./routes/setupRoutes.js";
 import approvalRoutes from "./routes/approvalRoutes.js";
@@ -16,6 +16,7 @@ import timetableRoutes from "./routes/timetableRoutes.js";
 import financeRoutes from "./routes/financeRoutes.js";
 import attendanceRoutes from "./routes/attendanceRoutes.js"; // Fixed: Added full import path
 import libraryRoutes from "./routes/libraryRoutes.js";
+import noticeRoutes from "./routes/noticeRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -41,16 +42,18 @@ app.use("/api/approval", approvalRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/modules", moduleRoutes);
 app.use("/api/policies", policyRoutes);
-app.use("/api/tutor", tutorRoutes);
+app.use("/api/tutors", tutorRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/lecture-patterns", lecturePatternsRoutes);
 app.use("/api/timetable", timetableRoutes);
 app.use("/api/finance", financeRoutes);
 app.use("/api/attendance", attendanceRoutes); // Correctly registered here
 app.use("/api/library", libraryRoutes);
+app.use("/api/tasks", taskRoutes);
 app.get("/", (req, res) => {
   res.send("API running successfully.");
 });
+app.use("/api/notices", noticeRoutes);
 app.use("/api/library", libraryRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -12,11 +12,16 @@ const attendanceSchema = new mongoose.Schema(
       ref: "Lecture",
       required: true,
     },
+    // --- ADD THIS FIELD ---
+    status: {
+      type: String,
+      enum: ["present", "absent", "leave"],
+      required: true,
+    },
   },
   { timestamps: true }
-); // This automatically creates 'createdAt' and 'updatedAt'
+);
 
-// Ensures a student can only check in once per lecture
 attendanceSchema.index({ studentId: 1, lectureId: 1 }, { unique: true });
 
 export default mongoose.model("Attendance", attendanceSchema);

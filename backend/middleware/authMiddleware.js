@@ -9,7 +9,6 @@ export const authMiddleware = (req, res, next) => {
 
   const token = authHeader.split(" ")[1];
 
-  // Check if token is literal string "null" or "undefined"
   if (!token || token === "null" || token === "undefined") {
     return res.status(401).json({ message: "Malformed token" });
   }
@@ -21,4 +20,18 @@ export const authMiddleware = (req, res, next) => {
     req.user = payload;
     next();
   });
+};
+
+export const roleMiddleware = (allowedRoles) => {
+  return (req, res, next) => {
+    if (!req.user)
+      return res.status(401).json({ message: "Not authenticated" });
+
+    if (!allowedRoles.includes(req.user.role)) {
+      return res
+        .status(403)
+        .json({ message: "Access denied: insufficient permissions" });
+    }
+    next();
+  };
 };

@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // --- GLOBAL UTILS ---
 import ScrollToTop from "./ScrollToTop";
 import AuthGate from "./Pages/AuthGate.jsx";
+import AdminNoticeboard from "./Pages/AdminNoticeboard";
 
 // --- PUBLIC PAGES ---
 import Home from "./pages/Home";
@@ -19,7 +20,7 @@ import TermsConditions from "./Pages/Terms&Conditions.jsx";
 import Accessibility from "./pages/Accessibility";
 import Courses from "./pages/Courses";
 import CourseDetail from "./Components/coursecomponents/CourseDeltail.jsx";
-
+import StudentAttendance from "./Pages/StudentAttendance.jsx";
 // --- DASHBOARDS ---
 import StudentDashboard from "./Pages/StudentDashboard.jsx";
 import TutorDashboard from "./Pages/TutorDashboard.jsx";
@@ -41,7 +42,7 @@ import AdminCoursesModification from "./Pages/AdminCoursesModification.jsx";
 import PolicyModification from "./Pages/PolicyModification.jsx";
 import PendingApprovals from "./Pages/PendingApprovals.jsx";
 import TutorDigitalRegister from "./Pages/TutorDigitalRegister.jsx";
-import StudentDigitalRegister from "./Pages/StudentDigitalRegister.jsx";
+
 import StudentResourceManagement from "./Pages/StudentResourceManagement.jsx";
 const App = () => {
   return (
@@ -75,6 +76,14 @@ const App = () => {
           element={
             <AuthGate allowedRoles={["student"]}>
               <StudentResourceManagement />
+            </AuthGate>
+          }
+        />
+        <Route
+          path="/student/attendance-details"
+          element={
+            <AuthGate allowedRoles={["student"]}>
+              <StudentAttendance />
             </AuthGate>
           }
         />
@@ -224,6 +233,14 @@ const App = () => {
             </AuthGate>
           }
         />
+        <Route
+          path="/admin/noticeboard"
+          element={
+            <AuthGate allowedRoles={["admin"]}>
+              <AdminNoticeboard />
+            </AuthGate>
+          }
+        />
         {/* ================= MISC / LEGACY ROUTES ================= */}
         <Route path="/mentorship" element={<Mentorship />} />
         <Route path="/libraryhistory" element={<Libraryhistory />} />
@@ -234,10 +251,6 @@ const App = () => {
               <Financetracker />
             </AuthGate>
           }
-        />
-        <Route
-          path="/student/digital-register"
-          element={<StudentDigitalRegister />}
         />
       </Routes>
     </BrowserRouter>

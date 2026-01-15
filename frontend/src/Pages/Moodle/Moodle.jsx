@@ -7,9 +7,13 @@ import MoodleStudent from "./MoodleStudent";
 const Moodle = () => {
   const { user, loading } = useAuth();
 
-  if (loading) return <div className="p-10 text-center">Loading Access...</div>;
+  if (loading)
+    return (
+      <div className="h-screen flex items-center justify-center font-black uppercase text-gray-300 animate-pulse">
+        Checking Permissions...
+      </div>
+    );
 
-  // Route to the specific component based on role
   switch (user?.role) {
     case "admin":
       return <MoodleAdmin />;
@@ -19,8 +23,8 @@ const Moodle = () => {
       return <MoodleStudent />;
     default:
       return (
-        <div className="p-10 text-center text-red-500">
-          Access Denied: Invalid Role
+        <div className="p-20 text-center font-bold text-red-500 uppercase">
+          Access Denied: Invalid User Role
         </div>
       );
   }

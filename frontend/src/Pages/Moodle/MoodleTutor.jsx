@@ -22,103 +22,121 @@ const MoodleTutor = () => {
   const [selectedModule, setSelectedModule] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
   const [weekData, setWeekData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const token = localStorage.getItem("accessToken");
   const BASE_URL = "http://localhost:5000/api/modules";
 
+  // 1. Fetch only modules assigned to THIS tutor
+  const fetchMyModules = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(
+        "http://localhost:5000/api/tutors/my-modules",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      // Handle the data structure returned by your backend
+      const moduleList = res.data.modules || res.data;
+      setAllModules(Array.isArray(moduleList) ? moduleList : []);
+    } catch (err) {
+      console.error("Fetch Error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetchModules();
+    fetchMyModules();
   }, []);
 
-  // Sync data when module is opened
+  // 2. Initialize week data when a module is selected
   useEffect(() => {
     if (selectedModule) {
-      if (selectedModule.weeks?.length > 0) {
+      if (selectedModule.weeks && selectedModule.weeks.length > 0) {
         setWeekData(selectedModule.weeks);
       } else {
-        setWeekData(
-          Array.from({ length: 8 }, (_, i) => ({
-            weekNumber: i + 1,
-            topic: "",
-            materials: [
-              { info: "", fileUrl: "" },
-              { info: "", fileUrl: "" },
-              { info: "", fileUrl: "" },
-            ],
-            quiz: { questions: [] },
-          }))
-        );
+        const skeleton = Array.from({ length: 8 }, (_, i) => ({
+          weekNumber: i + 1,
+          topic: "",
+          materials: [
+            { info: "", fileUrl: "" },
+            { info: "", fileUrl: "" },
+            { info: "", fileUrl: "" },
+          ],
+          quiz: { questions: [] },
+        }));
+        setWeekData(skeleton);
       }
     }
   }, [selectedModule]);
 
-  const fetchModules = async () => {
-    const res = await axios.get("http://localhost:5000/api/tutors/my-modules", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    setAllModules(res.data.modules);
-  };
-
+  // 3. Toggle Visibility for Student Portal
   const toggleVisibility = async (e, id) => {
     e.stopPropagation();
-    const res = await axios.patch(
-      `${BASE_URL}/${id}/visibility`,
-      {},
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-    setAllModules((prev) =>
-      prev.map((m) =>
-        m._id === id ? { ...m, isVisible: res.data.isVisible } : m
-      )
-    );
+    try {
+      const res = await axios.patch(
+        `${BASE_URL}/${id}/visibility`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      setAllModules((prev) =>
+        prev.map((m) =>
+          m._id === id ? { ...m, isVisible: res.data.isVisible } : m
+        )
+      );
+    } catch (err) {
+      alert("Visibility change failed");
+    }
   };
 
-  // --- Handlers ---
+  // --- Handlers for Text & Files ---
   const handleTopicChange = (idx, val) => {
-    const copy = [...weekData];
-    copy[idx].topic = val;
-    setWeekData(copy);
+    const updated = [...weekData];
+    updated[idx].topic = val;
+    setWeekData(updated);
   };
 
   const handleMaterialInfoChange = (wIdx, sIdx, val) => {
-    const copy = [...weekData];
-    copy[wIdx].materials[sIdx].info = val;
-    setWeekData(copy);
+    const updated = [...weekData];
+    updated[wIdx].materials[sIdx].info = val;
+    setWeekData(updated);
   };
 
   const handleFileChange = (wIdx, sIdx, e) => {
     const file = e.target.files[0];
     if (file) {
-      const copy = [...weekData];
-      copy[wIdx].materials[sIdx].file = file;
-      setWeekData(copy);
+      const updated = [...weekData];
+      updated[wIdx].materials[sIdx].file = file;
+      setWeekData(updated);
     }
   };
 
   const clearSlot = (wIdx, sIdx) => {
-    const copy = [...weekData];
-    copy[wIdx].materials[sIdx] = { info: "", fileUrl: "", file: null };
-    setWeekData(copy);
+    const updated = [...weekData];
+    updated[wIdx].materials[sIdx] = { info: "", fileUrl: "", file: null };
+    setWeekData(updated);
   };
 
-  // --- Week 8 Assessment Logic ---
+  // --- Week 8 Quiz Handlers ---
   const handleAddQuestion = () => {
-    const copy = [...weekData];
-    if (!copy[7].quiz) copy[7].quiz = { questions: [] };
-    copy[7].quiz.questions.push({
+    const updated = [...weekData];
+    if (!updated[7].quiz) updated[7].quiz = { questions: [] };
+    updated[7].quiz.questions.push({
       questionText: "",
       options: ["", "", "", ""],
       correctAnswer: 0,
     });
-    setWeekData(copy);
+    setWeekData(updated);
   };
 
-  const handleSave = async () => {
+  // --- Save to Backend ---
+  const handleSaveCurriculum = async () => {
     setIsSaving(true);
     const formData = new FormData();
-    // Sanitize JSON to prevent File objects from breaking stringify
     const sanitizedWeeks = weekData.map((w) => ({
       weekNumber: w.weekNumber,
       topic: w.topic,
@@ -127,8 +145,6 @@ const MoodleTutor = () => {
     }));
 
     formData.append("weeks", JSON.stringify(sanitizedWeeks));
-
-    // Append Files
     weekData.forEach((w) =>
       w.materials.forEach((s, i) => {
         if (s.file)
@@ -147,11 +163,11 @@ const MoodleTutor = () => {
           },
         }
       );
-      alert("Curriculum Published Successfully!");
+      alert("Module Curriculum Published!");
       setSelectedModule(null);
-      fetchModules();
+      fetchMyModules();
     } catch (err) {
-      alert("Failed to save");
+      alert("Error saving content");
     } finally {
       setIsSaving(false);
     }
@@ -165,47 +181,65 @@ const MoodleTutor = () => {
           <DashboardSearch />
 
           {!selectedModule ? (
-            /* --- LIST VIEW --- */
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-              {allModules.map((m) => (
-                <div
-                  key={m._id}
-                  onClick={() => setSelectedModule(m)}
-                  className={`bg-white p-10 rounded-[40px] border-l-[15px] shadow-sm cursor-pointer flex justify-between items-center group transition-all ${
-                    m.isVisible ? "border-[#407008]" : "border-gray-200"
-                  }`}
-                >
-                  <div>
-                    <h2 className="text-2xl font-black uppercase text-gray-800 group-hover:text-[#72333B]">
-                      {m.name}
-                    </h2>
-                    <p className="text-gray-400 text-xs mt-1 font-bold uppercase tracking-widest leading-none">
-                      Year {m.year} Curriculum
-                    </p>
-                  </div>
-                  <button
-                    onClick={(e) => toggleVisibility(e, m._id)}
-                    className={`p-4 rounded-2xl ${
-                      m.isVisible
-                        ? "bg-[#407008] text-white shadow-lg shadow-green-100"
-                        : "bg-gray-100 text-gray-400"
-                    }`}
-                  >
-                    {m.isVisible ? <Eye size={20} /> : <EyeOff size={20} />}
-                  </button>
+            /* MODULE GRID (Showing only assigned modules) */
+            <div className="mt-8">
+              <h2 className="text-3xl font-black uppercase text-gray-800 mb-8 tracking-tighter">
+                Assigned Modules
+              </h2>
+              {loading ? (
+                <div className="py-20 text-center font-bold text-gray-300 animate-pulse uppercase">
+                  Syncing Faculty Data...
                 </div>
-              ))}
+              ) : allModules.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {allModules.map((m) => (
+                    <div
+                      key={m._id}
+                      onClick={() => setSelectedModule(m)}
+                      className={`bg-white p-10 rounded-[40px] border-l-[15px] shadow-sm cursor-pointer flex justify-between items-center group transition-all ${
+                        m.isVisible
+                          ? "border-[#407008]"
+                          : "border-gray-300 hover:border-[#72333B]"
+                      }`}
+                    >
+                      <div>
+                        <h2 className="text-2xl font-black uppercase text-gray-800 group-hover:text-[#72333B]">
+                          {m.name}
+                        </h2>
+                        <p className="text-gray-400 text-[10px] font-black uppercase tracking-widest mt-2">
+                          Status: {m.isVisible ? "Published" : "Under Review"}
+                        </p>
+                      </div>
+                      <button
+                        onClick={(e) => toggleVisibility(e, m._id)}
+                        className={`p-4 rounded-2xl shadow-sm transition-all ${
+                          m.isVisible
+                            ? "bg-[#407008] text-white shadow-green-100"
+                            : "bg-gray-100 text-gray-400 hover:bg-gray-200"
+                        }`}
+                      >
+                        {m.isVisible ? <Eye size={20} /> : <EyeOff size={20} />}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="bg-white p-20 rounded-[40px] text-center">
+                  <p className="text-gray-400 font-bold uppercase">
+                    No modules assigned to your account yet.
+                  </p>
+                </div>
+              )}
             </div>
           ) : (
-            /* --- EDITOR VIEW (ORIGINAL DESIGN) --- */
+            /* EDITOR VIEW */
             <div className="mt-5 max-w-6xl mx-auto pb-20 px-4">
               <button
                 onClick={() => setSelectedModule(null)}
                 className="flex items-center gap-2 text-gray-400 hover:text-[#72333B] font-black uppercase text-xs mb-8 transition-colors"
               >
-                <ArrowLeft size={16} /> Back to My Modules
+                <ArrowLeft size={16} /> Back to Modules
               </button>
-
               <div className="bg-white p-12 rounded-[60px] shadow-2xl border-t-[20px] border-[#72333B]">
                 <h1 className="text-5xl font-black text-gray-800 uppercase mb-20 tracking-tighter leading-none">
                   {selectedModule.name}
@@ -230,21 +264,21 @@ const MoodleTutor = () => {
                           onChange={(e) =>
                             handleTopicChange(wIdx, e.target.value)
                           }
-                          className="w-full p-8 border-2 border-gray-100 rounded-[35px] focus:border-[#72333B] outline-none bg-gray-50/50 h-32 resize-none transition-all font-bold text-gray-700"
-                          placeholder="What will students learn this week?"
+                          className="w-full p-8 border-2 border-gray-100 rounded-[35px] focus:border-[#72333B] outline-none bg-gray-50/50 h-32 resize-none transition-all font-bold text-gray-700 shadow-inner"
+                          placeholder="Describe the lesson plan..."
                         />
                       </div>
 
-                      {/* ORIGINAL 3-COLUMN SLOTS */}
+                      {/* 3 MATERIAL SLOTS */}
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {week.materials.map((slot, sIdx) => (
                           <div
                             key={sIdx}
-                            className="bg-white border-2 border-gray-50 p-6 rounded-[35px] hover:border-[#407008] transition-all shadow-sm"
+                            className="bg-white border-2 border-gray-100 p-6 rounded-[35px] hover:border-[#407008] transition-all shadow-sm"
                           >
                             <input
                               type="text"
-                              placeholder="Material Title..."
+                              placeholder="Material Label..."
                               value={slot.info}
                               onChange={(e) =>
                                 handleMaterialInfoChange(
@@ -253,14 +287,14 @@ const MoodleTutor = () => {
                                   e.target.value
                                 )
                               }
-                              className="w-full text-[10px] font-black uppercase p-2 border-b border-gray-50 mb-4 outline-none focus:border-[#407008]"
+                              className="w-full text-[10px] font-black uppercase p-2 border-b border-gray-100 mb-4 outline-none focus:border-[#407008]"
                             />
                             {slot.file || slot.fileUrl ? (
                               <div className="bg-green-50 p-4 rounded-2xl flex items-center justify-between">
                                 <span className="text-[9px] font-black text-[#407008] truncate w-[80%]">
                                   {slot.file
                                     ? slot.file.name
-                                    : "Saved Material"}
+                                    : "Saved Document"}
                                 </span>
                                 <button onClick={() => clearSlot(wIdx, sIdx)}>
                                   <XCircle
@@ -270,7 +304,7 @@ const MoodleTutor = () => {
                                 </button>
                               </div>
                             ) : (
-                              <label className="flex flex-col items-center justify-center py-8 border-4 border-dashed border-gray-100 rounded-2xl cursor-pointer hover:bg-gray-50 group">
+                              <label className="flex flex-col items-center justify-center py-8 border-4 border-dashed border-gray-50 rounded-2xl cursor-pointer hover:bg-gray-50 group">
                                 <Upload
                                   size={24}
                                   className="text-gray-200 group-hover:text-[#407008] transition-colors"
@@ -288,22 +322,16 @@ const MoodleTutor = () => {
                         ))}
                       </div>
 
-                      {/* --- WEEK 8 ONLY: QUIZ BUILDER --- */}
+                      {/* ASSESSMENT SECTION (WEEK 8 ONLY) */}
                       {week.weekNumber === 8 && (
                         <div className="bg-gray-50 p-10 rounded-[45px] border-2 border-white mt-12 shadow-inner">
                           <div className="flex justify-between items-center mb-10">
-                            <div className="flex items-center gap-3">
-                              <HelpCircle
-                                className="text-[#72333B]"
-                                size={28}
-                              />
-                              <h4 className="text-2xl font-black text-gray-800 uppercase tracking-tighter italic">
-                                Final Assessment
-                              </h4>
-                            </div>
+                            <h4 className="text-2xl font-black text-gray-800 uppercase tracking-tighter italic">
+                              Final Knowledge Check
+                            </h4>
                             <button
                               onClick={handleAddQuestion}
-                              className="bg-gray-800 text-white px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase flex items-center gap-2 hover:bg-[#72333B] transition-all"
+                              className="bg-gray-800 text-white px-6 py-2.5 rounded-2xl text-[10px] font-black uppercase flex items-center gap-2 hover:bg-[#72333B] transition-all shadow-lg active:scale-95"
                             >
                               <PlusCircle size={14} /> Add New Question
                             </button>
@@ -322,8 +350,8 @@ const MoodleTutor = () => {
                                     e.target.value;
                                   setWeekData(copy);
                                 }}
-                                className="w-full border-b-4 border-gray-50 p-4 font-black text-lg outline-none mb-8 focus:border-[#72333B]"
-                                placeholder="Question Text?"
+                                className="w-full border-b-4 border-gray-50 p-4 font-black text-lg outline-none mb-8 focus:border-[#72333B] bg-transparent transition-all"
+                                placeholder="Assessment Question?"
                               />
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {q.options.map((opt, oIdx) => (
@@ -341,7 +369,7 @@ const MoodleTutor = () => {
                                         ].correctAnswer = oIdx;
                                         setWeekData(copy);
                                       }}
-                                      className="accent-[#407008] w-6 h-6"
+                                      className="accent-[#407008] w-6 h-6 cursor-pointer"
                                     />
                                     <input
                                       value={opt}
@@ -353,7 +381,7 @@ const MoodleTutor = () => {
                                         setWeekData(copy);
                                       }}
                                       className="bg-transparent text-sm font-black uppercase outline-none w-full"
-                                      placeholder="Option text..."
+                                      placeholder="Option..."
                                     />
                                   </div>
                                 ))}
@@ -364,7 +392,7 @@ const MoodleTutor = () => {
                                   copy[7].quiz.questions.splice(qIdx, 1);
                                   setWeekData(copy);
                                 }}
-                                className="absolute -top-4 -right-4 bg-red-500 text-white p-3 rounded-2xl opacity-0 group-hover:opacity-100 transition-all shadow-xl"
+                                className="absolute -top-4 -right-4 bg-red-500 text-white p-3 rounded-2xl opacity-0 group-hover:opacity-100 transition-all shadow-xl hover:scale-110"
                               >
                                 <Trash2 size={16} />
                               </button>
@@ -376,11 +404,13 @@ const MoodleTutor = () => {
                   ))}
                 </div>
                 <button
-                  onClick={handleSave}
+                  onClick={handleSaveCurriculum}
                   disabled={isSaving}
-                  className="w-full bg-[#407008] text-white py-8 rounded-[40px] font-black text-2xl shadow-2xl mt-32 hover:bg-[#2d5006] transition-all"
+                  className="w-full bg-[#407008] text-white py-8 rounded-[40px] font-black text-2xl shadow-2xl mt-32 hover:bg-[#2d5006] transition-all active:scale-[0.98]"
                 >
-                  {isSaving ? "PUBLISHING..." : "PUBLISH UPDATES"}
+                  {isSaving
+                    ? "PUBLISHING TO PORTAL..."
+                    : "PUBLISH COMPLETE MODULE"}
                 </button>
               </div>
             </div>
