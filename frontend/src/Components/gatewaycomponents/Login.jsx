@@ -85,12 +85,6 @@ const Login = () => {
             />
           </div>
 
-          <div className="text-left mb-6">
-            <a href="#" className="text-sm text-blue-600 hover:underline">
-              Forgot Password?
-            </a>
-          </div>
-
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-full transition shadow-lg"
