@@ -229,7 +229,7 @@ const MoodleAdmin = () => {
                             <div className="flex items-center gap-2 mb-3">
                               {m.tutorId ? (
                                 <span className="text-[10px] font-black uppercase text-blue-500 flex items-center gap-1 bg-blue-50 px-3 py-1 rounded-full">
-                                  <UserCheck size={12} /> Tutor: Dr.{" "}
+                                  <UserCheck size={12} />
                                   {m.tutorId.lastName}
                                 </span>
                               ) : (
