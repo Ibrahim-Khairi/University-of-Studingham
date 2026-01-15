@@ -2,28 +2,28 @@ import multer from "multer";
 import path from "path";
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "uploads/students");
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
+  destination: (req, file, cb) => {
+    cb(null, "uploads/students");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
 });
 
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith("image/")) {
-        cb(null, true);
-    } else {
-        cb(new Error("Invalid file type"), false);
-    }
+  if (file.mimetype.startsWith("image/")) {
+    cb(null, true);
+  } else {
+    cb(new Error("Invalid file type"), false);
+  }
 };
 
 const uploadStudent = multer({
-    storage,
-    fileFilter,
-    limits: {
-        fileSize: 300 * 1024
-    }
+  storage,
+  fileFilter,
+  limits: {
+    fileSize: 2 * 1024 * 1024,
+  },
 });
 
 export default uploadStudent;
