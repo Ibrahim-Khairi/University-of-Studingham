@@ -44,7 +44,7 @@ const Gateway = () => {
           }}
         >
           <div className="text-white grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
-            {/* Student Link */}
+            {/* Student Link - UPDATED PATH */}
             <div className="flex flex-col">
               <img
                 src="/gatewaystudent.png"
@@ -52,7 +52,7 @@ const Gateway = () => {
                 alt="Student"
               />
               <Link
-                to="/register-student"
+                to="/student-registration"
                 className="text-2xl font-bold uppercase hover:underline decoration-2"
               >
                 Student Register
@@ -62,7 +62,7 @@ const Gateway = () => {
               </p>
             </div>
 
-            {/* Staff Link */}
+            {/* Staff Link - UPDATED PATH */}
             <div className="flex flex-col">
               <img
                 src="/gatewaystaff.png"
@@ -70,7 +70,7 @@ const Gateway = () => {
                 alt="Staff"
               />
               <Link
-                to="/register-tutor"
+                to="/tutor-registration"
                 className="text-2xl font-bold uppercase hover:underline decoration-2"
               >
                 Staff Register
@@ -80,7 +80,7 @@ const Gateway = () => {
               </p>
             </div>
 
-            {/* Admin Link */}
+            {/* Admin Link - UPDATED PATH */}
             <div className="flex flex-col">
               <img
                 src="/gatewayadmin.png"
@@ -88,7 +88,7 @@ const Gateway = () => {
                 alt="Admin"
               />
               <Link
-                to="/register-admin"
+                to="/admin-registration"
                 className="text-2xl font-bold uppercase hover:underline decoration-2"
               >
                 Admin Register
@@ -98,7 +98,7 @@ const Gateway = () => {
               </p>
             </div>
 
-            {/* Logo placeholder like in your screenshot */}
+            {/* Logo placeholder */}
             <div className="hidden md:flex justify-end items-center h-full">
               <img
                 src="/gatewayloginlogo.png"

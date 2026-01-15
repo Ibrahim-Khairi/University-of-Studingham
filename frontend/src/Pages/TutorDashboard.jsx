@@ -5,19 +5,19 @@ import { useAuth } from "../context/AuthContext.jsx";
 import DashboardPanel from "../components/Dashboardcomponents/DashboardPanel";
 import DashboardSearch from "../components/Dashboardcomponents/DashboardSearch";
 import DashboardSchedule from "../components/Dashboardcomponents/DashboardSchedule.jsx";
-import { Clock } from "lucide-react";
+import { Clock, MapPin, User as UserIcon } from "lucide-react";
 
 const TutorDashboard = () => {
   const { loading: authLoading, user } = useAuth();
+  const [tutorProfile, setTutorProfile] = useState(null); // To store firstName/lastName
   const [moduleData, setModuleData] = useState([]);
   const [nextClass, setNextClass] = useState(null);
-  const [notices, setNotices] = useState([]); // Real Notice State
+  const [notices, setNotices] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const BASE_URL = "http://localhost:5000/api";
   const token = localStorage.getItem("accessToken");
 
-  // Priority color mapping to match your design
   const priorityStyles = {
     urgent: "border-[#8E3B46] bg-[#8E3B46]/5 text-[#8E3B46]",
     normal: "border-[#4C86A8] bg-[#4C86A8]/5 text-[#4C86A8]",
@@ -29,13 +29,19 @@ const TutorDashboard = () => {
 
     const fetchTutorDashboardData = async () => {
       try {
-        // 1. Fetch assigned modules
+        // 1. Fetch FULL Profile (This fixes the missing Name issue)
+        const profileRes = await axios.get(`${BASE_URL}/auth/me`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setTutorProfile(profileRes.data);
+
+        // 2. Fetch assigned modules
         const modRes = await axios.get(`${BASE_URL}/tutors/my-modules`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const assignedModules = modRes.data.modules || [];
 
-        // 2. Fetch student counts for each module
+        // 3. Fetch student counts
         const modulesWithCounts = await Promise.all(
           assignedModules.map(async (m) => {
             try {
@@ -51,13 +57,13 @@ const TutorDashboard = () => {
         );
         setModuleData(modulesWithCounts);
 
-        // 3. Fetch Real Notices from Backend
+        // 4. Fetch Notices
         const noticeRes = await axios.get(`${BASE_URL}/notices/my-board`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setNotices(noticeRes.data.slice(0, 3)); // Only take the latest 3
+        setNotices(noticeRes.data.slice(0, 3));
 
-        // 4. Fetch timetable for "Next Class" logic
+        // 5. Fetch timetable and find the actual "Next Class"
         const timeRes = await axios.get(`${BASE_URL}/timetable/tutor`, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -72,6 +78,7 @@ const TutorDashboard = () => {
         const upcoming = timeRes.data.lectures
           .filter((lec) => {
             const lecDate = lec.date.split("T")[0];
+            // If class is today, check if it's in the future. Otherwise, check if date is in future.
             return lecDate === todayStr
               ? lec.startTime > currentTime
               : lecDate > todayStr;
@@ -94,10 +101,10 @@ const TutorDashboard = () => {
 
   if (authLoading || loading) {
     return (
-      <div className="bg-[#EFEFEF] p-5 min-h-screen">
-        <div className="grid grid-cols-1 lg:grid-cols-[330px_1fr] gap-4 text-gray-300 font-black uppercase tracking-widest animate-pulse items-center justify-center h-full">
+      <div className="bg-[#EFEFEF] p-5 min-h-screen flex items-center justify-center">
+        <p className="text-gray-300 font-black uppercase tracking-widest animate-pulse">
           Syncing Faculty Data...
-        </div>
+        </p>
       </div>
     );
   }
@@ -112,7 +119,6 @@ const TutorDashboard = () => {
         <div className="flex flex-col gap-5">
           <DashboardSearch />
 
-          {/* Top Section */}
           <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.6fr] gap-4">
             {/* 1. Lecturer Overview */}
             <div className="bg-[#4C86A8] p-8 rounded-[40px] shadow-lg flex flex-col justify-center text-white">
@@ -123,35 +129,37 @@ const TutorDashboard = () => {
                 Lecturer Overview
               </Link>
               <div className="space-y-2">
-                {moduleData.map((m, idx) => (
-                  <p key={idx} className="text-[18px] font-bold">
-                    {m.name} — {m.studentCount} Students
-                  </p>
-                ))}
-
-                {nextClass && (
-                  <p className="text-[18px] font-bold flex items-center gap-2 mt-2">
-                    <Clock size={18} /> Next Class: {nextClass.startTime},{" "}
-                    {nextClass.room || "Room TBA"}
-                  </p>
+                {moduleData.length > 0 ? (
+                  moduleData.map((m, idx) => (
+                    <p key={idx} className="text-[18px] font-bold">
+                      {m.name} — {m.studentCount} Students
+                    </p>
+                  ))
+                ) : (
+                  <p className="opacity-60 italic">No assigned modules</p>
                 )}
 
+                {/* Fixed "Room TBA" logic */}
+                <p className="text-[18px] font-bold flex items-center gap-2 mt-2">
+                  <Clock size={18} />
+                  Next Class:{" "}
+                  {nextClass
+                    ? `${nextClass.startTime}, ${nextClass.room || "Room TBA"}`
+                    : "No more classes today"}
+                </p>
+
+                {/* Fixed Tutor Name: Uses fetched profile data */}
                 <p className="text-[22px] font-black mt-6 border-t border-white/20 pt-4 uppercase tracking-tighter">
-                  Dr. {user?.firstName} {user?.lastName}
+                  Dr. {tutorProfile?.firstName || user?.firstName}{" "}
+                  {tutorProfile?.lastName || user?.lastName}
                 </p>
               </div>
             </div>
 
-            {/* 2. Noticeboard (NOW DYNAMIC) */}
+            {/* 2. Noticeboard */}
             <div className="bg-white rounded-[40px] p-8 shadow-sm flex flex-col justify-center">
               <div className="flex items-center mb-6">
-                <svg
-                  width="45"
-                  height="58"
-                  viewBox="0 0 45 58"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                <svg width="45" height="58" viewBox="0 0 45 58" fill="none">
                   <path
                     d="M29.5683 50C29.5683 52.9253 28.0846 55.1643 25.6749 56.6277C23.266 58.0904 20.2978 58.0904 17.8934 56.6277C15.483 55.1643 14 52.9253 14 50"
                     fill="black"
@@ -165,7 +173,6 @@ const TutorDashboard = () => {
                   Noticeboard
                 </h3>
               </div>
-
               <div className="grid grid-cols-3 gap-6">
                 {notices.length > 0
                   ? notices.map((notice) => (
@@ -184,8 +191,7 @@ const TutorDashboard = () => {
                         </p>
                       </div>
                     ))
-                  : // Default placeholders if no notices
-                    [1, 2, 3].map((i) => (
+                  : [1, 2, 3].map((i) => (
                       <div
                         key={i}
                         className="h-[120px] rounded-[25px] border-4 border-gray-100 flex items-center justify-center"
@@ -199,7 +205,6 @@ const TutorDashboard = () => {
             </div>
           </div>
 
-          {/* Schedule & Tasks Section */}
           <DashboardSchedule />
         </div>
       </div>
