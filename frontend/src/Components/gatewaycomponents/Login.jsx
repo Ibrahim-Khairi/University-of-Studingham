@@ -17,12 +17,9 @@ const Login = () => {
     setError("");
     try {
       const res = await loginUser({ email, password });
-
       if (login) {
         login(res);
       }
-
-      // Check the role and navigate
       const role = res.role;
       if (role === "student") navigate("/student/dashboard");
       else if (role === "tutor") navigate("/tutor/dashboard");
@@ -41,11 +38,21 @@ const Login = () => {
     >
       <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
       <div className="relative z-10 bg-white rounded-2xl shadow-xl w-full max-w-md px-8 py-10">
-        <div className="flex items-center justify-center gap-2 mb-6">
-          <h1 className="font-semibold text-gray-800">
+        {/* University Logo - Clickable to Home */}
+        <Link
+          to="/"
+          className="flex flex-col items-center justify-center gap-2 mb-8 group"
+        >
+          <img
+            src="/websitelogo.png"
+            alt="University Logo"
+            className="h-16 w-auto transition-transform group-hover:scale-105"
+          />
+          <h1 className="font-black text-gray-800 uppercase tracking-tighter text-sm">
             University of Studingham
           </h1>
-        </div>
+        </Link>
+
         <h2 className="text-center text-2xl font-bold mb-6">LOGIN</h2>
         {error && (
           <p className="text-red-600 text-sm text-center mb-4">{error}</p>

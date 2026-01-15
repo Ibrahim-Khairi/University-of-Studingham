@@ -1,6 +1,7 @@
 import React from "react";
 import Librarynav from "../components/librarycomponents/Librarynav";
 import Bookschart from "../components/librarycomponents/Bookschart";
+import Footer from "../components/homecomponents/Footer";
 const Libraryhistory = () => {
   return (
     <div>
@@ -98,6 +99,7 @@ const Libraryhistory = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

@@ -14,16 +14,42 @@ import { generateAccessToken } from "../utils/generateAccessToken.js";
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body || {};
-    console.log("Login attempt for:", email);
+
+    // 1. Find the user
     const user = await User.findOne({ email });
-    console.log("User found in DB:", user);
     if (!user)
       return res.status(401).json({ message: "Email address not registered" });
 
+    // 2. Compare password
     const isMatching = await bcrypt.compare(password, user.password);
     if (!isMatching)
       return res.status(401).json({ message: "Invalid password" });
 
+    // 3. FETCH PROFILE DETAILS (FOR THE PICTURE)
+    let profileDetails = {};
+
+    if (user.role === "student") {
+      const student = await Student.findOne({ userId: user._id });
+      profileDetails = {
+        courseId: student?.courseId,
+        levelOfStudy: student?.levelOfStudy,
+        picture: student?.picture, // <--- IMPORTANT
+      };
+    } else if (user.role === "tutor") {
+      const tutor = await Tutor.findOne({ userId: user._id });
+      profileDetails = {
+        courseId: tutor?.courseId,
+        year: tutor?.year,
+        picture: tutor?.picture, // <--- IMPORTANT
+      };
+    } else if (user.role === "admin") {
+      const admin = await Admin.findOne({ userId: user._id });
+      profileDetails = {
+        picture: admin?.picture, // <--- IMPORTANT
+      };
+    }
+
+    // 4. Generate Tokens
     const payload = {
       userId: user._id,
       role: user.role,
@@ -34,13 +60,16 @@ export const login = async (req, res) => {
 
     await RefreshToken.create({ token: refreshToken, userId: user._id });
 
+    // 5. Return response WITH profileDetails spread into it
     res.json({
       accessToken,
       refreshToken,
       status: user.status,
       role: user.role,
+      ...profileDetails, // This adds picture, courseId, etc. to the final JSON
     });
   } catch (err) {
+    console.error("Login Error:", err);
     res.status(500).json({ message: err.message || "Login failed" });
   }
 };

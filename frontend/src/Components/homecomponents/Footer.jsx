@@ -1,26 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaInstagramSquare } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import {
+  FaFacebookSquare,
+  FaInstagramSquare,
+  FaLinkedin,
+} from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
+import { useAuth } from "../../context/AuthContext";
+
 const Footer = () => {
+  const { user } = useAuth();
+
+  // Logic: If logged in, go to dashboard. If not, go to login (gateway).
+  const studentLifePath = user ? `/${user.role}/dashboard` : "/gateway";
+
   return (
     <div>
       <div className="bg-[#72333B] py-5">
         <div className="container grid grid-cols-[1.5fr_1fr_3fr_1fr] gap-10">
           <div className="flex items-center text-white">
             <Link to="/">
-              <img src="./websitelogo.png" alt="" />
-
+              <img src="/websitelogo.png" alt="" />
               <h3 className="font-bold text-[20px]">
                 University Of Studingham
               </h3>
             </Link>
           </div>
           <div>
-            <h3 className="text-[18px] border-b  border-b-gray-300 font-bold text-white">
+            <h3 className="text-[18px] border-b border-b-gray-300 font-bold text-white">
               ACADEMIC
             </h3>
             <ul className="mt-2 text-white">
@@ -28,12 +36,13 @@ const Footer = () => {
                 <Link to="/courses">Courses</Link>
               </li>
               <li>
-                <Link>Student Life</Link>
+                {/* Dynamic Route for Student Life */}
+                <Link to={studentLifePath}>Student Life</Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-[18px] border-b  border-b-gray-300 font-bold text-white">
+            <h3 className="text-[18px] border-b border-b-gray-300 font-bold text-white">
               Quick Lines
             </h3>
             <div className="grid grid-cols-3">
@@ -67,7 +76,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h3 className="text-[18px] border-b  border-b-gray-300 font-bold text-white">
+            <h3 className="text-[18px] border-b border-b-gray-300 font-bold text-white">
               CONNECT WITH US
             </h3>
             <div className="mt-2 flex gap-2 text-white text-[25px]">

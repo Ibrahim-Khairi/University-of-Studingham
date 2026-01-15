@@ -77,31 +77,28 @@ router.post("/refresh", refresh);
  */
 router.get("/me", authMiddleware, async (req, res) => {
   try {
-    // 1. Get basic User account info
     const user = await User.findById(req.user.userId).select(
-      "_id email role status createdAt"
+      "_id email role status"
     );
-
     if (!user) return res.status(404).json({ message: "User not found" });
 
     let profileData = {};
 
-    // 2. Fetch extra details based on Role
+    // 🚩 IMPORTANT: Add "picture" to these select strings!
     if (user.role === "student") {
       profileData = await Student.findOne({ userId: user._id }).select(
-        "courseId levelOfStudy firstName lastName"
+        "courseId levelOfStudy firstName lastName picture"
       );
     } else if (user.role === "tutor") {
       profileData = await Tutor.findOne({ userId: user._id }).select(
-        "courseId year firstName lastName"
+        "courseId year firstName lastName picture"
       );
     } else if (user.role === "admin") {
       profileData = await Admin.findOne({ userId: user._id }).select(
-        "firstName lastName"
+        "firstName lastName picture"
       );
     }
 
-    // 3. Combine them into one object
     const responseData = {
       ...user.toObject(),
       ...profileData?.toObject(),
@@ -109,7 +106,6 @@ router.get("/me", authMiddleware, async (req, res) => {
 
     res.json(responseData);
   } catch (error) {
-    console.error("GET /auth/me error:", error);
     res.status(500).json({ message: "Server error" });
   }
 });

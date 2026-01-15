@@ -23,7 +23,10 @@ const Libraryportal = () => {
       {/* Content */}
       <div className="relative z-10 flex justify-center flex-col items-center text-center h-full font-[Century Gothic]">
         <div>
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+          <Link
+            className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4"
+            to="/"
+          >
             <img
               // FIXED: Removed the dot. Path now starts from root public folder
               src="/websitelogo.png"
@@ -33,7 +36,7 @@ const Libraryportal = () => {
             <h1 className="text-[30px] md:text-[35px] font-black uppercase tracking-tighter max-w-xs leading-none">
               University of Studingham
             </h1>
-          </div>
+          </Link>
 
           <div className="p-5 mt-6">
             <h3 className="text-[35px] md:text-[50px] font-black text-[#388F96] mb-4 uppercase tracking-tighter">

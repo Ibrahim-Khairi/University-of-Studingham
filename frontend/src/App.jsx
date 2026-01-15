@@ -14,7 +14,7 @@ import Login from "./Components/gatewaycomponents/Login";
 import StudentRegistration from "./Components/gatewaycomponents/StudentRegistration";
 import TutorRegistration from "./Components/gatewaycomponents/TutorRegistration";
 import AdminRegistration from "./Components/gatewaycomponents/AdminRegistration.jsx";
-// import PrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
+import PrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
 import TermsConditions from "./Pages/Terms&Conditions.jsx";
 import Accessibility from "./pages/Accessibility";
 import Courses from "./pages/Courses";
@@ -59,7 +59,7 @@ const App = () => {
         <Route path="/admin-registration" element={<AdminRegistration />} />
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/terms&conditions" element={<TermsConditions />} />
-        {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} /> */}
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         {/* ================= STUDENT ROUTES ================= */}
         <Route
