@@ -75,7 +75,7 @@ const Navbar = () => {
                     Logged in as
                   </p>
                   <p className="text-[12px] font-bold">
-                    {user.email.split("@")[0]}
+                    {user?.email ? user.email.split("@")[0] : "User"}
                   </p>
                 </div>
                 <button
