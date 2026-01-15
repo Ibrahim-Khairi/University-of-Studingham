@@ -71,23 +71,6 @@ const Home = () => {
 
       {/* 3 GRID CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[1200px] text-white mx-auto my-20 px-4">
-        {/* Card 1: Community */}
-        <Link
-          to="/community"
-          className="relative bg-cover bg-center rounded-3xl h-[220px] p-8 group overflow-hidden shadow-xl"
-          style={{ backgroundImage: "url('/Images/Home/upcommingevents.png')" }}
-        >
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500"></div>
-          <div className="relative z-10 flex flex-col justify-between h-full">
-            <h3 className="text-[23px] font-black uppercase tracking-tight leading-none text-white">
-              Upcoming Events & Announcements
-            </h3>
-            <div className="flex justify-end">
-              <FaArrowRight className="text-[24px] group-hover:translate-x-2 transition-transform text-white" />
-            </div>
-          </div>
-        </Link>
-
         {/* Card 2: Library Portal - DYNAMIC ROUTE */}
         <Link
           to={user ? "/student/library-portal" : "/LibraryPortal"}
