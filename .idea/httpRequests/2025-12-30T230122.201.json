@@ -1,0 +1,11 @@
+{
+  "name": "Fundamentals of Computational Science",
+  "courseId": "6943c7ca9a4f32dd7ce69ef1",
+  "tutorId": null,
+  "year": 1,
+  "description": "This module introduces the foundations of computer science by weaving together mathematics, C programming, cryptography and scientific computing. Students begin with sets, logic, and proofs to build the habits of abstract reasoning and formal problem-solving. These mathematical tools naturally flow into programming, where they gain practical competence in C, learning to manage variables, control flow, memory and debugging while building an appreciation for efficient and reliable code. The curriculum expands into applied domains, showing how mathematics and programming underpin security and scientific analysis. Students implement and break classical ciphers, apply public-key principles and tackle numerical methods such as matrix operations, integration and error analysis. Integration is central, in that through collaborative projects and simulations, students see how these themes combine to support secure, optimised and interdisciplinary problem-solving across computer science.",
+  "_id": "695459c29676a8959d94e46a",
+  "createdAt": "2025-12-30T23:01:22.663Z",
+  "updatedAt": "2025-12-30T23:01:22.663Z",
+  "__v": 0
+}

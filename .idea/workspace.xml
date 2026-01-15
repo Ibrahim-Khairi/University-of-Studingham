@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/CoursesModification.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/AdminCoursesModification.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/Digitalregisterstaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/TutorDigitalRegister.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="362s59Wv1IarPHhnVmjyoL0ShP0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "HTTP Request.All in request.executor": "Run",
+    "HTTP Request.request | #1.executor": "Run",
+    "HTTP Request.request | #10.executor": "Run",
+    "HTTP Request.request | #11.executor": "Run",
+    "HTTP Request.request | #12.executor": "Run",
+    "HTTP Request.request | #13.executor": "Run",
+    "HTTP Request.request | #14.executor": "Run",
+    "HTTP Request.request | #16.executor": "Run",
+    "HTTP Request.request | #17.executor": "Run",
+    "HTTP Request.request | #18.executor": "Run",
+    "HTTP Request.request | #19.executor": "Run",
+    "HTTP Request.request | #2.executor": "Run",
+    "HTTP Request.request | #20.executor": "Run",
+    "HTTP Request.request | #21.executor": "Run",
+    "HTTP Request.request | #22.executor": "Run",
+    "HTTP Request.request | #3.executor": "Run",
+    "HTTP Request.request | #4.executor": "Run",
+    "HTTP Request.request | #5.executor": "Run",
+    "HTTP Request.request | #6.executor": "Run",
+    "HTTP Request.request | #7.executor": "Run",
+    "HTTP Request.request | #8.executor": "Run",
+    "HTTP Request.request | #9.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main-v3",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/ibrah/WebstormProjects/2-year-project/frontend/public/Images/Icons",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "C:/Program Files/nodejs/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\frontend\public\Images\Icons" />
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\public\Images\Icons" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\frontend\src\Components\coursesModificationComponents" />
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\frontend" />
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\backend" />
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project\src\Components\PolicyModification" />
+      <recent name="C:\Users\ibrah\WebstormProjects\2-year-project" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="request | #16" value="STOPPED" />
+              <entry key="request | #17" value="STOPPED" />
+              <entry key="request | #20" value="STOPPED" />
+              <entry key="request | #21" value="STOPPED" />
+              <entry key="request | #22" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="HTTP Request.request | #17">
+    <configuration name="request | #16" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#16" index="16" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="request | #17" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#17" index="17" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="request | #20" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#20" index="20" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="request | #21" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#21" index="21" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="request | #22" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/request.rest" executionIdentifier="#22" index="22" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.request | #17" />
+        <item itemvalue="HTTP Request.request | #16" />
+        <item itemvalue="HTTP Request.request | #22" />
+        <item itemvalue="HTTP Request.request | #21" />
+        <item itemvalue="HTTP Request.request | #20" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-WS-252.28238.10" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2c382b50-b9d9-455a-bba9-a07fcf16f5cc" name="Changes" comment="" />
+      <created>1764215815140</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1764215815140</updated>
+      <workItem from="1764215817000" duration="594000" />
+      <workItem from="1764217460543" duration="2701000" />
+      <workItem from="1764232402996" duration="5412000" />
+      <workItem from="1764327288219" duration="2140000" />
+      <workItem from="1764701678675" duration="1922000" />
+      <workItem from="1764834107494" duration="10314000" />
+      <workItem from="1765754177459" duration="2281000" />
+      <workItem from="1765756979873" duration="89000" />
+      <workItem from="1765757080823" duration="159000" />
+      <workItem from="1765757252514" duration="4048000" />
+      <workItem from="1765939911837" duration="48021000" />
+      <workItem from="1766114564635" duration="3202000" />
+      <workItem from="1766323065169" duration="783000" />
+      <workItem from="1766499669263" duration="106961000" />
+      <workItem from="1767130842361" duration="145832000" />
+      <workItem from="1767716443576" duration="4000" />
+      <workItem from="1767787166373" duration="49931000" />
+      <workItem from="1768050759436" duration="53514000" />
+      <workItem from="1768312127000" duration="3824000" />
+      <workItem from="1768389283216" duration="16488000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/backend-v2/server.js</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
