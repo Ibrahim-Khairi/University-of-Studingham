@@ -244,6 +244,7 @@ const App = () => {
         {/* ================= MISC / LEGACY ROUTES ================= */}
         <Route path="/mentorship" element={<Mentorship />} />
         <Route path="/libraryhistory" element={<Libraryhistory />} />
+        <Route path="/LibraryPortal" element={<LibraryPortal />} />
         <Route
           path="/financetracker"
           element={
