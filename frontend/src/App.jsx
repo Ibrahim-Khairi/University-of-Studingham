@@ -120,6 +120,15 @@ const App = () => {
           }
         />
         <Route
+          path="/student/library-history"
+          element={
+            <AuthGate allowedRoles={["student"]}>
+              <Libraryhistory />
+            </AuthGate>
+          }
+        />
+
+        <Route
           path="/student/book-detail/:id"
           element={
             <AuthGate allowedRoles={["student"]}>

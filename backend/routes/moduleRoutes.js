@@ -2,7 +2,6 @@ import express from "express";
 import { authMiddleware } from "../middleware/authMiddleware.js";
 import uploadCurriculum from "../middleware/uploadCurriculum.js";
 import {
-<<<<<<< HEAD
   createModules,
   getModulesByCourse,
   // deleteModulesByCourse,
@@ -10,14 +9,6 @@ import {
   toggleVisibility,
   updateCurriculum,
   getAllMyScores,
-=======
-    createModules,
-    getModulesByCourse,
-    // deleteModulesByCourse,
-    // createModulesByBulk,
-    toggleVisibility,
-    updateCurriculum,
->>>>>>> f42b66aa02bec63274f1f1fbfff0750fe601fc19
 } from "../controllers/moduleController.js";
 import { submitQuiz, getMyScores } from "../controllers/moduleController.js";
 const router = express.Router();
