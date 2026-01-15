@@ -1,21 +1,33 @@
 import React from "react";
-import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
-const Bookschart = () => {
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+
+const Bookschart = ({ stats }) => {
+  // Map the stats from props into chart data
   const data = [
-    { name: "totalBooks", value: 100, color: "#D75CEA" },
-    { name: "Borrowed", value: 97, color: "#5C7AEA" },
-    { name: "On Hold", value: 63, color: "#F6D047" },
-    { name: "Returned", value: 9, color: "#22988E" },
+    { name: "total", value: stats?.total || 1, color: "#D75CEA" },
+    { name: "Borrowed", value: stats?.borrowed || 0, color: "#5C7AEA" },
+    { name: "Pending", value: stats?.pending || 0, color: "#F6D047" },
+    { name: "Returned", value: stats?.returned || 0, color: "#22988E" },
   ];
+
   return (
-    <div className="flex justify-center items-center p-4 w-[150px] h-[150px] ">
-      <PieChart width={200} height={200}>
-        <Pie data={data} cx="50%" cy="50%" outerRadius={100} dataKey="value">
-          {data.map((entry, index) => (
-            <Cell key={index} fill={entry.color} />
-          ))}
-        </Pie>
-      </PieChart>
+    <div className="w-[180px] h-[180px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={data}
+            innerRadius={60}
+            outerRadius={80}
+            paddingAngle={5}
+            dataKey="value"
+            stroke="none"
+          >
+            {data.map((entry, index) => (
+              <Cell key={index} fill={entry.color} />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
     </div>
   );
 };

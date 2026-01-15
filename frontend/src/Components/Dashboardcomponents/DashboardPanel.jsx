@@ -6,11 +6,6 @@ const DashboardPanel = () => {
   const { user, loading, logout } = useAuth();
   const location = useLocation();
 
-  // Debugging: log user changes
-  useEffect(() => {
-    console.log("DashboardPanel detected user change:", user);
-  }, [user]);
-
   // Loading skeleton
   if (loading) {
     return (
@@ -25,9 +20,7 @@ const DashboardPanel = () => {
     );
   }
 
-  // Safety check
   if (!user || !user.role) {
-    console.warn("DashboardPanel: No user or role found in Context state.");
     return (
       <div className="bg-[#72333B] min-w-[330px] min-h-[840px] rounded-3xl flex items-center justify-center">
         <p className="text-white opacity-50">Loading profile...</p>
@@ -98,9 +91,9 @@ const DashboardPanel = () => {
         path: "/tutor/digital-register",
       },
       {
-        label: "Library Portal",
+        label: "Library Hub",
         icon: "/Images/Icons/LibraryPortalIcon.svg",
-        path: "/tutor/library-portal",
+        path: "/LibraryPortal",
       },
       {
         label: "Pending Approvals",
@@ -134,13 +127,18 @@ const DashboardPanel = () => {
         icon: "/Images/Icons/PendingApprovalsIcon.svg",
         path: "/admin/pending-approvals",
       },
+      {
+        label: "Library Management",
+        icon: "/Images/Icons/LibraryPortalIcon.svg",
+        path: "/admin/library",
+      }, // NEW ROUTE ADDED HERE
     ],
   };
 
   const menuItems = MENU[role] || [];
 
   return (
-    <div className="bg-[#72333B] min-w-[330px] min-h-[840px] rounded-3xl flex flex-col p-[30px] shadow-2xl">
+    <div className="bg-[#72333B] min-w-[330px] min-h-[840px] rounded-3xl flex flex-col p-[30px] shadow-2xl font-[Century Gothic]">
       <div>
         <div className="mb-5">
           <Link to="/">
@@ -159,8 +157,10 @@ const DashboardPanel = () => {
                 <li key={item.path}>
                   <Link
                     to={item.path}
-                    className={`flex items-center gap-4 text-white font-[Century Gothic] font-bold text-[18px] py-3 px-4 rounded-xl transition-all duration-200 ${
-                      isActive ? "bg-white/20" : "hover:bg-white/10"
+                    className={`flex items-center gap-4 text-white font-bold text-[17px] py-3 px-4 rounded-xl transition-all duration-200 ${
+                      isActive
+                        ? "bg-white/20 shadow-inner"
+                        : "hover:bg-white/10"
                     }`}
                   >
                     <img src={item.icon} alt={item.label} className="w-8 h-8" />
@@ -177,7 +177,7 @@ const DashboardPanel = () => {
         <button
           type="button"
           onClick={logout}
-          className="text-white font-[Century Gothic] font-bold text-[18px] flex gap-3 rounded-2xl items-center py-3 px-6 hover:bg-red-900/40 transition-colors cursor-pointer"
+          className="text-white font-bold text-[18px] flex gap-3 rounded-2xl items-center py-3 px-6 hover:bg-red-900/40 transition-colors cursor-pointer active:scale-95"
         >
           <img
             src="/Images/Icons/LogoutIcon.svg"

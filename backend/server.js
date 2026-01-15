@@ -15,7 +15,7 @@ import lecturePatternsRoutes from "./routes/lecturePatternsRoutes.js";
 import timetableRoutes from "./routes/timetableRoutes.js";
 import financeRoutes from "./routes/financeRoutes.js";
 import attendanceRoutes from "./routes/attendanceRoutes.js"; // Fixed: Added full import path
-
+import libraryRoutes from "./routes/libraryRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -47,10 +47,10 @@ app.use("/api/lecture-patterns", lecturePatternsRoutes);
 app.use("/api/timetable", timetableRoutes);
 app.use("/api/finance", financeRoutes);
 app.use("/api/attendance", attendanceRoutes); // Correctly registered here
-
+app.use("/api/library", libraryRoutes);
 app.get("/", (req, res) => {
   res.send("API running successfully.");
 });
-
+app.use("/api/library", libraryRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

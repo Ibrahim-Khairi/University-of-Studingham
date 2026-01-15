@@ -24,6 +24,7 @@ import CourseDetail from "./Components/coursecomponents/CourseDeltail.jsx";
 import StudentDashboard from "./Pages/StudentDashboard.jsx";
 import TutorDashboard from "./Pages/TutorDashboard.jsx";
 import AdminDashboard from "./Pages/AdminDashboard.jsx";
+import LibraryAdmin from "./Pages/LibraryAdmin.jsx";
 
 // --- COMMON FEATURES ---
 import Moodle from "./Pages/Moodle/Moodle.jsx";
@@ -60,7 +61,6 @@ const App = () => {
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/terms&conditions" element={<TermsConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-
         {/* ================= STUDENT ROUTES ================= */}
         <Route
           path="/student/dashboard"
@@ -78,7 +78,6 @@ const App = () => {
             </AuthGate>
           }
         />
-
         <Route
           path="/student/moodle"
           element={
@@ -127,7 +126,6 @@ const App = () => {
             </AuthGate>
           }
         />
-
         <Route
           path="/student/book-detail/:id"
           element={
@@ -136,7 +134,6 @@ const App = () => {
             </AuthGate>
           }
         />
-
         {/* ================= TUTOR ROUTES ================= */}
         <Route
           path="/tutor/dashboard"
@@ -178,8 +175,15 @@ const App = () => {
             </AuthGate>
           }
         />
-
-        {/* ================= ADMIN ROUTES ================= */}
+        {/* ================= ADMIN ROUTES ================= */}\
+        <Route
+          path="/admin/library"
+          element={
+            <AuthGate allowedRoles={["admin"]}>
+              <LibraryAdmin />
+            </AuthGate>
+          }
+        />
         <Route
           path="/admin/dashboard"
           element={
@@ -220,7 +224,6 @@ const App = () => {
             </AuthGate>
           }
         />
-
         {/* ================= MISC / LEGACY ROUTES ================= */}
         <Route path="/mentorship" element={<Mentorship />} />
         <Route path="/libraryhistory" element={<Libraryhistory />} />
