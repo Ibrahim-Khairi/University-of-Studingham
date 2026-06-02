@@ -27,3 +27,6 @@ folder_structure.txt
 
 backend/.env
 coverage
+.idea
+backend/uploads/*
+!backend/uploads/.gitkeep
